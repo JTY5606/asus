@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+	<form action="/xdm/codegroup/CodeGroupXdmInst" method="post">
+		seq: <input type="int" name="seq" id="seq" disabled/>
+		name: <input type="text" name="name" id="name" />
+		delNy: <input type="int" name="delNy" id="delNy" disabled />
+		<button type="submit">저장</button>
+	</form>
+	<script type="text/javascript">
+	document.getElementById("btnSave").onclick = function(){
+		document.getElementById("form").submit();
+	}
+	</script>
+
+
+</body>
+</html>

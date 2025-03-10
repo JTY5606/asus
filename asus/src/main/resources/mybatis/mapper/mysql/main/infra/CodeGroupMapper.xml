@@ -5,7 +5,40 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 
 ">
 
-<mapper namespace="com.asus.infra.codegroup.CodeGroupDao">
+<mapper namespace="com.asus.module.codegroup.CodeGroupDao">
+<resultMap id="resultMapObj" type="com.asus.module.codegroup.CodeGroupDto"></resultMap>
+	 
+<select id="selectList" resultMap="resultMapObj">
+SELECT
+	seq,
+	name,
+	delNy
+FROM
+	codegroup
+WHERE 1=1
+	ORDER BY seq DESC
+	
+</select>
+<select id="selectItem" resultMap="resultMapObj">
+SELECT
+	seq,
+	name,
+	delNy
+FROM
+	codegroup
+where 1=1
+			AND seq = #{seq}
+		order by seq desc
+</select>
 
-	  
+
+<insert id="insert" >
+INSERT INTO codegroup(
+	name,
+	delNy
+)values(
+	#{name},
+	0
+)
+</insert>
 </mapper>

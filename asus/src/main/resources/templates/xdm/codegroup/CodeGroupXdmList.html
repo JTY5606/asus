@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>General Dashboard &mdash; Stisla</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/fontawesome/css/all.min.css">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/jqvmap/dist/jqvmap.min.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/weather-icon/css/weather-icons.min.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/weather-icon/css/weather-icons-wind.min.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/summernote/summernote-bs4.css">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/css/style.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/css/components.css">
+<!-- Start GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-94034622-3');
+</script>
+<!-- /END GA --></head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            <div class="search-backdrop"></div>
+            <div class="search-result">
+              <div class="search-header">
+                Histories
+              </div>
+              <div class="search-item">
+                <a href="#">How to hack NASA using CSS</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-item">
+                <a href="#">Kodinger.com</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-item">
+                <a href="#">#Stisla</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-header">
+                Result
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="/xdm/template/adminui/assets/img/products/product-3-50.png" alt="product">
+                  oPhone S9 Limited Edition
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="/xdm/template/adminui/assets/img/products/product-2-50.png" alt="product">
+                  Drone X2 New Gen-7
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="/xdm/template/adminui/assets/img/products/product-1-50.png" alt="product">
+                  Headphone Blitz
+                </a>
+              </div>
+              <div class="search-header">
+                Projects
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <div class="search-icon bg-danger text-white mr-3">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  Stisla Admin Template
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <div class="search-icon bg-primary text-white mr-3">
+                    <i class="fas fa-laptop"></i>
+                  </div>
+                  Create a new Homepage Design
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+              <div class="dropdown-header">Messages
+                <div class="float-right">
+                  <a href="#">Mark All As Read</a>
+                </div>
+              </div>
+              <div class="dropdown-list-content dropdown-list-message">
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-1.png" class="rounded-circle">
+                    <div class="is-online"></div>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b>
+                    <p>Hello, Bro!</p>
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-2.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Dedik Sugiharto</b>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-3.png" class="rounded-circle">
+                    <div class="is-online"></div>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Agung Ardiansyah</b>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-4.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Ardian Rahardiansyah</b>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                    <div class="time">16 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-5.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Alfa Zulkarnain</b>
+                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer text-center">
+                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+              <div class="dropdown-header">Notifications
+                <div class="float-right">
+                  <a href="#">Mark All As Read</a>
+                </div>
+              </div>
+              <div class="dropdown-list-content dropdown-list-icons">
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-icon bg-primary text-white">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Template update is available now!
+                    <div class="time text-primary">2 Min Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-info text-white">
+                    <i class="far fa-user"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-success text-white">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-danger text-white">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Low disk space. Let's clean it!
+                    <div class="time">17 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-info text-white">
+                    <i class="fas fa-bell"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Welcome to Stisla template!
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer text-center">
+                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            <img alt="image" src="/xdm/template/adminui/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title">Logged in 5 min ago</div>
+              <a href="features-profile.html" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Profile
+              </a>
+              <a href="features-activities.html" class="dropdown-item has-icon">
+                <i class="fas fa-bolt"></i> Activities
+              </a>
+              <a href="features-settings.html" class="dropdown-item has-icon">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item has-icon text-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar sidebar-style-2">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">Stisla</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.html">St</a>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <!-- 메뉴시작 -->
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>home</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>공지사항</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>회원관리</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>서비스관리</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>커뮤니케이션</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="5_imfo.html">기본정보</a></li>
+                <li><a class="nav-link avtive" href="#">코드</a></li>
+                <li><a class="nav-link" href="2_codegroub_basedate.html">코드그룹</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>시스템관리</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="3_code_system.html">코드관리</a></li>
+                <li><a class="nav-link active" href="" >코드그룹관리</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>개인정보 관리</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>test</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <!-- 메뉴끝 -->
+            <li class="dropdown active">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <ul class="dropdown-menu">
+                <li class=active><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="menu-header">Starter</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
+                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
+                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
+                <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
+                <li><a class="nav-link" href="bootstrap-breadcrumb.html">Breadcrumb</a></li>
+                <li><a class="nav-link" href="bootstrap-buttons.html">Buttons</a></li>
+                <li><a class="nav-link" href="bootstrap-card.html">Card</a></li>
+                <li><a class="nav-link" href="bootstrap-carousel.html">Carousel</a></li>
+                <li><a class="nav-link" href="bootstrap-collapse.html">Collapse</a></li>
+                <li><a class="nav-link" href="bootstrap-dropdown.html">Dropdown</a></li>
+                <li><a class="nav-link" href="bootstrap-form.html">Form</a></li>
+                <li><a class="nav-link" href="bootstrap-list-group.html">List Group</a></li>
+                <li><a class="nav-link" href="bootstrap-media-object.html">Media Object</a></li>
+                <li><a class="nav-link" href="bootstrap-modal.html">Modal</a></li>
+                <li><a class="nav-link" href="bootstrap-nav.html">Nav</a></li>
+                <li><a class="nav-link" href="bootstrap-navbar.html">Navbar</a></li>
+                <li><a class="nav-link" href="bootstrap-pagination.html">Pagination</a></li>
+                <li><a class="nav-link" href="bootstrap-popover.html">Popover</a></li>
+                <li><a class="nav-link" href="bootstrap-progress.html">Progress</a></li>
+                <li><a class="nav-link" href="bootstrap-table.html">Table</a></li>
+                <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
+                <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
+              </ul>
+            </li>
+            <li class="menu-header">Stisla</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="components-article.html">Article</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-avatar.html">Avatar</a></li>                <li><a class="nav-link" href="components-chat-box.html">Chat Box</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-empty-state.html">Empty State</a></li>                <li><a class="nav-link" href="components-gallery.html">Gallery</a></li>
+                <li><a class="nav-link beep beep-sidebar" href="components-hero.html">Hero</a></li>                <li><a class="nav-link" href="components-multiple-upload.html">Multiple Upload</a></li>
+                <li><a class="nav-link beep beep-sidebar" href="components-pricing.html">Pricing</a></li>                <li><a class="nav-link" href="components-statistic.html">Statistic</a></li>                <li><a class="nav-link" href="components-tab.html">Tab</a></li>
+                <li><a class="nav-link" href="components-table.html">Table</a></li>
+                <li><a class="nav-link" href="components-user.html">User</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-wizard.html">Wizard</a></li>              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Forms</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
+                <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
+                <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Google Maps</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="gmaps-advanced-route.html">Advanced Route</a></li>
+                <li><a href="gmaps-draggable-marker.html">Draggable Marker</a></li>
+                <li><a href="gmaps-geocoding.html">Geocoding</a></li>
+                <li><a href="gmaps-geolocation.html">Geolocation</a></li>
+                <li><a href="gmaps-marker.html">Marker</a></li>
+                <li><a href="gmaps-multiple-marker.html">Multiple Marker</a></li>
+                <li><a href="gmaps-route.html">Route</a></li>
+                <li><a href="gmaps-simple.html">Simple</a></li>
+              </ul>
+            </li>            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Modules</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="modules-calendar.html">Calendar</a></li>
+                <li><a class="nav-link" href="modules-chartjs.html">ChartJS</a></li>
+                <li><a class="nav-link" href="modules-datatables.html">DataTables</a></li>
+                <li><a class="nav-link" href="modules-flag.html">Flag</a></li>
+                <li><a class="nav-link" href="modules-font-awesome.html">Font Awesome</a></li>
+                <li><a class="nav-link" href="modules-ion-icons.html">Ion Icons</a></li>
+                <li><a class="nav-link" href="modules-owl-carousel.html">Owl Carousel</a></li>
+                <li><a class="nav-link" href="modules-sparkline.html">Sparkline</a></li>
+                <li><a class="nav-link" href="modules-sweet-alert.html">Sweet Alert</a></li>
+                <li><a class="nav-link" href="modules-toastr.html">Toastr</a></li>
+                <li><a class="nav-link" href="modules-vector-map.html">Vector Map</a></li>
+                <li><a class="nav-link" href="modules-weather-icon.html">Weather Icon</a></li>
+              </ul>
+            </li>
+            <li class="menu-header">Pages</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Auth</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="auth-forgot-password.html">Forgot Password</a></li> 
+                <li><a href="auth-login.html">Login</a></li> 
+                <li><a href="auth-register.html">Register</a></li> 
+                <li><a href="auth-reset-password.html">Reset Password</a></li> 
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-exclamation"></i> <span>Errors</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="errors-503.html">503</a></li> 
+                <li><a class="nav-link" href="errors-403.html">403</a></li> 
+                <li><a class="nav-link" href="errors-404.html">404</a></li> 
+                <li><a class="nav-link" href="errors-500.html">500</a></li> 
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-bicycle"></i> <span>Features</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="features-activities.html">Activities</a></li>
+                <li><a class="nav-link" href="features-post-create.html">Post Create</a></li>
+                <li><a class="nav-link" href="features-posts.html">Posts</a></li>
+                <li><a class="nav-link" href="features-profile.html">Profile</a></li>
+                <li><a class="nav-link" href="features-settings.html">Settings</a></li>
+                <li><a class="nav-link" href="features-setting-detail.html">Setting Detail</a></li>
+                <li><a class="nav-link" href="features-tickets.html">Tickets</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Utilities</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="utilities-contact.html">Contact</a></li>
+                <li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li>
+                <li><a href="utilities-subscribe.html">Subscribe</a></li>
+              </ul>
+            </li>            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+          </ul>
+
+          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+              <i class="fas fa-rocket"></i> Documentation
+            </a>
+          </div>        </aside>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="card">
+          <div class="card-header">
+            <h2>Code</h2z>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <select class="form-control form-control-sm">
+                    <option>N</option>
+                    <option>Y</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <select class="form-control form-control-sm">
+                    <option>Y</option>
+                    <option>N</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <select class="form-control form-control-sm">
+                    <option>날짜</option>
+                    <option>등록일</option>
+                    <option>수정일</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="2025-01-25" >
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="2025-02-04" >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <div class="form-group">
+                  <select class="form-control form-control-sm">
+                    <option>검색구분</option>
+                    <option>코드그룹 코드</option>
+                    <option>코드그룹 이름</option>
+                    <option>코드그룹 이름(영문)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="검색어" >
+                </div>
+              </div>
+              <div class="col-2">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="col-10">
+              <h4>Total : 42</h4>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <select class="form-control form-control-sm">
+                  <option>선택하세요</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
+                  <th scope="col">#</th>
+                  <th scope="col">사용</th>
+                  <th scope="col">코드그룹 코드</th>
+                  <th scope="col" style="width: 25%;">코드그룹 이름</th>
+                  <th scope="col" >코드그룹 이름(영문)</th>
+                  <th scope="col">갯수</th>
+                  <th scope="col">순서</th>
+                  <th scope="col">등록일</th>
+                  <th scope="col">수정일</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="list : ${list}">
+                  <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
+                  <td th:text="${list.seq}"></td>
+                  <td th:text="${list.delNy}">Y</td>
+                  <td>42</td>
+                  <td><a th:text="${list.name}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(seq=${list.seq})}"></a></td>
+                  <td></td>
+                  <td>8</td>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <div class="buttons" >
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="col-11">
+                	<a href="/xdm/codegroup/CodeGroupXdmForm">등록</a>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm79 143c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" href="#"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z"/></svg>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+        </div>
+        <div class="footer-right">
+          
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="/xdm/template/adminui/assets/modules/jquery.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/popper.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/tooltip.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/moment.min.js"></script>
+  <script src="/xdm/template/adminui/assets/js/stisla.js"></script>
+  
+  <!-- JS Libraies -->
+  <script src="/xdm/template/adminui/assets/modules/simple-weather/jquery.simpleWeather.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/chart.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/jqvmap/dist/jquery.vmap.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/summernote/summernote-bs4.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="/xdm/template/adminui/assets/js/page/index-0.js"></script>
+  
+  <!-- Template JS File -->
+  <script src="/xdm/template/adminui/assets/js/scripts.js"></script>
+  <script src="/xdm/template/adminui/assets/js/custom.js"></script>
+
+  <!-- boot -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

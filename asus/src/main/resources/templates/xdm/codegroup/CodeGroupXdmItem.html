@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>seq</td>
+		<td>name</td>
+		<td>delNy</td>
+	</tr>
+		<td th:text="${item.seq}"></td>
+		<td th:text="${item.name}"></td>
+		<td th:text="${item.delNy}"></td>
+	</tr>
+</table>
+<a href="/xdm/codegroup/CodeGroupXdmList">목록</a>
+<a href="">삭제</a>
+<a href="/xdm/codegroup/CodeGroupXdmUpdt">수정</a>
+</body>
+</html>
