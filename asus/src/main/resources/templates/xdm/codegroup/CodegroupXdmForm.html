@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>General Dashboard &mdash; Stisla</title>
+  <!-- boot -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -293,7 +296,7 @@
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>커뮤니케이션</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="5_imfo.html">기본정보</a></li>
-                <li><a class="nav-link avtive" href="#">코드</a></li>
+                <li><a class="nav-link" href="1_code_basedate.html">코드</a></li>
                 <li><a class="nav-link" href="2_codegroub_basedate.html">코드그룹</a></li>
               </ul>
             </li>
@@ -301,7 +304,7 @@
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>시스템관리</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="3_code_system.html">코드관리</a></li>
-                <li><a class="nav-link active" href="" >코드그룹관리</a></li>
+                <li><a class="nav-link" href="4_code_groubsystem.html">코드그룹관리</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -458,157 +461,87 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        <div class="card">
-          <div class="card-header">
-            <h2>Code</h2z>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-2">
-                <div class="form-group">
-                  <select class="form-control form-control-sm">
-                    <option>N</option>
-                    <option>Y</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <select class="form-control form-control-sm">
-                    <option>Y</option>
-                    <option>N</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <select class="form-control form-control-sm">
-                    <option>날짜</option>
-                    <option>등록일</option>
-                    <option>수정일</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="2025-01-25" >
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="2025-02-04" >
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-2">
-                <div class="form-group">
-                  <select class="form-control form-control-sm">
-                    <option>검색구분</option>
-                    <option>코드그룹 코드</option>
-                    <option>코드그룹 이름</option>
-                    <option>코드그룹 이름(영문)</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="검색어" >
-                </div>
-              </div>
-              <div class="col-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
-                </svg>
-              </div>
-            </div>
-          </div>
+      	<form action="/xdm/codegroup/CodeGroupXdmInst" method="post">	
+	        <section class="section">
+	          <div class="section-header">
+	            <h1>Code Group</h1>
+	          </div>
+	        <div class="card">
+	          <div class="card-header">
+	            <h2>기본정보</h2z>
+	          </div>
+	          <div class="card-body">
+	            <div class="row">
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>seq<code>*</code></label>
+	                  <input type="int" name="seq" id="seq" class="form-control" placeholder="자동생성" disabled>
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>코드그룹 코드 (ANOTHER)</label>
+	                  <input type="text" name="codegroupcode" id="codegroupcode" class="form-control" placeholder="영대소문자,숫자" >
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>코드그룹 이름<code>*</code></label>
+	                  <input type="text" name="name" id="name" class="form-control" placeholder="한글,영대소문자,숫자" >
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>코드그룹 이름(영문)</label>
+	                  <input type="text" class="form-control" placeholder="영대소문자,숫자" disabled/>
+	                </div>
+	              </div>
+	            </div> 
+	            <div class="row">
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>사용여부 <code>*</code></label>
+	                  <select class="form-control form-control-sm" name="delNy" id="delNy" >
+	                    <option>선택하세요</option>
+	                    <option value="0">N</option>
+	                    <option value="1">Y</option>
+	                  </select>
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>순서<code>*</code></label>
+	                  <input type="text" class="form-control" placeholder="" disabled/>
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>갯수<code>*</code></label>
+	                  <input  type="int" name="number" id="number" class="form-control" placeholder="" >
+	                </div>
+	              </div>
+	            </div>
+	            <div class="row">
+	              <dic class="col-6">
+	                <label>설명</label>
+	                <textarea class="form-control"></textarea>
+	              </dic>
+	            </div>
+	            <div class="row">
+	              <div class="col-11">
+	              <button type="submit">저장</button>
+	                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></a>
+	              </div>
+	            </div>
+	          </div>
+	    	</form>
         </div>
-        <div class="card">
-          <div class="card-header">
-            <div class="col-10">
-              <h4>Total : 42</h4>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <select class="form-control form-control-sm">
-                  <option>선택하세요</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <table class="table text-center">
-              <thead>
-                <tr>
-                  <th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
-                  <th scope="col">#</th>
-                  <th scope="col">사용</th>
-                  <th scope="col">코드그룹 코드</th>
-                  <th scope="col" style="width: 25%;">코드그룹 이름</th>
-                  <th scope="col" >코드그룹 이름(영문)</th>
-                  <th scope="col">갯수</th>
-                  <th scope="col">순서</th>
-                  <th scope="col">등록일</th>
-                  <th scope="col">수정일</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
-                  <td th:text="${item.seq}"></td>
-                  <td th:text="${item.delNy}"></td>
-                  <td th:text="${item.codegroupcode}">42</td>
-                  <td th:text="${item.name}"></td>
-                  <td></td>
-                  <td th:text="${item.number}">8</td>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                
-              </tbody>
-            </table>
-            <div class="buttons" >
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="row">
-              <div class="row">
-                <div class="col-11">
-              		<a href="/xdm/codegroup/CodeGroupXdmList">목록</a>
-					<a th:href="@{/club1/club1XdmDele(seq=${item.seq})}">삭제</a>
-					<a th:href="@{/club1/club1XdmMfom(seq=${item.seq})}">수정</a>
-					<a th:href="@{/club1/club1XdmUele(seq=${item.seq})}" id="uelete">업제</a>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm79 143c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" href="#"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z"/></svg>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <script type="text/javascript">
+	document.getElementById("btnSave").onclick = function(){
+		document.getElementById("form").submit();
+	}
+	</script>
+        
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>

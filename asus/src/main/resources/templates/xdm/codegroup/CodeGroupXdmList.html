@@ -563,10 +563,10 @@
                   <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
                   <td th:text="${list.seq}"></td>
                   <td th:text="${list.delNy}">Y</td>
-                  <td>42</td>
+                  <td th:text="${list.codegroupcode}">42</td>
                   <td><a th:text="${list.name}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(seq=${list.seq})}"></a></td>
                   <td></td>
-                  <td>8</td>
+                  <td th:text="${list.number}">8</td>
                   <td>1</td>
                   <td></td>
                   <td></td>

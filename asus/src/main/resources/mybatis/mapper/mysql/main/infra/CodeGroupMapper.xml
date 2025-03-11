@@ -11,8 +11,10 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 <select id="selectList" resultMap="resultMapObj">
 SELECT
 	seq,
+	codegroupcode,
+	delNy,
 	name,
-	delNy
+	number
 FROM
 	codegroup
 WHERE 1=1
@@ -22,8 +24,10 @@ WHERE 1=1
 <select id="selectItem" resultMap="resultMapObj">
 SELECT
 	seq,
+	codegroupcode,
+	delNy,
 	name,
-	delNy
+	number
 FROM
 	codegroup
 where 1=1
@@ -34,11 +38,15 @@ where 1=1
 
 <insert id="insert" >
 INSERT INTO codegroup(
+	codegroupcode,
+	delNy,
 	name,
-	delNy
+	number
 )values(
 	#{name},
-	0
+	#{delNy},
+	#{name},
+	#{number}
 )
 </insert>
 </mapper>
