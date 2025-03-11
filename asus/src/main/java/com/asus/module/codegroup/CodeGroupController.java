@@ -33,4 +33,10 @@ public class CodeGroupController {
 		model.addAttribute("item", codeGroupService.selectItem(codeGroupDto));
 		return "xdm/codegroup/CodeGroupXdmItem"; 
 		}
+	@RequestMapping(value = "/xdm/codegroup/CodeGroupXdmDele")
+	public String CodeGroupXdmDele(CodeGroupDto codeGroupDto) {
+		
+		codeGroupService.delete(codeGroupDto);
+		return "redirect:/xdm/codegroup/CodeGroupXdmList"; 
+		}
 }

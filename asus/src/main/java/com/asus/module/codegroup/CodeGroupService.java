@@ -27,5 +27,7 @@ public class CodeGroupService {
 	public CodeGroupDto selectItem(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.selectItem(codeGroupDto);
 	}
-
+	public int delete(CodeGroupDto codeGroupDto) {
+		return codeGroupDao.delete(codeGroupDto);
+	}
 }

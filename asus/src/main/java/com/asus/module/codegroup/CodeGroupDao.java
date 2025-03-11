@@ -10,5 +10,5 @@ public interface CodeGroupDao {
 	public List<CodeGroupDto> selectList();
 	public int insert(CodeGroupDto codeGroupDto);
 	public CodeGroupDto selectItem(CodeGroupDto codeGroupDto);
-
+	public int delete(CodeGroupDto codeGroupDto);
 }

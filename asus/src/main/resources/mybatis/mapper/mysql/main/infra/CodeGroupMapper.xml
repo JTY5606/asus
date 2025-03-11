@@ -49,4 +49,8 @@ INSERT INTO codegroup(
 	#{number}
 )
 </insert>
+<delete id="delete">
+	delete from codegroup
+	where seq = #{seq}
+</delete>
 </mapper>
