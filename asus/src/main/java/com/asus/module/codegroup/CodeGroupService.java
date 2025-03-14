@@ -13,10 +13,10 @@ public class CodeGroupService {
 	@Autowired
 	CodeGroupDao codeGroupDao;
 	
-	public List<CodeGroupDto> selectList() {
+	public List<CodeGroupDto> selectList(CodeGroupVo vo) {
 		List<CodeGroupDto> codeGroupDtos = new ArrayList<>();
 		
-		codeGroupDtos = codeGroupDao.selectList();
+		codeGroupDtos = codeGroupDao.selectList(vo);
 		
 		return codeGroupDtos; 
 	}
@@ -29,5 +29,8 @@ public class CodeGroupService {
 	}
 	public int delete(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.delete(codeGroupDto);
+	}
+	public int selectOneCount() {
+		return codeGroupDao.selectOneCount();
 	}
 }

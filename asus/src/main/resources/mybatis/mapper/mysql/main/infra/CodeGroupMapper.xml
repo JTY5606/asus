@@ -9,30 +9,28 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 <resultMap id="resultMapObj" type="com.asus.module.codegroup.CodeGroupDto"></resultMap>
 	 
 <select id="selectList" resultMap="resultMapObj">
+select aa.* from(
 SELECT
-	seq,
-	codegroupcode,
-	delNy,
-	name,
-	number
-FROM
-	codegroup
-WHERE 1=1
-	ORDER BY seq DESC
-	
+	a.seq,
+	a.codegroupcode,
+	a.delNy,
+	a.name,
+	a.number
+<include refid="selectCommon" />
+	ORDER BY a.seq DESC
+) aa
+limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
 <select id="selectItem" resultMap="resultMapObj">
 SELECT
-	seq,
-	codegroupcode,
-	delNy,
-	name,
-	number
-FROM
-	codegroup
-where 1=1
-			AND seq = #{seq}
-		order by seq desc
+	a.seq,
+	a.codegroupcode,
+	a.delNy,
+	a.name,
+	a.number
+<include refid="selectCommon" />
+	AND a.seq = #{seq}
+	order by a.seq DESC
 </select>
 
 
@@ -53,4 +51,14 @@ INSERT INTO codegroup(
 	delete from codegroup
 	where seq = #{seq}
 </delete>
+
+<sql id="selectCommon">
+	FROM codegroup a
+	WHERE 1=1
+</sql>
+
+<select id="selectOneCount" resultType="Integer">
+	SELECT COUNT(*)
+	<include refid="selectCommon" />
+</select>
 </mapper>
