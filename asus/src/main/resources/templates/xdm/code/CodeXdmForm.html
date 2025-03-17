@@ -5,7 +5,7 @@
 
       <!-- Main Content -->
       <div class="main-content">
-      	<form action="/xdm/codegroup/CodeGroupXdmInst" method="post" id="form">	
+      	<form action="/xdm/code/CodeXdmInst" method="post" id="form">	
 	        <section class="section">
 	          <div class="section-header">
 	            <h1>Code Group</h1>
@@ -15,6 +15,17 @@
 	            <h2>기본정보</h2z>
 	          </div>
 	          <div class="card-body">
+	          <div class="row">
+              <div class="col-3">
+                <div class="form-group">
+                  <label>코드그룹 <code>*</code></label>
+                  <select class="form-control form-control-sm">
+                    <option>선택하세요</option>
+                    <option th:each = "list : ${list}" th:text="${list.name}"></option>
+                  </select>
+                </div>
+              </div>
+            </div>
 	            <div class="row">
 	              <div class="col-3">
 	                <div class="form-group">
@@ -31,13 +42,13 @@
 	              <div class="col-3">
 	                <div class="form-group">
 	                  <label>코드그룹 이름<code>*</code></label>
-	                  <input type="text" name="name" id="name" class="form-control" placeholder="한글,영대소문자,숫자" >
+	                  <input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" >
 	                </div>
 	              </div>
 	              <div class="col-3">
 	                <div class="form-group">
-	                  <label>코드그룹 이름(영문)</label>
-	                  <input type="text" class="form-control" placeholder="영대소문자,숫자" disabled/>
+	                  <label>코드</label>
+	                  <input type="code" class="form-control" placeholder="숫자" />
 	                </div>
 	              </div>
 	            </div> 
@@ -47,21 +58,27 @@
 	                  <label>사용여부 <code>*</code></label>
 	                  <select class="form-control form-control-sm" name="delNy" id="delNy" >
 	                    <option>선택하세요</option>
-	                    <option value="0">N</option>
-	                    <option value="1">Y</option>
+	                    <option value="0">Y</option>
+	                    <option value="1">N</option>
 	                  </select>
 	                </div>
 	              </div>
 	              <div class="col-3">
 	                <div class="form-group">
-	                  <label>순서<code>*</code></label>
-	                  <input type="text" class="form-control" placeholder="" disabled/>
+	                  <label>코드이름<code>*</code></label>
+	                  <input type="text" id="codename" name="codename" class="form-control" placeholder="코드이름"/>
 	                </div>
 	              </div>
 	              <div class="col-3">
 	                <div class="form-group">
-	                  <label>갯수<code>*</code></label>
-	                  <input  type="int" name="number" id="number" class="form-control" placeholder="" >
+	                  <label>순서<code>*</code></label>
+	                  <input type="text" name="number" id="number" class="form-control" placeholder="" />
+	                </div>
+	              </div>
+	              <div class="col-3">
+	                <div class="form-group">
+	                  <label>codegroup_seq<code>*</code></label>
+	                  <input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder=""  />
 	                </div>
 	              </div>
 	            </div>

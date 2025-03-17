@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "
+
+http://mybatis.org/dtd/mybatis-3-mapper.dtd
+
+">
+
+<mapper namespace="com.asus.module.code.CodeDao">
+<resultMap id="resultMapObj" type="com.asus.module.code.CodeDto"></resultMap>
+
+<sql id="selectCommon">
+	FROM code a
+	WHERE 1=1
+</sql>
+
+<select id="selectOneCount" resultType="Integer">
+	SELECT COUNT(*)
+	<include refid="selectCommon" />
+</select>
+<select id="selectList" resultMap="resultMapObj">
+select aa.* from(
+SELECT 
+	a.seq,
+	a.delNy,
+	a.codegroupcode,
+	a.title,
+	b.name,
+	a.code,
+	a.codename,
+	a.number,
+	a.codegroup_seq
+FROM code a
+JOIN codegroup b ON b.seq = a.codegroup_seq
+WHERE 1=1
+	AND a.delNy = 0
+	ORDER BY seq DESC
+) aa
+limit #{rowNumToShow} offset #{startRnumForMysql}
+</select>
+<insert id="insert">
+INSERT INTO code(
+	delNy,
+	codegroupcode,
+	title,
+	code,
+	codename,
+	number,
+	codegroup_seq
+)VALUES(
+	#{delNy},
+	#{codegroupcode},
+	#{title},
+	#{code},
+	#{codename},
+	#{number},
+	#{codegroup_seq}
+)
+</insert>
+
+
+</mapper>
