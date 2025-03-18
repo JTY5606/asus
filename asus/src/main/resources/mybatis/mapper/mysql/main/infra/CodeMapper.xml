@@ -9,8 +9,10 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 <resultMap id="resultMapObj" type="com.asus.module.code.CodeDto"></resultMap>
 
 <sql id="selectCommon">
-	FROM code a
-	WHERE 1=1
+FROM code a
+JOIN codegroup b ON b.seq = a.codegroup_seq
+WHERE 1=1
+	AND a.delNy = 0
 </sql>
 
 <select id="selectOneCount" resultType="Integer">
@@ -23,17 +25,14 @@ SELECT
 	a.seq,
 	a.delNy,
 	a.codegroupcode,
-	a.title,
 	b.name,
 	a.code,
 	a.codename,
 	a.number,
 	a.codegroup_seq
-FROM code a
-JOIN codegroup b ON b.seq = a.codegroup_seq
-WHERE 1=1
-	AND a.delNy = 0
-	ORDER BY seq DESC
+		<include refid="selectCommon" />
+
+	ORDER BY a.seq DESC
 ) aa
 limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
@@ -41,7 +40,6 @@ limit #{rowNumToShow} offset #{startRnumForMysql}
 INSERT INTO code(
 	delNy,
 	codegroupcode,
-	title,
 	code,
 	codename,
 	number,
@@ -49,11 +47,10 @@ INSERT INTO code(
 )VALUES(
 	#{delNy},
 	#{codegroupcode},
-	#{title},
 	#{code},
 	#{codename},
 	#{number},
-	#{codegroup_seq}
+	#{seq}
 )
 </insert>
 

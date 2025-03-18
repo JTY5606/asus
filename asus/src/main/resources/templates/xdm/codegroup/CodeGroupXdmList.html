@@ -78,17 +78,14 @@
         <div class="card">
           <div class="card-header">
             <div class="col-10">
-              <h4>Total : 42</h4>
+              <h4>Total : <span th:text="${vo.totalRows}" ></span></h4>
             </div>
             <div class="col">
               <div class="form-group">
-                <select class="form-control form-control-sm">
-                  <option>선택하세요</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <select class="form-control form-control-sm" >
+                  <option value = "default">5</option>
+                  <option value = "10">10</option>
+                  <option value = "15">15</option>
                 </select>
               </div>
             </div>
@@ -102,11 +99,8 @@
                   <th scope="col">사용</th>
                   <th scope="col">코드그룹 코드</th>
                   <th scope="col" style="width: 25%;">코드그룹 이름</th>
-                  <th scope="col" >코드그룹 이름(영문)</th>
                   <th scope="col">갯수</th>
                   <th scope="col">순서</th>
-                  <th scope="col">등록일</th>
-                  <th scope="col">수정일</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,14 +111,11 @@
                 </tr>
                 <tr th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
                   <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
-                  <td th:text="${list.seq}"></td>
+                  <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                   <td th:text="${list.delNy}">Y</td>
                   <td th:text="${list.codegroupcode}">42</td>
                   <td><a th:text="${list.name}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(seq=${list.seq})}"></a></td>
-                  <td></td>
-                  <td th:text="${list.number}">8</td>
-                  <td>1</td>
-                  <td></td>
+                  <td th:text="${list.ifseqcount}"></td>
                   <td></td>
                 </tr>
               </tbody>

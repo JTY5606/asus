@@ -8,8 +8,17 @@ public class CodeGroupDto {
 	private String name;
 	private Integer delNy;
 	private Integer number;
+	private Integer ifseqcount;
 	
 	
+	
+	
+	public Integer getIfseqcount() {
+		return ifseqcount;
+	}
+	public void setIfseqcount(Integer ifseqcount) {
+		this.ifseqcount = ifseqcount;
+	}
 	public Integer getSeq() {
 		return seq;
 	}

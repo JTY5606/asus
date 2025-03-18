@@ -11,9 +11,16 @@ public class CodeDto {
 	private Integer number;
 	private String codegroup_seq;
 	
+	private String codegroupseq;
 	private String name;
 	
 	
+	public String getCodegroupseq() {
+		return codegroupseq;
+	}
+	public void setCodegroupseq(String codegroupseq) {
+		this.codegroupseq = codegroupseq;
+	}
 	public String getName() {
 		return name;
 	}

@@ -15,7 +15,8 @@ SELECT
 	a.codegroupcode,
 	a.delNy,
 	a.name,
-	a.number
+	a.number,
+	(select count(aa.seq) from code aa where 1=1 and aa.delNy = 0 and aa.codegroup_seq = a.seq) as ifseqcount
 <include refid="selectCommon" />
 	ORDER BY a.seq DESC
 ) aa
@@ -60,5 +61,11 @@ INSERT INTO codegroup(
 <select id="selectOneCount" resultType="Integer">
 	SELECT COUNT(*)
 	<include refid="selectCommon" />
+</select>
+<select id="selectListWithoutPaging" resultMap="resultMapObj">
+SELECT
+	a.seq,
+	a.name
+<include refid="selectCommon" />
 </select>
 </mapper>

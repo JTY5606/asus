@@ -8,7 +8,7 @@
       	<form action="/xdm/code/CodeXdmInst" method="post" id="form">	
 	        <section class="section">
 	          <div class="section-header">
-	            <h1>Code Group</h1>
+	            <h1>Code</h1>
 	          </div>
 	        <div class="card">
 	          <div class="card-header">
@@ -19,9 +19,9 @@
               <div class="col-3">
                 <div class="form-group">
                   <label>코드그룹 <code>*</code></label>
-                  <select class="form-control form-control-sm">
+                  <select class="form-control form-control-sm" id="seq" name="seq" >
                     <option>선택하세요</option>
-                    <option th:each = "list : ${list}" th:text="${list.name}"></option>
+                    <option th:each = "list : ${listCodeGroup}" th:value="${list.seq}" th:text="${list.name}" th:selected="${list.seq == item?.seq}"></option>
                   </select>
                 </div>
               </div>
@@ -42,13 +42,13 @@
 	              <div class="col-3">
 	                <div class="form-group">
 	                  <label>코드그룹 이름<code>*</code></label>
-	                  <input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" >
+	                  <input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" disabled />
 	                </div>
 	              </div>
 	              <div class="col-3">
 	                <div class="form-group">
 	                  <label>코드</label>
-	                  <input type="code" class="form-control" placeholder="숫자" />
+	                  <input type="int" name="code" id="code" class="form-control" placeholder="숫자" />
 	                </div>
 	              </div>
 	            </div> 
@@ -78,7 +78,7 @@
 	              <div class="col-3">
 	                <div class="form-group">
 	                  <label>codegroup_seq<code>*</code></label>
-	                  <input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder=""  />
+	                  <input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder="" disabled />
 	                </div>
 	              </div>
 	            </div>

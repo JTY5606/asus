@@ -33,4 +33,7 @@ public class CodeGroupService {
 	public int selectOneCount() {
 		return codeGroupDao.selectOneCount();
 	}
+	public List<CodeGroupDto> selectListWithoutPaging(CodeGroupDto codeGroupDto){
+		return codeGroupDao.selectListWithoutPaging(codeGroupDto);
+	}
 }
