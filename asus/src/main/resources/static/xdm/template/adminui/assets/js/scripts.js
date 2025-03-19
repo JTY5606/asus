@@ -515,7 +515,6 @@ $(function() {
   // Dismiss modal
   $("[data-dismiss=modal]").click(function() {
     $(this).closest('.modal').modal('hide');
-
     return false;
   });
 
