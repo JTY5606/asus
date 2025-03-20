@@ -4,103 +4,175 @@
 <div th:replace="~{/xdm/include/head :: head}"></div>
 
       <!-- Main Content -->
-      <div class="main-content">
-      	<form action="/xdm/code/CodeXdmInst" method="post" id="form">	
-	        <section class="section">
-	          <div class="section-header">
-	            <h1>Code</h1>
-	          </div>
+<div class="main-content">
+	<form action="/xdm/code/CodeXdmInst" method="post" id="form"  novalidate="">	
+		<section class="section">
+		    <div class="section-header">
+		        <h1>Code</h1>
+	        </div>
 	        <div class="card">
-	          <div class="card-header">
-	            <h2>기본정보</h2z>
-	          </div>
-	          <div class="card-body">
-	          <div class="row">
-              <div class="col-3">
-                <div class="form-group">
-                  <label>코드그룹 <code>*</code></label>
-                  <select class="form-control form-control-sm" id="seq" name="seq" >
-                    <option>선택하세요</option>
-                    <option th:each = "list : ${listCodeGroup}" th:value="${list.seq}" th:text="${list.name}" th:selected="${list.seq == item?.seq}"></option>
-                  </select>
-                </div>
-              </div>
-            </div>
-	            <div class="row">
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>seq<code>*</code></label>
-	                  <input type="int" name="seq" id="seq" class="form-control" placeholder="자동생성" disabled>
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>코드그룹 코드 (ANOTHER)</label>
-	                  <input type="text" name="codegroupcode" id="codegroupcode" class="form-control" placeholder="영대소문자,숫자" >
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>코드그룹 이름<code>*</code></label>
-	                  <input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" disabled />
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>코드</label>
-	                  <input type="int" name="code" id="code" class="form-control" placeholder="숫자" />
-	                </div>
-	              </div>
-	            </div> 
-	            <div class="row">
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>사용여부 <code>*</code></label>
-	                  <select class="form-control form-control-sm" name="delNy" id="delNy" >
-	                    <option>선택하세요</option>
-	                    <option value="0">Y</option>
-	                    <option value="1">N</option>
-	                  </select>
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>코드이름<code>*</code></label>
-	                  <input type="text" id="codename" name="codename" class="form-control" placeholder="코드이름"/>
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>순서<code>*</code></label>
-	                  <input type="text" name="number" id="number" class="form-control" placeholder="" />
-	                </div>
-	              </div>
-	              <div class="col-3">
-	                <div class="form-group">
-	                  <label>codegroup_seq<code>*</code></label>
-	                  <input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder="" disabled />
-	                </div>
-	              </div>
-	            </div>
-	            <div class="row">
-	              <dic class="col-6">
-	                <label>설명</label>
-	                <textarea class="form-control"></textarea>
-	              </dic>
-	            </div>
-	            <div class="row">
-	              <div class="col-11">
-	              <button type="submit">저장</button>
-	                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></a>
-	              </div>
-	            </div>
-	          </div>
-	    	</form>
-        </div>
-        <script type="text/javascript">
-	document.getElementById("btnSave").onclick = function(){
+	        	<div class="card-header">
+	            	<h2>기본정보</h2z>
+	          	</div>
+		      	<div class="card-body">
+		        	<div class="row">
+	            		<div class="col-3">
+	                		<div class="form-group">
+	                  			<label>코드그룹 <code>*</code></label>
+	                  			<select class="form-control form-control-sm" id="seq" name="seq" >
+	                    			<option value="">선택하세요</option>
+	                    			<option th:each = "list : ${listCodeGroup}" th:value="${list.seq}" th:text="${list.name}" th:selected="${list.seq == item?.seq}"></option>
+	                  			</select>
+	                    			<span id="validation06" style="color : red"; class="invalid-feedback"></span>
+	                		</div>
+	              		</div>
+	           	 	</div>
+		            <div class="row">
+		            	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>seq<code>*</code></label>
+		                  		<input type="int" name="seq" id="seq" class="form-control" placeholder="자동생성" disabled>
+		                	</div>
+		              	</div>
+		             	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label class="col-form-label">코드그룹 코드 (ANOTHER)</label>
+		                  		<input type="text" class="form-control" required="" name="codegroupcode" id="codegroupcode" placeholder="영대소문자,숫자" >
+		                  		<span id="validation01" style="color : red"; class="invalid-feedback"></span>
+		                	</div>
+		              	</div>
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>코드그룹 이름<code>*</code></label>
+		                  		<input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" disabled />
+		                	</div>
+		              	</div>
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>코드</label>
+		                  		<input type="int" name="code" id="code" class="form-control" placeholder="숫자" />
+			                  	<span id="validation03" style="color : red"; class="invalid-feedback"></span>	
+		                	</div>
+		              	</div>
+		            </div> 
+		            <div class="row">
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>사용여부 <code>*</code></label>
+		                  		<select class="form-control form-control-sm" name="delNy" id="delNy" >
+		                    		<option value="">선택하세요</option>
+		                    		<option value="0">Y</option>
+		                    		<option value="1">N</option>
+		                  		</select>
+		                  		<span id="validation07" style="color : red"; class="invalid-feedback"></span>
+		                	</div>
+		              	</div>
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>코드이름<code>*</code></label>
+		                  		<input type="text" id="codename" name="codename" class="form-control" placeholder="코드이름"/>
+		                  		<span id="validation04" style="color : red"; class="invalid-feedback"></span>
+		                	</div>
+		              	</div>
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>순서<code>*</code></label>
+		                  		<input type="text" name="number" id="number" class="form-control" placeholder="" />
+		                  		<span id="validation05" style="color : red"; class="invalid-feedback"></span>
+		                	</div>
+		              	</div>
+		              	<div class="col-3">
+		                	<div class="form-group">
+		                  		<label>codegroup_seq<code>*</code></label>
+		                  		<input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder="" disabled />
+		                	</div>
+		              	</div>
+		            </div>
+		            <div class="row">
+		              	<dic class="col-6">
+		                	<label>설명</label>
+		                	<textarea class="form-control"></textarea>
+		              	</dic>
+		            </div>
+		            <div class="row">
+		              	<div class="col-11">
+		              		<button type="button" id="btnSave">저장</button>
+		                	<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></a>
+		              	</div>
+		            </div>
+		        </div>
+			</div>
+		</section>
+	</form>
+</div>
+<script type="text/javascript">
+let whether = true;
+
+document.getElementById("btnSave").onclick = function(){
+	if(document.getElementById("codegroupcode").value == null || document.getElementById("codegroupcode").value == ""){
+		document.getElementById("codegroupcode").className = "form-control is-invalid";
+		document.getElementById("validation01").innerText ="코드 번호를 입력해주세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("codegroupcode").className = "form-control";
+		document.getElementById("validation01").innerText ="";
+	}
+	
+	if(document.getElementById("code").value == null || document.getElementById("code").value == ""){
+		document.getElementById("code").className = "form-control is-invalid";
+		document.getElementById("validation03").innerText ="코드 번호를 입력해주세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("code").className = "form-control";
+		document.getElementById("validation03").innerText ="";
+	}
+	
+	if(document.getElementById("codename").value == null || document.getElementById("codename").value == ""){
+		document.getElementById("codename").className = "form-control is-invalid";
+		document.getElementById("validation04").innerText ="코드이름을 입력해주세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("codename").className = "form-control";
+		document.getElementById("validation04").innerText ="";
+	}
+	
+	if(document.getElementById("number").value == null || document.getElementById("number").value == ""){
+		document.getElementById("number").className = "form-control is-invalid";
+		document.getElementById("validation05").innerText ="번호를 입력해주세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("number").className = "form-control";
+		document.getElementById("validation05").innerText ="";
+	}
+	
+	if(document.getElementById("seq").value == null || document.getElementById("seq").value == ""){
+		document.getElementById("seq").className = "form-control is-invalid";
+		document.getElementById("validation06").innerText ="그룹을 선택해주세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("seq").className = "form-control";
+		document.getElementById("validation06").innerText ="";
+	}
+	
+	if(document.getElementById("delNy").value == null || document.getElementById("delNy").value == ""){
+		document.getElementById("delNy").className = "form-control is-invalid";
+		document.getElementById("validation07").innerText ="사용여부를 선택해부세요";
+		document.getElementById("codegroupcode").focus();
+		whether = false;
+	}else{
+		document.getElementById("delNy").className = "form-control";
+		document.getElementById("validation07").innerText ="";
+	}
+	
+	if(whether){
 		document.getElementById("form").submit();
 	}
-	</script>
+}
+</script>
         
  <div th:replace="~{/xdm/include/footer :: footer}"></div>
