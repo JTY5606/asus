@@ -12,12 +12,20 @@ public class UserService {
 	@Autowired
 	UserDao userDao;
 	
-	public List<UserDto> selectList() {
+	public List<UserDto> selectList(UserVo vo) {
 		List<UserDto> userDtos = new ArrayList<>();
 		
-		userDtos = userDao.selectList();
+		userDtos = userDao.selectList(vo);
 		
 		return userDtos; 
+	}
+	
+	public int selectOneCount() {
+		return userDao.selectOneCount();
+	}
+	
+	public UserDto selectItem(UserDto userDto) {
+		return userDao.selectItem(userDto);
 	}
 
 }

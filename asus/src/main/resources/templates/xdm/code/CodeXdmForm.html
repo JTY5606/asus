@@ -37,7 +37,7 @@
 		             	<div class="col-3">
 		                	<div class="form-group">
 		                  		<label class="col-form-label">코드그룹 코드 (ANOTHER)</label>
-		                  		<input type="text" class="form-control" required="" name="codegroupcode" id="codegroupcode" placeholder="영대소문자,숫자" >
+		                  		<input type="text" class="form-control" required="" name="codegroupcode" id="codegroupcode" placeholder="영대소문자,숫자" disabled />
 		                  		<span id="validation01" style="color : red"; class="invalid-feedback"></span>
 		                	</div>
 		              	</div>
@@ -59,10 +59,10 @@
 		              	<div class="col-3">
 		                	<div class="form-group">
 		                  		<label>사용여부 <code>*</code></label>
-		                  		<select class="form-control form-control-sm" name="delNy" id="delNy" >
-		                    		<option value="">선택하세요</option>
-		                    		<option value="0">Y</option>
-		                    		<option value="1">N</option>
+		                  		<select class="form-control form-control-sm" name="delNy" id="delNy" disabled />
+		                    		<option value="" disabled>선택하세요</option>
+		                    		<option value="0" disabled>N</option>
+		                    		<option value="1" disabled>Y</option>
 		                  		</select>
 		                  		<span id="validation07" style="color : red"; class="invalid-feedback"></span>
 		                	</div>
@@ -109,15 +109,15 @@
 let whether = true;
 
 document.getElementById("btnSave").onclick = function(){
-	if(document.getElementById("codegroupcode").value == null || document.getElementById("codegroupcode").value == ""){
-		document.getElementById("codegroupcode").className = "form-control is-invalid";
-		document.getElementById("validation01").innerText ="코드 번호를 입력해주세요";
-		document.getElementById("codegroupcode").focus();
-		whether = false;
-	}else{
-		document.getElementById("codegroupcode").className = "form-control";
-		document.getElementById("validation01").innerText ="";
-	}
+// 	if(document.getElementById("codegroupcode").value == null || document.getElementById("codegroupcode").value == ""){
+// 		document.getElementById("codegroupcode").className = "form-control is-invalid";
+// 		document.getElementById("validation01").innerText ="코드 번호를 입력해주세요";
+// 		document.getElementById("codegroupcode").focus();
+// 		whether = false;
+// 	}else{
+// 		document.getElementById("codegroupcode").className = "form-control";
+// 		document.getElementById("validation01").innerText ="";
+// 	}
 	
 	if(document.getElementById("code").value == null || document.getElementById("code").value == ""){
 		document.getElementById("code").className = "form-control is-invalid";
@@ -159,7 +159,7 @@ document.getElementById("btnSave").onclick = function(){
 		document.getElementById("validation06").innerText ="";
 	}
 	
-	if(document.getElementById("delNy").value == null || document.getElementById("delNy").value == ""){
+	/* if(document.getElementById("delNy").value == null || document.getElementById("delNy").value == ""){
 		document.getElementById("delNy").className = "form-control is-invalid";
 		document.getElementById("validation07").innerText ="사용여부를 선택해부세요";
 		document.getElementById("codegroupcode").focus();
@@ -167,7 +167,7 @@ document.getElementById("btnSave").onclick = function(){
 	}else{
 		document.getElementById("delNy").className = "form-control";
 		document.getElementById("validation07").innerText ="";
-	}
+	} */
 	
 	if(whether){
 		document.getElementById("form").submit();

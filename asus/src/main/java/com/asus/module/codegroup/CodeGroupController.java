@@ -17,7 +17,6 @@ public class CodeGroupController {
 		int a = codeGroupService.selectOneCount();
 		model.addAttribute("list", codeGroupService.selectList(vo));
 		model.addAttribute("vo", vo);
-		System.out.println("codeGroupDto.getIfseqcount()" + codeGroupDto.getIfseqcount());
 		return "xdm/codegroup/CodeGroupXdmList"; 
 		}
 	@RequestMapping(value = "/xdm/codegroup/CodeGroupXdmForm")

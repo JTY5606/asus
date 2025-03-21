@@ -45,7 +45,7 @@ INSERT INTO code(
 	number,
 	codegroup_seq
 )VALUES(
-	#{delNy},
+	0,
 	#{codegroupcode},
 	#{code},
 	#{codename},
@@ -54,5 +54,20 @@ INSERT INTO code(
 )
 </insert>
 
+<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+SELECT 
+	seq,
+	delNy,
+	codegroupcode,
+	name,
+	code,
+	codename,
+	number,
+	codegroup_seq
+FROM
+	code
+WHERE 1=1
+	AND delNy = 0
+</select>
 
 </mapper>

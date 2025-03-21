@@ -99,13 +99,12 @@
     						<tr>
 					        	<th scope="col"><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
 					          	<th scope="col">#</th>
-					          	<th scope="col">사용</th>
-					          	<th scope="col">코드그룹 코드</th>
-					          	<th scope="col" style="width: 25%;">코드그룹 이름</th>
-						       	<th scope="col">코드</th>
-						       	<th scope="col">대체 코드</th>
-						       	<th scope="col">코드 이름</th>
-						       	<th scope="col">순서</th>
+					          	<th scope="col">사용(delNy)</th>
+					          	<th scope="col">코드그룹 코드(codegroup_seq)</th>
+					          	<th scope="col" style="width: 25%;">코드그룹 이름(name)</th>
+						       	<th scope="col">코드(seq)</th>
+						       	<th scope="col">대체 코드(codename)</th>
+						       	<th scope="col">순서(number)</th>
 						       	<th scope="col">등록일</th>
 						       	<th scope="col">수정일</th>
  							</tr>
@@ -120,9 +119,9 @@
    								<td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
 					      		<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}">162</td>
 					      		<td th:text="${list.delNy}">Y</td>
-					      		<td th:text="${list.codegroupcode}">42</td>
+					      		<td th:text="${list.codegroup_seq}" >42</td>
 					      		<td th:text="${list.name}">작품,기타사이트유형</td>
-					      		<td th:text="${list.code}">381</td>
+					      		<td th:text="${list.seq}">381</td>
 					      		<td><a th:text="${list.codename}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(seq=${list.seq})}">공식홈페이지</a></td>
 					     		<td th:text="${list.number}">1</td>
 					     		<td></td>

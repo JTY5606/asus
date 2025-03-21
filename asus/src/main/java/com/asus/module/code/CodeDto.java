@@ -1,8 +1,11 @@
 package com.asus.module.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CodeDto {
 	
-	private Integer seq;
+	private String seq;
 	private Integer delNy;
 	private String codegroupcode;
 	private String title;
@@ -14,7 +17,15 @@ public class CodeDto {
 	private String codegroupseq;
 	private String name;
 	
+//	for cache
+	public static List<CodeDto> cachedCodeArrayList = new ArrayList<CodeDto>();
 	
+	public static List<CodeDto> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<CodeDto> cachedCodeArrayList) {
+		CodeDto.cachedCodeArrayList = cachedCodeArrayList;
+	}
 	public String getCodegroupseq() {
 		return codegroupseq;
 	}
@@ -33,10 +44,10 @@ public class CodeDto {
 	public void setCodegroup_seq(String codegroup_seq) {
 		this.codegroup_seq = codegroup_seq;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public Integer getDelNy() {

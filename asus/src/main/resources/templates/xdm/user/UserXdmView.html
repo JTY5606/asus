@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/xdm/include/head :: head}"></div>
+
+<div class="main-content">
+	<div class="card">
+    	<div class="card-header">
+        	<h2>CodeGroup</h2z>
+        </div>
+        <div class="card-body">
+        	<div class="row">
+            	<div class="col-sm-2">
+                	<div class="form-group">
+                  		<select class="form-control form-control-sm">
+                    		<option>N</option>
+                    		<option>Y</option>
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<select class="form-control form-control-sm">
+                  		  	<option>Y</option>
+                    		<option>N</option>
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<select class="form-control form-control-sm">
+                    		<option>날짜</option>
+                    		<option>등록일</option>
+                    		<option>수정일</option>
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<input type="text" class="form-control" placeholder="2025-01-25" >
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<input type="text" class="form-control" placeholder="2025-02-04" >
+                	</div>
+              	</div>
+            </div>
+            <div class="row">
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<select class="form-control form-control-sm">
+                   	 		<option>검색구분</option>
+                    		<option>코드그룹 코드</option>
+                    		<option>코드그룹 이름</option>
+                    		<option>코드그룹 이름(영문)</option>
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<div class="form-group">
+                  		<input type="text" class="form-control" placeholder="검색어" >
+                	</div>
+              	</div>
+              	<div class="col-2">
+                	<svg xmlns="http://www.w3.org/2000/svg"  width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                	<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+                	</svg>
+              	</div>
+            </div>
+		</div>
+	</div>
+		<!-- Main Content -->
+        	<div class="card">
+          		<div class="card-body">
+           	 		<table class="table text-center">
+              			<thead>
+                			<tr>
+                  				<th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
+                  				<th scope="col">#</th>
+			                  	<th scope="col">사용여부</th>
+			                  	<th scope="col">이름</th>
+			                  	<th scope="col">성별</th>
+			                  	<th scope="col">아이디</th>
+			                  	<th scope="col">email</th>
+			                  	<th scope="col">비밀번호</th>
+			                  	<th scope="col">생년월일</th>
+			                  	<th scope="col">핸드폰번호</th>
+			                  	<th scope="col">주소1</th>
+			                  	<th scope="col">주소2</th>
+			                  	<th scope="col">주소3</th>
+                			</tr>
+             	 		</thead>
+              			<tbody>
+              				<tr>
+			                  	<td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
+			                  	<td th:text="${item.seq}"></td>
+			                  	<td th:text="${item.delNy}"></td>
+			                  	<td th:text="${item.name}"></td>
+			                  	<td th:text="${@codeService.selectOneCachedCode(item.gender)}"></td>
+			                  	<td th:text="${item.id}"></td>
+			                  	<td th:text="${item.email}"></td>
+			                  	<td th:text="${item.password}"></td>
+			                  	<td th:text="${item.date}"></td>
+			                  	<td th:text="${item.phonenumber}"></td>
+			                  	<td th:text="${item.firstaddress}"></td>
+			                  	<td th:text="${item.secondaddress}"></td>
+			                  	<td th:text="${item.thirdaddress}"></td>
+                			</tr>
+                
+              			</tbody>
+            		</table>
+           		<div class="row">
+               		<div class="col-10">
+           				<a href="/xdm/user/UserXdmList">목록</a>
+               		</div>
+               		<div class="col-2">
+						<a th:href="@{/xdm/codegroup/CodeGroupXdmDele(seq=${item.seq})}">삭제</a>
+						<a th:href="@{/club1/club1XdmMfom(seq=${item.seq})}">수정</a>
+						<a th:href="@{/club1/club1XdmUele(seq=${item.seq})}" id="uelete">업제</a>
+                	</div>
+            	</div>
+        	</div>
+    	</div>
+</div>
+<div th:replace="~{/xdm/include/footer :: footer}"></div>

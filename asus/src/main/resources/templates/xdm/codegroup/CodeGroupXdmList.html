@@ -97,8 +97,8 @@
                   <th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
                   <th scope="col">#</th>
                   <th scope="col">사용</th>
-                  <th scope="col">코드그룹 코드</th>
-                  <th scope="col" style="width: 25%;">코드그룹 이름</th>
+                  <th scope="col">코드그룹 코드(seq)</th>
+                  <th scope="col" style="width: 25%;">코드그룹 이름()</th>
                   <th scope="col">갯수</th>
                   <th scope="col">순서</th>
                 </tr>
@@ -113,7 +113,7 @@
                   <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
                   <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                   <td th:text="${list.delNy}">Y</td>
-                  <td th:text="${list.codegroupcode}">42</td>
+                  <td th:text="${list.seq}">42</td>
                   <td><a th:text="${list.name}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(seq=${list.seq})}"></a></td>
                   <td th:text="${list.ifseqcount}"></td>
                   <td></td>

@@ -9,10 +9,19 @@ public class CodeGroupDto {
 	private Integer delNy;
 	private Integer number;
 	private Integer ifseqcount;
+	private String codegroupseq;
 	
 	
 	
 	
+	
+	
+	public String getCodegroupseq() {
+		return codegroupseq;
+	}
+	public void setCodegroupseq(String codegroupseq) {
+		this.codegroupseq = codegroupseq;
+	}
 	public Integer getIfseqcount() {
 		return ifseqcount;
 	}
