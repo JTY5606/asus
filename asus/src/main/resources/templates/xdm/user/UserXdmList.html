@@ -115,8 +115,8 @@
 			          	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 			          	<td th:text="${list.delNy}">Y</td>
 			          	<td><a th:text="${list.name}" th:href="@{/xdm/user/UserXdmView(seq=${list.seq})}">정태양</a></td>
-			          	<td th:text="${@codeService.selectOneCachedCode(list.gender)}"></td>
-			          	<td th:text="${list.gender}">sun</td>
+			          	<td th:text="${list.gender}"></td>
+			          	<td th:text="${list.id}">sun</td>
 			          	<td th:text="${list.email}">naver@naver.com</td>
 			          	<td th:text="${list.password}">1234</td>
 			          	<td th:text="${list.date}">920228</td>
@@ -148,7 +148,7 @@
    			</div>
 	    	<div class="row">
 	      		<div class="col-12">
-	        		<a href="">등록</a>
+	        		<a href="/xdm/user/UserXdmForm">등록</a>
 	      		</div>
 	      	</div>
   		</div>

@@ -58,5 +58,4 @@ SELECT
 	ORDER BY a.seq DESC
 </select>
 
-
 </mapper>

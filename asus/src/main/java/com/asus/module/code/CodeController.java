@@ -32,7 +32,6 @@ public class CodeController {
 		
 		model.addAttribute("listCodeGroup" , codeGroupService.selectListWithoutPaging(codeGroupDto));
 		
-		System.out.println("codeDto.getCodegroupseq():" + codeDto.getCodegroupseq());
 		return "xdm/code/CodeXdmForm"; 
 		}
 	

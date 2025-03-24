@@ -18,82 +18,22 @@
 		        	<div class="row">
 	            		<div class="col-3">
 	                		<div class="form-group">
-	                  			<label>코드그룹 <code>*</code></label>
-	                  			<select class="form-control form-control-sm" id="seq" name="seq" >
+	                  			<label>코드그룹(listcodegroup)<code>*</code></label>
+	                  			<select class="form-control form-control-sm" id="ifcgseq" name="ifcgseq" >
 	                    			<option value="">선택하세요</option>
-	                    			<option th:each = "list : ${listCodeGroup}" th:value="${list.seq}" th:text="${list.name}" th:selected="${list.seq == item?.seq}"></option>
+	                    			<option th:each = "list : ${listCodeGroup}" th:value="${list.ifcgseq}" th:text="${list.ifcgname}" th:selected="${list.ifcgseq == item?.ifcgseq}"></option>
 	                  			</select>
 	                    			<span id="validation06" style="color : red"; class="invalid-feedback"></span>
 	                		</div>
 	              		</div>
-	           	 	</div>
-		            <div class="row">
-		            	<div class="col-3">
+	              		<div class="col-3">
 		                	<div class="form-group">
-		                  		<label>seq<code>*</code></label>
-		                  		<input type="int" name="seq" id="seq" class="form-control" placeholder="자동생성" disabled>
-		                	</div>
-		              	</div>
-		             	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label class="col-form-label">코드그룹 코드 (ANOTHER)</label>
-		                  		<input type="text" class="form-control" required="" name="codegroupcode" id="codegroupcode" placeholder="영대소문자,숫자" disabled />
-		                  		<span id="validation01" style="color : red"; class="invalid-feedback"></span>
-		                	</div>
-		              	</div>
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>코드그룹 이름<code>*</code></label>
-		                  		<input type="text" name="title" id="title" class="form-control" placeholder="한글,영대소문자,숫자" disabled />
-		                	</div>
-		              	</div>
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>코드</label>
-		                  		<input type="int" name="code" id="code" class="form-control" placeholder="숫자" />
+		                  		<label>대체코드(codename)</label>
+		                  		<input type="text" name="ifcdcodename" id="ifcdcodename" class="form-control" placeholder="입력하세요" />
 			                  	<span id="validation03" style="color : red"; class="invalid-feedback"></span>	
 		                	</div>
 		              	</div>
-		            </div> 
-		            <div class="row">
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>사용여부 <code>*</code></label>
-		                  		<select class="form-control form-control-sm" name="delNy" id="delNy" disabled />
-		                    		<option value="" disabled>선택하세요</option>
-		                    		<option value="0" disabled>N</option>
-		                    		<option value="1" disabled>Y</option>
-		                  		</select>
-		                  		<span id="validation07" style="color : red"; class="invalid-feedback"></span>
-		                	</div>
-		              	</div>
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>코드이름<code>*</code></label>
-		                  		<input type="text" id="codename" name="codename" class="form-control" placeholder="코드이름"/>
-		                  		<span id="validation04" style="color : red"; class="invalid-feedback"></span>
-		                	</div>
-		              	</div>
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>순서<code>*</code></label>
-		                  		<input type="text" name="number" id="number" class="form-control" placeholder="" />
-		                  		<span id="validation05" style="color : red"; class="invalid-feedback"></span>
-		                	</div>
-		              	</div>
-		              	<div class="col-3">
-		                	<div class="form-group">
-		                  		<label>codegroup_seq<code>*</code></label>
-		                  		<input type="int" name="codegroup_seq" id="codegroup_seq" class="form-control" placeholder="" disabled />
-		                	</div>
-		              	</div>
-		            </div>
-		            <div class="row">
-		              	<dic class="col-6">
-		                	<label>설명</label>
-		                	<textarea class="form-control"></textarea>
-		              	</dic>
-		            </div>
+	           	 	</div>
 		            <div class="row">
 		              	<div class="col-11">
 		              		<button type="button" id="btnSave">저장</button>
@@ -109,55 +49,28 @@
 let whether = true;
 
 document.getElementById("btnSave").onclick = function(){
-// 	if(document.getElementById("codegroupcode").value == null || document.getElementById("codegroupcode").value == ""){
-// 		document.getElementById("codegroupcode").className = "form-control is-invalid";
-// 		document.getElementById("validation01").innerText ="코드 번호를 입력해주세요";
+	
+	
+// 	if(document.getElementById("ifcdcodename").value == null || document.getElementById("ifcdcodename").value == ""){
+// 		document.getElementById("ifcdcodename").className = "form-control is-invalid";
+// 		document.getElementById("validation04").innerText ="코드이름을 입력해주세요";
+// 		document.getElementById("ifcdcodegroupcode").focus();
+// 		whether = false;
+// 	}else{
+// 		document.getElementById("ifcdcodename").className = "form-control";
+// 		document.getElementById("validation04").innerText ="";
+// 	}
+	
+	
+// 	if(document.getElementById("ifcgseq").value == null || document.getElementById("ifcgseq").value == ""){
+// 		document.getElementById("ifcgseq").className = "form-control is-invalid";
+// 		document.getElementById("validation06").innerText ="그룹을 선택해주세요";
 // 		document.getElementById("codegroupcode").focus();
 // 		whether = false;
 // 	}else{
-// 		document.getElementById("codegroupcode").className = "form-control";
-// 		document.getElementById("validation01").innerText ="";
+// 		document.getElementById("ifcgseq").className = "form-control";
+// 		document.getElementById("validation06").innerText ="";
 // 	}
-	
-	if(document.getElementById("code").value == null || document.getElementById("code").value == ""){
-		document.getElementById("code").className = "form-control is-invalid";
-		document.getElementById("validation03").innerText ="코드 번호를 입력해주세요";
-		document.getElementById("codegroupcode").focus();
-		whether = false;
-	}else{
-		document.getElementById("code").className = "form-control";
-		document.getElementById("validation03").innerText ="";
-	}
-	
-	if(document.getElementById("codename").value == null || document.getElementById("codename").value == ""){
-		document.getElementById("codename").className = "form-control is-invalid";
-		document.getElementById("validation04").innerText ="코드이름을 입력해주세요";
-		document.getElementById("codegroupcode").focus();
-		whether = false;
-	}else{
-		document.getElementById("codename").className = "form-control";
-		document.getElementById("validation04").innerText ="";
-	}
-	
-	if(document.getElementById("number").value == null || document.getElementById("number").value == ""){
-		document.getElementById("number").className = "form-control is-invalid";
-		document.getElementById("validation05").innerText ="번호를 입력해주세요";
-		document.getElementById("codegroupcode").focus();
-		whether = false;
-	}else{
-		document.getElementById("number").className = "form-control";
-		document.getElementById("validation05").innerText ="";
-	}
-	
-	if(document.getElementById("seq").value == null || document.getElementById("seq").value == ""){
-		document.getElementById("seq").className = "form-control is-invalid";
-		document.getElementById("validation06").innerText ="그룹을 선택해주세요";
-		document.getElementById("codegroupcode").focus();
-		whether = false;
-	}else{
-		document.getElementById("seq").className = "form-control";
-		document.getElementById("validation06").innerText ="";
-	}
 	
 	/* if(document.getElementById("delNy").value == null || document.getElementById("delNy").value == ""){
 		document.getElementById("delNy").className = "form-control is-invalid";

@@ -11,52 +11,44 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 <select id="selectList" resultMap="resultMapObj">
 select aa.* from(
 SELECT
-	a.seq,
-	a.codegroupcode,
-	a.delNy,
-	a.name,
-	a.number,
-	(select count(aa.seq) from code aa where 1=1 and aa.delNy = 0 and aa.codegroup_seq = a.seq) as ifseqcount
+	a.ifcgseq,
+	a.ifcgdelNy,
+	a.ifcgname,
+	(select count(aa.ifcdseq) from code aa where 1=1 and aa.ifcddelNy = 0 and aa.codegroup_ifcgseq = a.ifcgseq) as ifcgseqcount
 <include refid="selectCommon" />
-	ORDER BY a.seq DESC
+	ORDER BY a.ifcgseq DESC
 ) aa
 limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
 <select id="selectItem" resultMap="resultMapObj">
 SELECT
-	a.seq,
-	a.codegroupcode,
-	a.delNy,
-	a.name,
-	a.number
+	a.ifcgseq,
+	a.ifcgdelNy,
+	a.ifcgname,
 <include refid="selectCommon" />
-	AND a.seq = #{seq}
-	order by a.seq DESC
+	AND a.ifcgseq = #{ifcgseq}
+	order by a.ifcgseq DESC
 </select>
 
 
 <insert id="insert" >
 INSERT INTO codegroup(
-	codegroupcode,
-	delNy,
-	name,
-	number
+	ifcgdelNy,
+	ifcgname
 )values(
-	#{codegroupcode},
 	0,
-	#{name},
-	#{number}
+	#{ifcgname}
 )
 </insert>
 <delete id="delete">
 	delete from codegroup
-	where seq = #{seq}
+	where ifcgseq = #{ifcgseq}
 </delete>
 
 <sql id="selectCommon">
 	FROM codegroup a
 	WHERE 1=1
-		AND a.delNy=0
+		AND a.ifcgdelNy=0
 </sql>
 
 <select id="selectOneCount" resultType="Integer">
@@ -65,8 +57,8 @@ INSERT INTO codegroup(
 </select>
 <select id="selectListWithoutPaging" resultMap="resultMapObj">
 SELECT
-	a.seq,
-	a.name
+	a.ifcgseq,
+	a.ifcgname
 <include refid="selectCommon" />
 </select>
 </mapper>

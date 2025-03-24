@@ -24,12 +24,10 @@
               </thead>
               <tbody>
                   <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
-                  <td th:text="${item.seq}"></td>
-                  <td th:text="${item.delNy}"></td>
-                  <td th:text="${item.codegroupcode}">42</td>
-                  <td th:text="${item.name}"></td>
+                  <td th:text="${item.ifcgseq}"></td>
+                  <td th:text="${item.ifcgdelNy}"></td>
+                  <td th:text="${item.ifcgname}"></td>
                   <td></td>
-                  <td th:text="${item.number}">8</td>
                   <td>1</td>
                   <td></td>
                   <td></td>
@@ -42,9 +40,9 @@
               		<a href="/xdm/codegroup/CodeGroupXdmList">목록</a>
                 </div>
                 <div class="col-2">
-					<a th:href="@{/xdm/codegroup/CodeGroupXdmDele(seq=${item.seq})}">삭제</a>
-					<a th:href="@{/club1/club1XdmMfom(seq=${item.seq})}">수정</a>
-					<a th:href="@{/club1/club1XdmUele(seq=${item.seq})}" id="uelete">업제</a>
+					<a th:href="@{/xdm/codegroup/CodeGroupXdmDele(ifcgseq=${item.ifcgseq})}">삭제</a>
+<!-- 					<a th:href="@{/club1/club1XdmMfom(seq=${item.seq})}">수정</a> -->
+<!-- 					<a th:href="@{/club1/club1XdmUele(seq=${item.seq})}" id="uelete">업제</a> -->
                 </div>
                 
              </div>

@@ -20,20 +20,13 @@
         		<div class="col-3">
           			<div class="form-group">
             			<label>seq<code>*</code></label>
-            			<input type="int" name="seq" id="seq" class="form-control" placeholder="자동생성" disabled>
-          			</div>
-        		</div>
-        		<div class="col-3">
-          			<div class="form-group">
-            			<label>코드그룹 코드 (ANOTHER)</label>
-            			<input type="text" name="codegroupcode" id="codegroupcode" class="form-control" placeholder="영대소문자,숫자" />
-            			<span id="validation02" style="color : red";></span>
+            			<input type="int" name="ifcgseq" id="ifcgseq" class="form-control" placeholder="자동생성" disabled>
           			</div>
         		</div>
         		<div class="col-3">
           			<div class="form-group">
             			<label for="name">코드그룹 이름<code>*</code></label>
-            			<input type="text" name="name" id="name" class="form-control" placeholder="한글,영대소문자,숫자" >
+            			<input type="text" name="ifcgname" id="ifcgname" class="form-control" placeholder="한글,영대소문자,숫자" >
             			<span id="validation01" style="color : red";></span>
           			</div>
         		</div>
@@ -48,7 +41,7 @@
         		<div class="col-3">
           			<div class="form-group">
             			<label>사용여부 <code>*</code></label>
-            			<select class="form-control form-control-sm" name="delNy" id="delNy" disabled />
+            			<select class="form-control form-control-sm" name="ifcgdelNy" id="ifcgdelNy" disabled />
               				<option value="" id="choice" disabled />선택하세요</option>
               				<option value="0" disabled />N</option>
               				<option value="1" disabled />Y</option>
@@ -109,23 +102,15 @@ document.getElementById("btnSave").onclick = function(){
 	
 	let whether = true;
 		
-	if(document.getElementById("codegroupcode").value == null || document.getElementById("codegroupcode").value == ""){
-		$("#exampleModal").modal("show");
-		document.getElementById("qwer").innerText = "코드그룹을 입력해주세요";
-		whether = false;
-			
-	}else{
-		document.getElementById("validation02").innerText =""
-	}
-	if(document.getElementById("name").value == null || document.getElementById("name").value == ""){
+	if(document.getElementById("ifcgname").value == null || document.getElementById("ifcgname").value == ""){
 		$("#exampleModal").modal("show");
 		document.getElementById("qwer").innerText = "이름을 입력해주세요";
-		document.getElementById("name").focus();
+		document.getElementById("ifcgname").focus();
 		whether =  false;		
 	}else{
 		document.getElementById("validation01").innerText =""
 	}
-	if(document.getElementById("delNy").value == null || document.getElementById("delNy").value == ""){
+	if(document.getElementById("ifcgdelNy").value == null || document.getElementById("ifcgdelNy").value == ""){
 		$("#exampleModal").modal("show");
 		document.getElementById("qwer").innerText = "사용여부를 선택해주세요";
 	}

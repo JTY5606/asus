@@ -10,9 +10,9 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 
 <sql id="selectCommon">
 FROM code a
-JOIN codegroup b ON b.seq = a.codegroup_seq
+JOIN codegroup b ON b.ifcgseq = a.codegroup_ifcgseq
 WHERE 1=1
-	AND a.delNy = 0
+	AND a.ifcddelNy = 0
 </sql>
 
 <select id="selectOneCount" resultType="Integer">
@@ -22,52 +22,39 @@ WHERE 1=1
 <select id="selectList" resultMap="resultMapObj">
 select aa.* from(
 SELECT 
-	a.seq,
-	a.delNy,
-	a.codegroupcode,
-	b.name,
-	a.code,
-	a.codename,
-	a.number,
-	a.codegroup_seq
+	a.ifcdseq,
+	a.ifcddelNy,
+	b.ifcgname,
+	a.ifcdcodename,
+	a.codegroup_ifcgseq
 		<include refid="selectCommon" />
 
-	ORDER BY a.seq DESC
+	ORDER BY a.ifcdseq DESC
 ) aa
 limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
 <insert id="insert">
 INSERT INTO code(
-	delNy,
-	codegroupcode,
-	code,
-	codename,
-	number,
-	codegroup_seq
+	ifcddelNy,
+	ifcdcodename,
+	codegroup_ifcgseq
 )VALUES(
 	0,
-	#{codegroupcode},
-	#{code},
-	#{codename},
-	#{number},
-	#{seq}
+	#{ifcdcodename},
+	#{ifcgseq}
 )
 </insert>
 
-<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
-SELECT 
-	seq,
-	delNy,
-	codegroupcode,
-	name,
-	code,
-	codename,
-	number,
-	codegroup_seq
-FROM
-	code
-WHERE 1=1
-	AND delNy = 0
-</select>
+<!-- <select id="selectListCachedCodeArrayList" resultMap="resultMapObj"> -->
+<!-- SELECT  -->
+<!-- 	ifcdseq, -->
+<!-- 	ifcddelNy, -->
+<!-- 	ifcdcodename, -->
+<!-- 	codegroup_ifcgseq -->
+<!-- FROM -->
+<!-- 	code -->
+<!-- WHERE 1=1 -->
+<!-- 	AND ifcddelNy = 0 -->
+<!-- </select> -->
 
 </mapper>
