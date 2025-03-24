@@ -13,6 +13,20 @@ FROM code a
 JOIN codegroup b ON b.ifcgseq = a.codegroup_ifcgseq
 WHERE 1=1
 	AND a.ifcddelNy = 0
+	
+	 <if test="shUseNy != null and !shUseNy.equals('')">AND a.ifcduseNy = #{shUseNy}</if>
+        <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcddelNy = #{shDelNy}</if>
+<!-- 				
+				<choose>
+					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+ -->				
+        <choose>
+            <when test="shOption == 1">AND a.ifcdseq = #{shValue}</when>
+            <when test="shOption == 2">AND a.ifcdname LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 3">AND a.ifcdcodename LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose>
 </sql>
 
 <select id="selectOneCount" resultType="Integer">
@@ -37,11 +51,13 @@ limit #{rowNumToShow} offset #{startRnumForMysql}
 INSERT INTO code(
 	ifcddelNy,
 	ifcdcodename,
-	codegroup_ifcgseq
+	codegroup_ifcgseq,
+	ifcduseNy
 )VALUES(
 	0,
 	#{ifcdcodename},
-	#{ifcgseq}
+	#{ifcgseq},
+	1
 )
 </insert>
 

@@ -3,16 +3,16 @@ package com.asus.module.codegroup;
 
 public class CodeGroupDto {
 	
-	private Integer ifcgseq;
+	private String ifcgseq;
 	private String ifcgname;
 	private Integer ifcgdelNy;
 	private Integer ifcgifseqcount;
 	
 	
-	public Integer getIfcgseq() {
+	public String getIfcgseq() {
 		return ifcgseq;
 	}
-	public void setIfcgseq(Integer ifcgseq) {
+	public void setIfcgseq(String ifcgseq) {
 		this.ifcgseq = ifcgseq;
 	}
 	public String getIfcgname() {

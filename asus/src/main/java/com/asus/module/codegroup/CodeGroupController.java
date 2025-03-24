@@ -3,6 +3,7 @@ package com.asus.module.codegroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -11,12 +12,12 @@ public class CodeGroupController {
 	CodeGroupService codeGroupService;
 	
 	@RequestMapping(value = "/xdm/codegroup/CodeGroupXdmList")
-	public String CodeGroupXdmList(Model model,CodeGroupVo vo, CodeGroupDto codeGroupDto) {
-		
-		vo.setParamsPaging(codeGroupService.selectOneCount());
-		int a = codeGroupService.selectOneCount();
-		model.addAttribute("list", codeGroupService.selectList(vo));
-		model.addAttribute("vo", vo);
+	public String CodeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo,Model model, CodeGroupDto codeGroupDto) {
+
+		vo.setParamsPaging(codeGroupService.selectOneCount(vo));
+		if (vo.getTotalRows() > 0) {
+			model.addAttribute("list", codeGroupService.selectList(vo));
+		}
 		return "xdm/codegroup/CodeGroupXdmList"; 
 		}
 	@RequestMapping(value = "/xdm/codegroup/CodeGroupXdmForm")

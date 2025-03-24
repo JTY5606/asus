@@ -30,8 +30,8 @@ public class CodeGroupService {
 	public int delete(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.delete(codeGroupDto);
 	}
-	public int selectOneCount() {
-		return codeGroupDao.selectOneCount();
+	public int selectOneCount(CodeGroupVo vo) {
+		return codeGroupDao.selectOneCount(vo);
 	}
 	public List<CodeGroupDto> selectListWithoutPaging(CodeGroupDto codeGroupDto){
 		return codeGroupDao.selectListWithoutPaging(codeGroupDto);
