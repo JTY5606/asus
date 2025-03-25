@@ -5,7 +5,8 @@
 
       <!-- Main Content -->
 <div class="main-content">
-	<form action="/xdm/code/CodeXdmInst" method="post" id="form"  novalidate="">	
+	<form  method="post" id="form"  novalidate="">	
+	<div th:replace="~{xdm/code/codeXdmVo :: vo}"></div>
 		<section class="section">
 		    <div class="section-header">
 		        <h1>Code</h1>
@@ -19,9 +20,9 @@
 	            		<div class="col-3">
 	                		<div class="form-group">
 	                  			<label>코드그룹(listcodegroup)<code>*</code></label>
-	                  			<select class="form-control form-control-sm" id="ifcgseq" name="ifcgseq" >
-	                    			<option value="">선택하세요</option>
-	                    			<option th:each = "list : ${listCodeGroup}" th:value="${list.ifcgseq}" th:text="${list.ifcgname}" th:selected="${list.ifcgseq == item?.ifcgseq}"></option>
+	                  			<select class="form-control form-control-sm" id="ifcgseq" name="ifcgseq" th:value="${item?.codegroup_ifcgseq}" />
+	                    			<option value="" >선택하세요</option>
+	                    			<option th:each = "list : ${listCodeGroup}" th:value="${list.ifcgseq}"  th:text="${list.ifcgname}" th:selected="${list.ifcgseq == item?.ifcgseq}"></option>
 	                  			</select>
 	                    			<span id="validation06" style="color : red"; class="invalid-feedback"></span>
 	                		</div>
@@ -29,15 +30,34 @@
 	              		<div class="col-3">
 		                	<div class="form-group">
 		                  		<label>대체코드(codename)</label>
-		                  		<input type="text" name="ifcdcodename" id="ifcdcodename" class="form-control" placeholder="입력하세요" />
+		                  		<input type="text" name="ifcdcodename" id="ifcdcodename" th:value="${item?.ifcdcodename}" class="form-control" placeholder="입력하세요" />
 			                  	<span id="validation03" style="color : red"; class="invalid-feedback"></span>	
 		                	</div>
 		              	</div>
+		              	<div class="col-3">
+          					<div class="form-group">
+            				<label>사용여부<code>*</code></label>
+            					<input type="text" name="ifcduseNy" id="ifcduseNy" th:value="${item?.ifcduseNy}" class="form-control" placeholder="자동생성" disabled />
+          					</div>
+        				</div>
+        				<div class="col-3">
+          					<div class="form-group">
+            				<label>seq<code>*</code></label>
+            					<input type="text" name="ifcdseq" id="ifcdseq" th:value="${item?.ifcdseq}" class="form-control" placeholder="자동생성" disabled />
+          					</div>
+        				</div>
+	           	 	</div>
+	           		<div class="row">
+	           	 		<div class="col-3">
+          					<div class="form-group">
+            					<label>codegroup_ifcgseq<code>*</code></label>
+            					<input type="text" name="codegroup_ifcgseq" id="codegroup_ifcgseq" th:value="${item?.codegroup_ifcgseq}" class="form-control" placeholder="자동생성" disabled />
+          					</div>
+        				</div>
 	           	 	</div>
 		            <div class="row">
 		              	<div class="col-11">
-		              		<button type="button" id="btnSave">저장</button>
-		                	<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></a>
+		              		<button type="button" id="btnSubmit" class="btn btn-primary btn_custom"><i class="fa-solid fa-database fa-lg">등록</i></button>
 		              	</div>
 		            </div>
 		        </div>
@@ -47,10 +67,30 @@
 </div>
 <script type="text/javascript">
 let whether = true;
+let seq = document.querySelector("input[name=ifcdseq]");	
+let form = document.getElementById("form");
 
-document.getElementById("btnSave").onclick = function(){
+document.getElementById("btnSubmit").onclick = function(){
+// 	function validationInst() {
+// 	    if(validationUpdt() == false) return false;
+// 	}
 	
-	
+// 	function validationUpdt() {
+//  		if(!checkOnlyEnglishNumber('ifcgSeqAnother', 2, 1, "코드그룹 코드 (Another)는 영대소문자, 숫자만 입력 가능합니다.")) return false;
+
+// 	}
+	if(seq.value == "0" || seq.value == "") {
+// 		if(validationInst() == false) return false;
+// 		$("#modalLoading").modal("show");
+		form.action = "CodeXdmInst";
+		form.submit();
+	} else {
+// 		if(validationUpdt() == false) return false;
+// 		$("#modalLoading").modal("show");
+		form.action = "CodeXdmUpdt";
+		form.submit();
+	}
+}
 // 	if(document.getElementById("ifcdcodename").value == null || document.getElementById("ifcdcodename").value == ""){
 // 		document.getElementById("ifcdcodename").className = "form-control is-invalid";
 // 		document.getElementById("validation04").innerText ="코드이름을 입력해주세요";
@@ -82,10 +122,10 @@ document.getElementById("btnSave").onclick = function(){
 		document.getElementById("validation07").innerText ="";
 	} */
 	
-	if(whether){
-		document.getElementById("form").submit();
-	}
-}
+// 	if(whether){
+// 		document.getElementById("form").submit();
+// 	}
+
 </script>
         
  <div th:replace="~{/xdm/include/footer :: footer}"></div>

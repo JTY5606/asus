@@ -29,7 +29,17 @@ public class CodeController {
 		}
 
 	@RequestMapping(value = "/xdm/code/CodeXdmForm")
-	public String CodeXdmForm(Model model, CodeGroupDto codeGroupDto,CodeVo vo,CodeDto codeDto) {
+	public String CodeXdmForm(@ModelAttribute("vo") CodeVo vo,Model model, CodeGroupDto codeGroupDto) {
+		
+		if (vo.getIfcdseq().equals("0") || vo.getIfcdseq().equals("")) {
+//			insert mode
+			System.out.println("insert");
+		} else {
+//			update mode
+			model.addAttribute("item", codeService.selectOne(vo));
+//			model.addAttribute("list", codeService.selectList(cvo));
+			System.out.println("update");
+		}
 		
 		model.addAttribute("listCodeGroup" , codeGroupService.selectListWithoutPaging(codeGroupDto));
 		
@@ -46,6 +56,12 @@ public class CodeController {
 	public String CodeXdmUele(CodeDto codeDto) {
 		
 		codeService.uelete(codeDto);
+		return "redirect:/xdm/code/CodeXdmList"; 
+		}
+	@RequestMapping(value = "/xdm/code/CodeXdmUpdt")
+	public String CodeXdmUpdt(CodeDto codeDto) {
+		
+		codeService.update(codeDto);
 		return "redirect:/xdm/code/CodeXdmList"; 
 		}
 	

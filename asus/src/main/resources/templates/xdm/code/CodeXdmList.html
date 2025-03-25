@@ -5,6 +5,7 @@
 	<form name="formList" id="formList" method="post" autocomplete="off">
 		<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 		<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+		<input type="hidden" name="ifcdseq">
 		<!-- Main Content -->
 		<div class="main-content">
 			<div class="card">
@@ -122,7 +123,7 @@
 					      		<td th:text="${list.codegroup_ifcgseq}" >42</td>
 					      		<td th:text="${list.ifcdname}"></td>
 					      		<td th:text="${list.ifcdseq}">381</td>
-					      		<td><a th:text="${list.ifcdcodename}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(ifcdseq=${list.ifcdseq})}">공식홈페이지</a></td>
+					      		<td><a href="javascript:void(0);" th:text="${list.ifcdcodename}" th:attr="onclick=|goForm('${list.ifcdseq}')|" >공식홈페이지</a></td>
 					     		<td></td>
 					      		<td></td>
  							</tr>
@@ -151,7 +152,7 @@
    					</div>
    					<div class="row">
      					<div class="col-11">
-    	 					<a href="/xdm/code/CodeXdmForm">등록</a>
+     						<button type="button" id="btnForm" class="btn btn-primary btn-sm btn_custom"><i class="fas fa-plus fa-lg">등록</i></button>
      					</div>
    					</div>
  				</div>
@@ -160,7 +161,18 @@
 	</form>
 <script type="text/javascript">
 let form = document.querySelector("form[name=formList]");
+let seq = document.querySelector("input[name=ifcdseq]");	
 
+document.getElementById("btnForm").onclick = function () {
+    goForm(0);
+}
+
+
+goForm = function (keyValue) {
+    seq.value = keyValue;
+    form.action = "CodeXdmForm";
+    form.submit();
+}
 goList = function (thisPage) {
     document.querySelector("input[name=thisPage]").value = thisPage;
     form.action = "CodeXdmList";
@@ -184,6 +196,7 @@ document.getElementById("changeRowNum").onchange = function () {
     form.action = "CodeXdmList";
     form.submit();
 }
+
 </script>
         <div th:replace="~{/xdm/include/footer :: footer}"></div>
 </html>

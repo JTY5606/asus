@@ -15,7 +15,7 @@ public class CodeVo {
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 
 	
-	private String ifcdvoSeq;
+	private String ifcdseq;
 
 //	search
 	private Integer shUseNy = 1; 									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
@@ -27,12 +27,12 @@ public class CodeVo {
 	private String shValue;
 	
 	
-	public String getIfcdvoSeq() {
-		return ifcdvoSeq;
+	public String getIfcdseq() {
+		return ifcdseq;
 	}
 
-	public void setIfcdvoSeq(String ifcdvoSeq) {
-		this.ifcdvoSeq = ifcdvoSeq;
+	public void setIfcdseq(String ifcdseq) {
+		this.ifcdseq = ifcdseq;
 	}
 
 	public Integer getShUseNy() {

@@ -24,8 +24,14 @@ public class CodeGroupService {
 	public int insert(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.insert(codeGroupDto);
 	}
+	public int update(CodeGroupDto codeGroupDto) {
+		return codeGroupDao.update(codeGroupDto);
+	}
 	public CodeGroupDto selectItem(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.selectItem(codeGroupDto);
+	}
+	public CodeGroupDto selectOne(CodeGroupVo vo) {
+		return codeGroupDao.selectOne(vo);
 	}
 	public int delete(CodeGroupDto codeGroupDto) {
 		return codeGroupDao.delete(codeGroupDto);

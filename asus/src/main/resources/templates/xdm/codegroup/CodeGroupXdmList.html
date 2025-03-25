@@ -7,6 +7,8 @@
 <form name="formList" id="formList" method="post" autocomplete="off">
 		<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 		<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+		<input type="hidden" name="ifcgseq" >
+		<input type="hidden" name="ifcguseNy" >
 
       <div class="main-content">
         <div class="card">
@@ -101,9 +103,10 @@
                 <tr>
                   <th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
                   <th scope="col">#</th>
-                  <th scope="col">사용</th>
+                  <th scope="col">삭제여부</th>
                   <th scope="col">코드그룹 코드(seq)</th>
                   <th scope="col" style="width: 25%;">코드그룹 이름(name)</th>
+                  <th scope="col">사용여부</th>
                   <th scope="col">갯수</th>
                   <th scope="col">순서</th>
                 </tr>
@@ -119,7 +122,8 @@
                   <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                   <td th:text="${list.ifcgdelNy}">Y</td>
                   <td th:text="${list.ifcgseq}">42</td>
-                  <td><a th:text="${list.ifcgname}" th:href="@{/xdm/codegroup/CodeGroupXdmItem(ifcgseq=${list.ifcgseq})}"></a></td>
+<td class="ifcgname"><a href="javascript:void(0)" th:text="${list.ifcgname}"  th:attr="onclick=|goForm('${list.ifcgseq}')|"></a></td>
+                  <td th:text="${list.ifcguseNy}"></td>
                   <td th:text="${list.ifcgseqcount}"></td>
                   <td></td>
                 </tr>
@@ -148,7 +152,7 @@
             </div>
             <div class="row">
               <div class="col-12">
-                	<a href="/xdm/codegroup/CodeGroupXdmForm">등록</a>
+<button type="button" id="btnForm" class="btn btn-primary btn-sm btn_custom"><i class="fas fa-plus fa-lg">등록</i></button>
               </div>
               </div>
           </div>
@@ -158,6 +162,7 @@
 <script type="text/javascript">
 let form = document.querySelector("form[name=formList]");
 let goUrlXdmList = "CodeGroupXdmList";
+let seq = document.querySelector("input[name=ifcgseq]");
 
 goList = function (thisPage) {
     document.querySelector("input[name=thisPage]").value = thisPage;
@@ -181,5 +186,16 @@ document.getElementById("btnReset").onclick = function () {
 	document.getElementById("shValue").value = "";
     form.submit();
 };
+
+document.getElementById("btnForm").onclick = function () {
+    goForm(0);
+}
+
+
+goForm = function (keyValue) {
+    seq.value = keyValue;
+    form.action = "CodeGroupXdmForm";
+    form.submit();
+}
 </script>
       <div th:replace="~{/xdm/include/footer :: footer}"></div>

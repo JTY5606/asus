@@ -14,21 +14,22 @@ SELECT
 	a.ifcgseq,
 	a.ifcgdelNy,
 	a.ifcgname,
+	a.ifcguseNy,
 	(select count(aa.ifcdseq) from code aa where 1=1 and aa.ifcddelNy = 0 and aa.codegroup_ifcgseq = a.ifcgseq) as ifcgseqcount
 <include refid="selectCommon" />
 	ORDER BY a.ifcgseq DESC
 ) aa
 limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
-<select id="selectItem" resultMap="resultMapObj">
+<select id="selectOne" resultMap="resultMapObj">
 SELECT
-	a.ifcgseq,
-	a.ifcgdelNy,
-	a.ifcgname,
-	a.ifcguseNy
-<include refid="selectCommon" />
-	AND a.ifcgseq = #{ifcgseq}
-	order by a.ifcgseq DESC
+	ifcgseq,
+	ifcgname,
+	ifcguseNy
+FROM codegroup 
+WHERE 1=1
+	AND ifcgseq = #{ifcgseq}
+	order by ifcgseq DESC
 </select>
 
 
@@ -43,6 +44,17 @@ INSERT INTO codegroup(
 	1
 )
 </insert>
+
+<update id="update">
+update codegroup
+	set
+		ifcgseq=#{ifcgseq},
+		ifcgname=#{ifcgname},
+		ifcguseNy=#{ifcguseNy}
+	where 
+		ifcgseq=#{ifcgseq}
+</update>
+
 <delete id="delete">
 	delete from codegroup
 	where ifcgseq = #{ifcgseq}
@@ -75,7 +87,9 @@ INSERT INTO codegroup(
 SELECT
 	a.ifcgseq,
 	a.ifcgname
-<include refid="selectCommon" />
+	FROM codegroup a
+	WHERE 1=1
+		AND a.ifcgdelNy=0
 </select>
 
 </mapper>

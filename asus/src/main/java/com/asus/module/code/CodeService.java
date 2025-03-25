@@ -19,11 +19,14 @@ public class CodeService {
 		
 		codeDtos = codeDao.selectList(vo);
 		
-		return codeDtos; 
+		return codeDtos; 	
 	}
 	
 	public int insert(CodeDto codeDto) {
 		return codeDao.insert(codeDto);
+	}
+	public int update(CodeDto codeDto) {
+		return codeDao.update(codeDto);
 	}
 	public int uelete(CodeDto codeDto) {
 		return codeDao.uelete(codeDto);
@@ -31,7 +34,9 @@ public class CodeService {
 	public int selectOneCount(CodeVo vo) {
 		return codeDao.selectOneCount(vo);
 	}
-	
+	public CodeDto selectOne(CodeVo vo) {
+		return codeDao.selectOne(vo);
+	}
 //	 @PostConstruct
 //		public void selectListCachedCodeArrayList() throws Exception {
 //			List<CodeDto> codeListFromDb = (ArrayList<CodeDto>) codeDao.selectListCachedCodeArrayList();

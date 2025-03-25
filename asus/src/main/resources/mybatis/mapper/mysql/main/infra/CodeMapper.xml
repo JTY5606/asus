@@ -14,7 +14,7 @@ JOIN codegroup b ON b.ifcgseq = a.codegroup_ifcgseq
 WHERE 1=1
 	AND a.ifcddelNy = 0
 	
-	 <if test="shUseNy != null and !shUseNy.equals('')">AND a.ifcduseNy = #{shUseNy}</if>
+	 	<if test="shUseNy != null and !shUseNy.equals('')">AND a.ifcduseNy = #{shUseNy}</if>
         <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcddelNy = #{shDelNy}</if>
 <!-- 				
 				<choose>
@@ -61,6 +61,28 @@ INSERT INTO code(
 )
 </insert>
 
+<update id="update">
+update code
+	set
+		codegroup_ifcgseq = #{ifcgseq},
+		ifcdcodename=#{ifcdcodename},
+		ifcduseNy=1
+	where 
+		ifcdseq=#{ifcdseq}
+		
+</update>
+
+<select id="selectOne" resultMap="resultMapObj">
+SELECT
+	ifcdseq,
+	ifcdcodename,
+	ifcduseNy,
+	codegroup_ifcgseq
+FROM code
+WHERE 1=1
+	AND ifcdseq = #{ifcdseq}
+	order by ifcdseq DESC
+</select>
 <!-- <select id="selectListCachedCodeArrayList" resultMap="resultMapObj"> -->
 <!-- SELECT  -->
 <!-- 	ifcdseq, -->

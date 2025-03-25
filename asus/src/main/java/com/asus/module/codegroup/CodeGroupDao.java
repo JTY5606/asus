@@ -9,7 +9,9 @@ public interface CodeGroupDao {
 	
 	public List<CodeGroupDto> selectList(CodeGroupVo vo);
 	public int insert(CodeGroupDto codeGroupDto);
+	public int update(CodeGroupDto codeGroupDto);
 	public CodeGroupDto selectItem(CodeGroupDto codeGroupDto);
+	public CodeGroupDto selectOne(CodeGroupVo vo);
 	public int delete(CodeGroupDto codeGroupDto);
 	public int selectOneCount(CodeGroupVo vo);
 	public List<CodeGroupDto> selectListWithoutPaging(CodeGroupDto codeGroupDto);

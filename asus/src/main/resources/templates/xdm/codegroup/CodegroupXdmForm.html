@@ -2,10 +2,10 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <div th:replace="~{/xdm/include/head :: head}"></div>
-
       <!-- Main Content -->
 <div class="main-content">
-<form action="/xdm/codegroup/CodeGroupXdmInst" method="post" id="form" class="needs-validation" novalidate="">	
+<form method="get" id="form" class="needs-validation" novalidate="">	
+<div th:replace="~{xdm/codegroup/CodeGroupXdmVo :: vo}"></div>
 	<section class="section">
     	<div class="section-header">
       		<h1>Code Group</h1>
@@ -20,57 +20,26 @@
         		<div class="col-3">
           			<div class="form-group">
             			<label>seq<code>*</code></label>
-            			<input type="int" name="ifcgseq" id="ifcgseq" class="form-control" placeholder="자동생성" disabled>
+            			<input type="text" name="ifcgseq" id="ifcgseq" th:value="${item?.ifcgseq}" class="form-control" placeholder="자동생성" disabled />
           			</div>
         		</div>
         		<div class="col-3">
           			<div class="form-group">
             			<label for="name">코드그룹 이름<code>*</code></label>
-            			<input type="text" name="ifcgname" id="ifcgname" class="form-control" placeholder="한글,영대소문자,숫자" >
+            			<input type="text" name="ifcgname" id="ifcgname" th:value="${item?.ifcgname}" class="form-control" placeholder="한글,영대소문자,숫자" />
             			<span id="validation01" style="color : red";></span>
           			</div>
         		</div>
         		<div class="col-3">
           			<div class="form-group">
-            			<label>코드그룹 이름(영문)</label>
-            			<input type="text" class="form-control" placeholder="영대소문자,숫자" disabled/>
+            			<label>사용여부<code>*</code></label>
+            			<input type="text" name="ifcguseNy" id="ifcguseNy" th:value="${item?.ifcguseNy}" class="form-control" placeholder="자동생성" disabled />
           			</div>
         		</div>
       		</div> 
       		<div class="row">
-        		<div class="col-3">
-          			<div class="form-group">
-            			<label>사용여부 <code>*</code></label>
-            			<select class="form-control form-control-sm" name="ifcgdelNy" id="ifcgdelNy" disabled />
-              				<option value="" id="choice" disabled />선택하세요</option>
-              				<option value="0" disabled />N</option>
-              				<option value="1" disabled />Y</option>
-            			</select>
-              			<span id="validation03" style="color : red";></span>
-          			</div>
-        		</div>
-        		<div class="col-3">
-          			<div class="form-group">
-            			<label>순서<code>*</code></label>
-            			<input type="text" class="form-control" placeholder="" disabled/>
-          			</div>
-        		</div>
-        		<div class="col-3">
-          			<div class="form-group">
-            			<label>갯수<code>*</code></label>
-            			<input  type="int" name="number" id="number" class="form-control" placeholder="" disabled />
-          			</div>
-        		</div>
-      		</div>
-      		<div class="row">
-        		<dic class="col-6">
-          			<label>설명</label>
-          			<textarea class="form-control"></textarea>
-        		</dic>
-      		</div>
-      		<div class="row">
         		<div class="col-11">
-        			<button type="button" class="btn btn-primary"  id="btnSave">등록</button>
+        			<button type="button" id="btnSubmit" class="btn btn-primary btn_custom">등록</button>
         		</div>
       		</div>
       	</div>
@@ -97,28 +66,46 @@
         
  <script type="text/javascript">
 
- 
-document.getElementById("btnSave").onclick = function(){
-	
 	let whether = true;
-		
-	if(document.getElementById("ifcgname").value == null || document.getElementById("ifcgname").value == ""){
-		$("#exampleModal").modal("show");
-		document.getElementById("qwer").innerText = "이름을 입력해주세요";
-		document.getElementById("ifcgname").focus();
-		whether =  false;		
-	}else{
-		document.getElementById("validation01").innerText =""
+	let seq = document.querySelector("input[name=ifcgseq]");
+	let form = document.getElementById("form");
+	
+ 
+// document.getElementById("btnSave").onclick = function(){
+	
+// 	if(document.getElementById("ifcgname").value == null || document.getElementById("ifcgname").value == ""){
+// 		$("#exampleModal").modal("show");
+// 		document.getElementById("qwer").innerText = "이름을 입력해주세요";
+// 		document.getElementById("ifcgname").focus();
+// 		whether =  false;		
+// 	}else{
+// 		document.getElementById("validation01").innerText =""
+// 	}
+	
+// 	function validationInst() {
+// 	    if(validationUpdt() == false) return false;
+// 	}
+	
+// 	function validationUpdt() {
+//  		if(!checkOnlyEnglishNumber('ifcgSeqAnother', 2, 1, "코드그룹 코드 (Another)는 영대소문자, 숫자만 입력 가능합니다.")) return false;
+
+// 	}
+// }
+
+document.getElementById("btnSubmit").onclick = function () {
+		if(seq.value == "0" || seq.value == "") {
+// 			if(validationInst() == false) return false;
+// 			$("#exampleModal").modal("show");
+			form.action = "/xdm/codegroup/CodeGroupXdmInst";
+			form.submit();
+		} else {
+// 			if(validationUpdt() == false) return false;
+// 			$("#exampleModal").modal("show");
+			form.action = "CodeGroupXdmUpdt";
+			form.submit();
+		}
 	}
-	if(document.getElementById("ifcgdelNy").value == null || document.getElementById("ifcgdelNy").value == ""){
-		$("#exampleModal").modal("show");
-		document.getElementById("qwer").innerText = "사용여부를 선택해주세요";
-	}
-	if(whether){
-	 document.getElementById("form").submit();
-		
-	}
-}
+
 
 </script>
         

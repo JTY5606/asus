@@ -6,9 +6,16 @@ public class CodeGroupDto {
 	private String ifcgseq;
 	private String ifcgname;
 	private Integer ifcgdelNy;
-	private Integer ifcgifseqcount;
+	private String ifcgseqcount;
+	private Integer ifcguseNy;
 	
 	
+	public Integer getIfcguseNy() {
+		return ifcguseNy;
+	}
+	public void setIfcguseNy(Integer ifcguseNy) {
+		this.ifcguseNy = ifcguseNy;
+	}
 	public String getIfcgseq() {
 		return ifcgseq;
 	}
@@ -27,18 +34,6 @@ public class CodeGroupDto {
 	public void setIfcgdelNy(Integer ifcgdelNy) {
 		this.ifcgdelNy = ifcgdelNy;
 	}
-	public Integer getIfcgifseqcount() {
-		return ifcgifseqcount;
-	}
-	public void setIfcgifseqcount(Integer ifcgifseqcount) {
-		this.ifcgifseqcount = ifcgifseqcount;
-	}
-	private String ifcgseqcount;
-	
-	
-	
-	
-	
 	
 	public String getIfcgseqcount() {
 		return ifcgseqcount;

@@ -9,7 +9,14 @@ public class CodeDto {
 	private Integer ifcddelNy;
 	private String ifcdcodename;
 	private String codegroup_ifcgseq;
+	private String ifcduseNy;
 	
+	public String getIfcduseNy() {
+		return ifcduseNy;
+	}
+	public void setIfcduseNy(String ifcduseNy) {
+		this.ifcduseNy = ifcduseNy;
+	}
 	private String ifcdname;
 	private String ifcgseq;
 	
