@@ -13,8 +13,21 @@ public class UserDto {
 	private String userfirstaddress;
 	private String usersecondaddress;
 	private String userthirdaddress;
+	private Integer userdelNy;
+	private Integer useruseNy;
 	
-	
+	public Integer getUserdelNy() {
+		return userdelNy;
+	}
+	public void setUserdelNy(Integer userdelNy) {
+		this.userdelNy = userdelNy;
+	}
+	public Integer getUseruseNy() {
+		return useruseNy;
+	}
+	public void setUseruseNy(Integer useruseNy) {
+		this.useruseNy = useruseNy;
+	}
 	public String getUserseq() {
 		return userseq;
 	}

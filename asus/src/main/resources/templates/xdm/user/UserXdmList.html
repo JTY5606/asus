@@ -94,7 +94,7 @@
 				        <th scope="col">#</th>
 				        <th scope="col">seq</th>
 				        <th scope="col">이름</th>
-				        <th scope="col" style="width: 25%;">성별</th>
+				        <th scope="col">성별</th>
 				        <th scope="col" >id</th>
 				        <th scope="col">email</th>
 				        <th scope="col">비밀번호</th>
@@ -114,7 +114,8 @@
 	                </tr>
 	                <tr th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
 			    		<td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
-			      		<td ></td>
+			    		<td></td>
+			      		<td th:text="${list.userseq}"></td>
 			      		<td th:text="${list.username}">Y</td>
 			      		<td th:text="${list.usergender}">42</td>
 			      		<td th:text="${list.userid}"></td>

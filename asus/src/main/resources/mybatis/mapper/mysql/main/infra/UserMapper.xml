@@ -16,12 +16,22 @@ SELECT
   	userphoneNumber,
   	userfirstaddress,
   	usersecondaddress,
-  	userthirdaddress
+  	userthirdaddress,
+  	userdelNy,
+  	useruseNy
  FROM
  	user
  WHERE 1=1
  	ORDER BY userseq DESC
 </select>
 
+<select id="selectSigin" resultMap="resultMapObj">
+SELECT
+	userid,
+	userpassword
+FROM
+	user
+WHERE 1=1
+</select>
 
 </mapper>

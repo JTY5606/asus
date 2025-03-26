@@ -72,6 +72,14 @@ update code
 		
 </update>
 
+<update id="uelete">
+	update code
+	set
+		ifcddelNy = 1
+	where 
+		ifcdseq=#{ifcdseq}
+	</update>
+	
 <select id="selectOne" resultMap="resultMapObj">
 SELECT
 	ifcdseq,

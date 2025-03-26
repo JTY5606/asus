@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Login &mdash; Stisla</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/fontawesome/css/all.min.css">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/modules/bootstrap-social/bootstrap-social.css">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/css/style.css">
+  <link rel="stylesheet" href="/xdm/template/adminui/assets/css/components.css">
+<!-- Start GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-94034622-3');
+</script>
+<!-- /END GA --></head>
+
+<body>
+ 	<div id="app">
+    	<section class="section">
+      		<div class="container mt-5">
+        		<div class="row">
+          			<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            			<div class="login-brand">
+              				<img src="/xdm/template/adminui/assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+            			</div>
+            			<div class="card card-primary">
+              				<div class="card-header"><h4>Login</h4></div>
+             					<div class="card-body">
+               					<form method="POST" action="#" class="needs-validation" novalidate="">
+                 					<div class="form-group">
+                   						<label for="email">id</label>
+                   						<input id="userid" type="text" class="form-control" name="userid" tabindex="1" required autofocus />
+                   						<div class="invalid-feedback" id="validation01">
+                     						Please fill in your email
+                   						</div>
+                 					</div>
+                 					<div class="form-group">
+                   						<div class="d-block">
+                   							<label for="password" class="control-label" >Password</label>
+                     						<div class="float-right">
+                       							<a href="auth-forgot-password.html" class="text-small">
+                         							비밀번호 찾기
+                       							</a>
+                     						</div>
+                   						</div>
+                   						<input id="userpassword" type="password" class="form-control" name="userpassword" tabindex="2" required>
+                   						<div class="invalid-feedback" id="validation02">
+                     							please fill in your password
+                   						</div>
+                 					</div>
+                 					<div class="form-group">
+                   						<div class="custom-control custom-checkbox">
+                     						<input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                     						<label class="custom-control-label" for="remember-me">아이디저장</label>
+                   						</div>
+                 					</div>
+                 					<div class="form-group">
+                   						<button type="button" id="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                     						Login
+                   						</button>
+                 					</div>
+               					</form>
+               					<div class="text-center mt-4 mb-3">
+                 					<div class="text-job text-muted">Login With Social</div>
+               					</div>
+               					<div class="row sm-gutters">
+                 					<div class="col-6">
+                   						<a class="btn btn-block btn-social btn-facebook">
+                     						<span class="fab fa-facebook"></span> Facebook
+                   						</a>
+                 					</div>
+                 					<div class="col-6">
+                   						<a class="btn btn-block btn-social btn-twitter">
+                     						<span class="fab fa-twitter"></span> Twitter
+                   						</a>                                
+                 					</div>
+               					</div>
+             				</div>
+            			</div>
+            			<div class="mt-5 text-muted text-center">
+              		 		<a href="auth-register.html">회원가입</a>
+            			</div>
+            			<div class="simple-footer">
+              				Copyright &copy; Stisla 2018
+            			</div>
+          			</div>
+        		</div>
+      		</div>
+    	</section>
+  	</div>
+  	<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" date-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+        	<div class="modal-header">
+ 	 			<h5 class="modal-title" id="modalAlertTitle"></h5>
+          		<button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          			<span aria-hidden="true">&times;</span>
+          		</button>
+        	</div>
+        	<div class="modal-body">
+          		<span id="modalAlertBody"></span>
+        	</div>
+        	<div class="modal-footer bg-whitesmoke br">
+        	 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        	</div>
+      	</div>
+    </div>
+</div>
+<script type="text/javascript">
+
+document.getElementById("login").onclick = function(){
+	if(validation()){
+		loginLogic();
+	}
+};
+
+function validation(){
+	let whether = true;
+	let id = document.getElementById("userid");
+	let password = document.getElementById("userpassword");
+	
+	if(id.value == null ||id.value == ""){
+		id.className = "form-control is-invalid";
+		document.getElementById("validation01").innerText ="아이디를 입력해주세요";
+		id.focus();
+		whether = false;
+	}else{
+		id.className = "form-control";
+		id.innerText ="";
+	}
+	
+	if(password.value == null || password.value == "" ){
+		password.className = "form-control is-invalid";
+		document.getElementById("validation02").innerText ="비밀번호를 입력해주세요";
+		password.focus();
+		whether = false;
+	}else{
+		password.className = "form-control";
+		password.innerText= "";
+	}
+	
+	return whether ;
+}
+
+// document.getElementById("login").onclick = function(){
+// 	if(document.getElementById("id").value == null || document.getElementById("id").value == ""){
+// 		document.getElementById("id").className = "form-control is-invalid";
+// 		document.getElementById("validation01").innerText ="아이디를 입력해주세요";
+// 		document.getElementById("id").focus();
+// 		whether = false;
+// 	}else{
+// 		document.getElementById("id").className = "form-control";
+// 		document.getElementById("validation01").innerText ="";
+// 	}
+	
+// 	if(document.getElementById("password").value == null || document.getElementById("password").value == ""){
+// 		document.getElementById("password").className = "form-control is-invalid";
+// 		document.getElementById("validation02").innerText ="비밀번호를 입력해주세요";
+// 		document.getElementById("password").focus();
+// 		whether = false;
+// 	}else{
+// 		document.getElementById("password").className = "form-control";
+// 		document.getElementById("validation02").innerText ="";
+// 	}
+	
+// }
+
+
+function loginLogic (){
+	
+	if(validation() == false) return false;
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/signinXdmProc"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "userid" : $("#userid").val(), "userpassword" : $("#userpassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/xdm/user/UserXdmList";
+			} else {
+		 		document.getElementById("modalAlertTitle").innerText = "확 인";
+		 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
+		 		$("#exampleModal").modal("show");	
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+}
+</script>
+  <!-- General JS Scripts -->
+  <script src="/xdm/template/adminui/assets/jquery/jquery-3.7.1min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/popper.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/tooltip.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="/xdm/template/adminui/assets/modules/moment.min.js"></script>
+  <script src="/xdm/template/adminui/assets/js/stisla.js"></script>
+  
+  <!-- JS Libraies -->
+
+  <!-- Page Specific JS File -->
+  
+  <!-- Template JS File -->
+  <script src="/xdm/template/adminui/assets/js/scripts.js"></script>
+  <script src="/xdm/template/adminui/assets/js/custom.js"></script>
+</body>
+</html>

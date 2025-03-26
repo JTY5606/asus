@@ -60,6 +60,14 @@ update codegroup
 	where ifcgseq = #{ifcgseq}
 </delete>
 
+<update id="uelete">
+	update codegroup
+	set
+		ifcgdelNy = 1
+	where 
+		ifcgseq=#{ifcgseq}
+	</update>
+
 <sql id="selectCommon">
 	FROM codegroup a
 	WHERE 1=1
