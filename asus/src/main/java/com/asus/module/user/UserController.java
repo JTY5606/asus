@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.asus.module.codegroup.CodeGroupDto;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -33,7 +33,7 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/signinXdmProc")
-	public Map<String, Object> signinXdmProc(UserDto userDto) throws Exception {
+	public Map<String, Object> signinXdmProc(UserDto userDto,HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		UserDto che = userService.selectSigin(userDto);
@@ -41,11 +41,14 @@ public class UserController {
 		if(che != null) {
 			returnMap.put("rt", "success");
 			returnMap.put("success", true);
+			
+			httpSession.setAttribute("sessSeqXdm", che.getUserseq());
+			httpSession.setAttribute("sessIdXdm", che.getUserid());
+			httpSession.setAttribute("sessNameXdm", che.getUsername());
 		}else {
 			returnMap.put("rt", "success");
 			returnMap.put("success", false);
 		}
-		
 		return returnMap;
 		
 	}
@@ -80,4 +83,29 @@ public class UserController {
 		userService.insert(userDto);
 		return "redirect:/xdm/user/UserXdmList"; 
 		}
+	
+//	@RequestMapping(value = "/signinUsrForm")
+//	public String signinUsrForm(UserVo vo,HttpSession httpSession) {
+		
+//		if(UtilCookie.getValueUsr(Constats.COOKIE_SEQ_NAME_USR) != null) {
+			//auto login
+//			if(httpSession.getAttribute("sessSeqUsr") == null) {
+			
+//				vo.setUserseq(UtilCookie.getValueUsr(Constants.COOKIT_SEQ_NAME_USR));
+			
+//				UserDto rtMember = userService.selectOne(vo);
+			
+	//			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+//				httpSession.setAttribute("sessSeqXdm", rtMember.getUserseq());
+//				httpSession.setAttribute("sessIdXdm", rtMember.getUserid());
+//				httpSession.setAttribute("sessNameXdm", rtMember.getUsername());
+//			} else {
+				//by pass
+//			}return "redirect:/xdm/adminlogin/AdminLoginXdmList";
+		
+		
+//		}else {
+//			return "signinUsrForm";
+//		}
+//	}
 }

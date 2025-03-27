@@ -29,7 +29,8 @@ limit #{rowNumToShow} offset #{startRnumForMysql}
 <select id="selectSigin" resultMap="resultMapObj">
 SELECT
 	userid,
-	userpassword
+	userpassword,
+	username
 FROM
 	user
 WHERE 1=1
