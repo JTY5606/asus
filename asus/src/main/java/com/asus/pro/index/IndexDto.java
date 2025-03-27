@@ -1,4 +1,4 @@
-package com.asus.index;
+package com.asus.pro.index;
 
 public class IndexDto {
 

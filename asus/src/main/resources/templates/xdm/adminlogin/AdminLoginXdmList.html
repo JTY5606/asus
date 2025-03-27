@@ -190,9 +190,9 @@ function loginLogic (){
 		/* ,data : $("#formLogin").serialize() */
 		,data : { "userid" : $("#userid").val(), "userpassword" : $("#userpassword").val()}
 		,success: function(response) {
-			if(response.rt == "success") {
+			if(response.success == true) {
 				location.href = "/xdm/user/UserXdmList";
-			} else {
+			} else if(response.success == false){
 		 		document.getElementById("modalAlertTitle").innerText = "확 인";
 		 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
 		 		$("#exampleModal").modal("show");	

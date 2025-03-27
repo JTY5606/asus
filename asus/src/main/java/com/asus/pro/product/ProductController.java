@@ -1,4 +1,4 @@
-package com.asus.index;
+package com.asus.pro.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,15 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class ProductController {
 	
 	@Autowired //인터페이스
-	IndexService indexSerice;
+	ProductService productService;
 	
-	@RequestMapping(value = "/xdm/index/IndexXdmList")
-	public String IndexXdmList(Model model) {
+	@RequestMapping(value = "/xdm/product/ProductXdmList")
+	public String LoginXdmList(Model model) {
 		
-		return "xdm/index/IndexXdmList"; 
+		return "xdm/product/ProductXdmList"; 
 		}
 
 }

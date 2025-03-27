@@ -13,7 +13,7 @@ public interface CodeDao {
 	public int uelete(CodeDto codeDto);
 	public int selectOneCount(CodeVo vo);
 	public CodeDto selectOne(CodeVo vo);
-//	public List<CodeDto> selectListCachedCodeArrayList();
+	public List<CodeDto> selectListCachedCodeArrayList();
 	
 
 }

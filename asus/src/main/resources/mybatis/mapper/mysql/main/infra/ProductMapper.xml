@@ -5,8 +5,8 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 
 ">
 
-<mapper namespace="com.asus.pro.index.IndxeDao">
-<resultMap id="resultMapObj" type="com.asus.pro.index.IndexDto"></resultMap>
+<mapper namespace="com.asus.pro.product.ProductDao">
+<resultMap id="resultMapObj" type="com.asus.pro.product.ProductDto"></resultMap>
 
 
 

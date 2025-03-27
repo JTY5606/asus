@@ -1,4 +1,4 @@
-package com.asus.login;
+package com.asus.pro.login;
 
 public class LoginDto {
 

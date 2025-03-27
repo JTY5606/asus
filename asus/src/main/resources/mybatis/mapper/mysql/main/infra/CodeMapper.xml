@@ -24,7 +24,7 @@ WHERE 1=1
  -->				
         <choose>
             <when test="shOption == 1">AND a.ifcdseq = #{shValue}</when>
-            <when test="shOption == 2">AND a.ifcdname LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 2">AND b.ifcgname LIKE CONCAT('%',#{shValue},'%')</when>
             <when test="shOption == 3">AND a.ifcdcodename LIKE CONCAT('%',#{shValue},'%')</when>
         </choose>
 </sql>
@@ -91,16 +91,16 @@ WHERE 1=1
 	AND ifcdseq = #{ifcdseq}
 	order by ifcdseq DESC
 </select>
-<!-- <select id="selectListCachedCodeArrayList" resultMap="resultMapObj"> -->
-<!-- SELECT  -->
-<!-- 	ifcdseq, -->
-<!-- 	ifcddelNy, -->
-<!-- 	ifcdcodename, -->
-<!-- 	codegroup_ifcgseq -->
-<!-- FROM -->
-<!-- 	code -->
-<!-- WHERE 1=1 -->
-<!-- 	AND ifcddelNy = 0 -->
-<!-- </select> -->
+<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+SELECT 
+	ifcdseq,
+	ifcdcodename,
+	codegroup_ifcgseq
+FROM
+	code
+WHERE 1=1
+	AND ifcdDelNy = 0
+	AND ifcdUseNy = 1
+</select>
 
 </mapper>

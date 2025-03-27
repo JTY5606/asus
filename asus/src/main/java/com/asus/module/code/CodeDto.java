@@ -11,14 +11,16 @@ public class CodeDto {
 	private String codegroup_ifcgseq;
 	private String ifcduseNy;
 	
+	//codegroup
+	private String ifcdname;
+	private String ifcgseq;
+	
 	public String getIfcduseNy() {
 		return ifcduseNy;
 	}
 	public void setIfcduseNy(String ifcduseNy) {
 		this.ifcduseNy = ifcduseNy;
 	}
-	private String ifcdname;
-	private String ifcgseq;
 	
 	public String getIfcdname() {
 		return ifcdname;

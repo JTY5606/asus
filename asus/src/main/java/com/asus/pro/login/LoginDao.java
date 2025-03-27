@@ -1,8 +1,8 @@
-package com.asus.index;
+package com.asus.pro.login;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IndexDao {
+public interface LoginDao {
 
 }

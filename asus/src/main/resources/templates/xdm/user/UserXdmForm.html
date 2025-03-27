@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/xdm/include/head :: head}"></div>
+      <!-- Main Content -->
+<div class="main-content">
+<form method="post" id="form" class="needs-validation" novalidate="">	
+<div th:replace="~{xdm/user/UserXdmVo :: vo}"></div>
+	<section class="section">
+    	<div class="section-header">
+      		<h1>Code Group</h1>
+    	</div>
+	</section>
+	<div class="card">
+    	<div class="card-header">
+      		<h2>기본정보</h2z>
+    	</div>
+    	<div class="card-body">
+      		<div class="row">
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>seq<code>*</code></label>
+            			<input type="text" name="userseq" id="userseq" th:value="${item?.userseq}" class="form-control" placeholder="자동생성" disabled />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label for="username">이름<code>*</code></label>
+            			<input type="text" name="username" id="username" th:value="${item?.username}" class="form-control" placeholder="이름" />
+            			<span id="validation01" style="color : red";></span>
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label for="usergender">성별<code>*</code></label>
+            			<input type="text" name="usergender" id="usergender" th:value="${item?.usergender}" class="form-control" placeholder="한글,영대소문자,숫자" />
+            			<span id="validation01" style="color : red";></span>
+          			</div>
+        		</div>
+      		</div> 
+      		<div class="row">
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>id<code>*</code></label>
+            			<input type="text" name="userid" id="userid" th:value="${item?.userid}" class="form-control" placeholder="id"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>email<code>*</code></label>
+            			<input type="text" name="useremail" id="useremail" th:value="${item?.useremail}" class="form-control" placeholder="email"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>password<code>*</code></label>
+            			<input type="text" name="userpassword" id="userpassword" th:value="${item?.userpassword}" class="form-control" placeholder="password"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>생년월일<code>*</code></label>
+            			<input type="text" name="userdate" id="userdate" th:value="${item?.userdate}" class="form-control" placeholder="ex>19920228"  />
+          			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>핸드폰번호<code>*</code></label>
+            			<input type="text" name="userphonenumber" id="userphonenumber" th:value="${item?.userphonenumber}" class="form-control" placeholder="ex>01012341234"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>주소1<code>*</code></label>
+            			<input type="text" name="userfirstaddress" id="userfirstaddress" th:value="${item?.userfirstaddress}" class="form-control" placeholder="ex>서울시"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>주소2<code>*</code></label>
+            			<input type="text" name="usersecondaddress" id="usersecondaddress" th:value="${item?.usersecondaddress}" class="form-control" placeholder="ex>강북구 미아동"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>주소3<code>*</code></label>
+            			<input type="text" name="userthirdaddress" id="userthirdaddress" th:value="${item?.userthirdaddress}" class="form-control" placeholder="ex>791-0000 201호"  />
+          			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>사용여부<code>*</code></label>
+            			<input type="text" name="userseq" id="userseq" th:value="${item?.userseq}" class="form-control" placeholder="자동생성" disabled />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>삭제여부<code>*</code></label>
+            			<input type="text" name="userseq" id="userseq" th:value="${item?.userseq}" class="form-control" placeholder="자동생성" disabled />
+          			</div>
+        		</div>
+        	</div>
+      		<div class="row">
+        		<div class="col-11">
+        			<button type="button" id="btnSubmit" class="btn btn-primary btn_custom">등록</button>
+        			<button type="button" id="btnUelete" class="btn btn-danger btn-sm btn_custom"><i class="fa-regular fa-trash-can fa-lg">삭제</i></button>
+        		</div>
+      		</div>
+      	</div>
+	</div>	
+</form>
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" date-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+        	<div class="modal-header">
+ 	 			<h5 class="modal-title" id="modalConfirmTitle"></h5>
+          		<button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          			<span aria-hidden="true">&times;</span>
+          		</button>
+        	</div>
+        	<div class="modal-body">
+          		<span id="modalConfirmBody"></span>
+        	</div>
+        	<div class="modal-footer bg-whitesmoke br">
+        		<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalDelete"><i class="fa-solid fa-x fa-lg">영구삭제</i></button>
+				<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalUelete"><i class="far fa-trash-alt fa-lg"></i></button>
+        	</div>
+      	</div>
+    </div>
+</div>	   
+        
+ <script type="text/javascript">
+
+	let whether = true;
+	let seq = document.querySelector("input[name=userseq]");
+	let form = document.getElementById("form");
+	
+ 
+
+document.getElementById("btnSubmit").onclick = function () {
+		if(seq.value == "0" || seq.value == "") {
+// 			if(validationInst() == false) return false;
+// 			$("#exampleModal").modal("show");
+			form.action = "/xdm/user/UserXdmInst";
+			form.submit();
+		} else {
+// 			if(validationUpdt() == false) return false;
+// 			$("#exampleModal").modal("show");
+			form.action = "CodeGroupXdmUpdt";
+			form.submit();
+		}
+}
+
+// if(document.getElementById("btnUelete")){
+// 	document.getElementById("btnUelete").onclick = function () {
+// 		document.querySelector("#modalConfirmTitle").textContent = "확 인";
+// 		document.querySelector("#modalConfirmBody").textContent = "해당 데이터를 삭제하시겠습니까 ?";
+// 		document.querySelector("#btnModalUelete").style.display = '';
+// // 		document.querySelector("#btnModalDelete").style.display = 'none';
+// 		$("#exampleModal").modal("show");      	
+// 	}
+
+// document.getElementById("btnModalUelete").onclick = function () {
+// 	form.action = "CodeGroupXdmUele";
+// 	form.submit();
+// }
+
+</script>
+        
+ <div th:replace="~{/xdm/include/footer :: footer}"></div>

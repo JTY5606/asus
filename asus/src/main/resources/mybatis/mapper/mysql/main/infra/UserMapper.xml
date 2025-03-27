@@ -5,8 +5,67 @@
 <resultMap id="resultMapObj" type="com.asus.module.user.UserDto"></resultMap>
 
 <select id="selectList" resultMap="resultMapObj">
+select aa.* from (
 SELECT
-	userseq,
+	a.userseq,
+	a.username,
+  	a.usergender,
+  	a.userid,
+  	a.useremail,
+  	a.userpassword,
+  	a.userdate,
+  	a.userphoneNumber,
+  	a.userfirstaddress,
+  	a.usersecondaddress,
+  	a.userthirdaddress,
+  	a.userdelNy,
+  	a.useruseNy
+<include refid="selectCommon" />
+ 	ORDER BY userseq DESC
+) aa
+limit #{rowNumToShow} offset #{startRnumForMysql}
+</select>
+
+<select id="selectSigin" resultMap="resultMapObj">
+SELECT
+	userid,
+	userpassword
+FROM
+	user
+WHERE 1=1
+	AND userid = #{userid}
+	AND userpassword =#{userpassword}
+</select>
+
+<select id="selectOneCount" resultType="Integer">
+	SELECT COUNT(*)
+FROM user a
+
+</select>
+
+<select id="selectOne" resultMap="resultMapObj">
+SELECT
+	a.userseq,
+	a.username,
+  	a.usergender,
+  	a.userid,
+  	a.useremail,
+  	a.userpassword,
+  	a.userdate,
+  	a.userphoneNumber,
+  	a.userfirstaddress,
+  	a.usersecondaddress,
+  	a.userthirdaddress,
+  	a.userdelNy,
+  	a.useruseNy
+FROM codegroup 
+WHERE 1=1
+	AND userseq = #{userseq}
+	order by userseq DESC
+</select>
+
+<insert id="insert" >
+INSERT INTO user(
 	username,
   	usergender,
   	userid,
@@ -19,19 +78,37 @@ SELECT
   	userthirdaddress,
   	userdelNy,
   	useruseNy
- FROM
- 	user
- WHERE 1=1
- 	ORDER BY userseq DESC
-</select>
-
-<select id="selectSigin" resultMap="resultMapObj">
-SELECT
-	userid,
-	userpassword
-FROM
-	user
-WHERE 1=1
-</select>
-
+)values(
+	username = #{username},
+  	usergender = #{usergender},
+  	userid = #{userid},
+  	useremail = #{useremail},
+  	userpassword = #{userpassword},
+  	userdate = #{userdate},
+  	userphoneNumber = #{userphoneNumber},
+  	userfirstaddress = #{userfirstaddress},
+  	usersecondaddress = #{usersecondaddress},
+  	userthirdaddress = #{userthirdaddress},
+  	0,
+  	1
+)
+</insert>
+<sql id="selectCommon">
+        FROM user a
+        WHERE 1=1
+        <if test="shUseNy != null and !shUseNy.equals('')">AND a.useruseNy = #{shUseNy}</if>
+        <if test="shDelNy != null and !shDelNy.equals('')">AND a.userdelNy = #{shDelNy}</if>
+<!-- 				
+				<choose>
+					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+ -->				
+        <choose>
+            <when test="shOption == 1">AND a.userseq = #{shValue}</when>
+            <when test="shOption == 2">AND a.username LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 3">AND a.userphonenumber LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 4">AND a.userfirstaddress LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose>
+    </sql>
 </mapper>
