@@ -7,14 +7,13 @@ public class AdminProductDto {
 	private String ifprtitle;
 	private String ifprprice;
 	private String ifprdiscout;
-	private String ifprspecialNy;
 	private String ifprimfo;
 	private String ifprorigin;
 	private String ifprdeliveryimfo; 
 	private String ifprcomposition;
 	private String ifprproductNumber;
 	private String ifprinvetory;
-	private String ifprtypeNy; 
+	private Integer ifprtypeNy; 
 	private Integer ifprdelNy;
 	private Integer ifpruseNy;
 	
@@ -48,12 +47,6 @@ public class AdminProductDto {
 	}
 	public void setIfprdiscout(String ifprdiscout) {
 		this.ifprdiscout = ifprdiscout;
-	}
-	public String getIfprspecialNy() {
-		return ifprspecialNy;
-	}
-	public void setIfprspecialNy(String ifprspecialNy) {
-		this.ifprspecialNy = ifprspecialNy;
 	}
 	public String getIfprimfo() {
 		return ifprimfo;
@@ -91,10 +84,10 @@ public class AdminProductDto {
 	public void setIfprinvetory(String ifprinvetory) {
 		this.ifprinvetory = ifprinvetory;
 	}
-	public String getIfprtypeNy() {
+	public Integer getIfprtypeNy() {
 		return ifprtypeNy;
 	}
-	public void setIfprtypeNy(String ifprtypeNy) {
+	public void setIfprtypeNy(Integer ifprtypeNy) {
 		this.ifprtypeNy = ifprtypeNy;
 	}
 	public Integer getIfprdelNy() {

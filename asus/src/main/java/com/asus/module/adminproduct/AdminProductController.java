@@ -3,7 +3,10 @@ package com.asus.module.adminproduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.asus.module.codegroup.CodeGroupDto;
 
 @Controller
 public class AdminProductController {
@@ -12,13 +15,35 @@ public class AdminProductController {
 	AdminProductService adminProductService;
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmList")
-	public String AdminProductXdmList(Model model) {
+	public String AdminProductXdmList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
 		
-		model.addAttribute("list", adminProductService.selectList());
+		vo.setParamsPaging(adminProductService.selectOneCount(vo));
+		if (vo.getTotalRows() > 0) {
+
+			model.addAttribute("list", adminProductService.selectList(vo));
+
+			}
 		
 		return "xdm/adminproduct/AdminProductXdmList"; 
 		}
 	
+	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")
+	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model) throws Exception{
+		if (vo.getIfprseq().equals("0") || vo.getIfprseq().equals("")) {
+		//			insert mode
+	} else {
+//				update mode
+	model.addAttribute("item", adminProductService.selectOne(vo));
+//	model.addAttribute("list", codeService.selectList(cvo));
+	}
+	return  "xdm/adminproduct/AdminProductXdmForm";
+	}
 	
-
+	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmInst")
+	public String AdminProductXdmInst(AdminProductDto adminProductDto) {
+		
+		adminProductService.insert(adminProductDto);
+		System.out.println("asdf");
+		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
+		}
 }

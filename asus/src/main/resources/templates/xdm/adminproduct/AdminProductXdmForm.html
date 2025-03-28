@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/xdm/include/head :: head}"></div>
+<div class="main-content">
+	<form method="post" id="form" class="needs-validation" novalidate="">	
+	<div th:replace="~{xdm/adminproduct/AdminProductXdmVo :: vo}"></div>
+	<section class="section">
+    	<div class="section-header">
+      		<h1>Product</h1>
+    	</div>
+	</section>
+		<div class="card">
+	    	<div class="card-header">
+	      		<h2>기본정보</h2z>
+	    	</div>
+	    	<div class="card-body">
+	      		<div class="row">
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>seq<code>*</code></label>
+	            			<input type="text" name="ifprseq" id="ifprseq" th:value="${item?.ifprseq}" class="form-control" placeholder="자동생성" disabled />
+	            			<span id="validation01" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>카테고리<code>*</code></label>
+	            			<input type="text" name="ifprcategory" id="ifprcategory" th:value="${item?.ifprcategory}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation02" style="color:red"></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>제목<code>*</code></label>
+	            			<input type="text" name="ifprtitle" id="ifprtitle" th:value="${item?.ifprtitle}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation03" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>가격<code>*</code></label>
+	            			<input type="text" name="ifprprice" id="ifprprice" th:value="${item?.ifprprice}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation04" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>할인<code>*</code></label>
+	            			<input type="text" name="ifprdiscout" id="ifprdiscout" th:value="${item?.ifprdiscout}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation05" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>제품상세정보<code>*</code></label>
+	            			<input type="text" name="ifprimfo" id="ifprimfo" th:value="${item?.ifprimfo}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation06" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>원산지<code>*</code></label>
+	            			<input type="text" name="ifprorigin" id="ifprorigin" th:value="${item?.ifprorigin}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation07" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>배송정보<code>*</code></label>
+	            			<input type="text" name="ifprdeliveryimfo" id="ifprdeliveryimfo" th:value="${item?.ifprdeliveryimfo}" class="form-control" placeholder="자동생성" />
+	            			<span id="validation08" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>상품구성<code>*</code></label>
+	            			<input type="text" name="ifprcomposition" id="ifprcomposition" th:value="${item?.ifprcomposition}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation09" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>제품번호<code>*</code></label>
+	            			<input type="text" name="ifprproductNumber" id="ifprproductNumber" th:value="${item?.ifprproductNumber}" class="form-control" placeholder="자동생성" />
+	            			<span id="validation10" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>재고<code>*</code></label>
+	            			<input type="int" name="ifprinvetory" id="ifprinvetory" th:value="${item?.ifprinvetory}" class="form-control" placeholder="자동생성" disabled/>
+	            			<span id="validation11" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>할인타입<code>*</code></label>
+	            			<input type="int" name="ifprtypeNy" id="ifprtypeNy" th:value="${item?.ifprtypeNy}" class="form-control" placeholder="자동생성"  />
+	            			<span id="validation12" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>삭제여부<code>*</code></label>
+	            			<input type="int" name="ifprdelNy" id="ifprdelNy" th:value="${item?.ifprdelNy}" class="form-control" placeholder="자동생성" disabled />
+	            			<span id="validation13" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        		<div class="col-3">
+	          			<div class="form-group">
+	            			<label>사용여부<code>*</code></label>
+	            			<input type="int" name="ifpruseNy" id="ifpruseNy" th:value="${item?.ifpruseNy}" class="form-control" placeholder="자동생성" disabled />
+	            			<span id="validation13" style="color : red";></span>
+	          			</div>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+        			<div class="col-11">
+        				<button type="button" id="btnSubmit" class="btn btn-primary btn_custom">등록</button>
+        				<button type="button" id="btnUelete" class="btn btn-danger btn-sm btn_custom"><i class="fa-regular fa-trash-can fa-lg">삭제</i></button>
+        			</div>
+      			</div>
+	        </div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+
+document.getElementById("btnSubmit").onclick = function(){
+	 if(validation() == false) return false;
+	 save();
+};
+function validation(){
+	let whether = true;
+	let ifprtitle = document.getElementById("ifprtitle");
+	let ifprprice = document.getElementById("ifprprice");
+	let ifprdiscout = document.getElementById("ifprdiscout");
+	let ifprimfo = document.getElementById("ifprimfo");
+	let ifprorigin = document.getElementById("ifprorigin");
+	let ifprdeliveryimfo = document.getElementById("ifprdeliveryimfo");
+	let ifprcomposition = document.getElementById("ifprcomposition");
+	let ifprproductNumber = document.getElementById("ifprproductNumber");
+	let ifprinvetory = document.getElementById("ifprinvetory");
+	let ifprtypeNy = document.getElementById("ifprtypeNy");
+	let ifprdelNy = document.getElementById("ifprdelNy");
+	let ifpruseNy = document.getElementById("ifpruseNy");
+
+	if(ifprcategory.value == null || ifprcategory.value == "" ){
+		ifprcategory.className = "form-control is-invalid";
+		document.getElementById("validation02").innerText ="카테고리를 입력해주세요";
+		ifprcategory.focus();
+	}else{
+		ifprcategory.className = "form-control";
+		document.getElementById("validation02").innerText ="";
+	}
+	
+	if(ifprtitle.value == null ||ifprtitle.value == ""){
+		ifprtitle.className = "form-control is-invalid";
+		document.getElementById("validation03").innerText ="제목을 입력해주세요";
+		ifprtitle.focus();
+		whether = false;
+	}else{
+		ifprtitle.className = "form-control";
+		document.getElementById("validation03").innerText ="";
+	}
+	if(ifprprice.value == null ||ifprprice.value == ""){
+		ifprprice.className = "form-control is-invalid";
+		document.getElementById("validation04").innerText ="가격을 입력해주세요";
+		ifprprice.focus();
+		whether = false;
+	}else{
+		ifprprice.className = "form-control";
+		document.getElementById("validation04").innerText ="";
+	}
+	if(ifprdiscout.value == null ||ifprdiscout.value == ""){
+		ifprdiscout.className = "form-control is-invalid";
+		document.getElementById("validation05").innerText ="할인가를 입력해주세요";
+		ifprdiscout.focus();
+		whether = false;
+	}else{
+		ifprdiscout.className = "form-control";
+		document.getElementById("validation05").innerText ="";
+	}
+	if(ifprimfo.value == null ||ifprimfo.value == ""){
+		ifprimfo.className = "form-control is-invalid";
+		document.getElementById("validation06").innerText ="정보를 입력해주세요";
+		ifprimfo.focus();
+		whether = false;
+	}else{
+		ifprimfo.className = "form-control";
+		document.getElementById("validation06").innerText="";
+	}
+	if(ifprorigin.value == null ||ifprorigin.value == ""){
+		ifprorigin.className = "form-control is-invalid";
+		document.getElementById("validation07").innerText ="원산지를 입력해주세요";
+		ifprorigin.focus();
+		whether = false;
+	}else{
+		ifprorigin.className = "form-control";
+		document.getElementById("validation07").innerText="";
+	}
+	if(ifprdeliveryimfo.value == null ||ifprdeliveryimfo.value == ""){
+		ifprdeliveryimfo.className = "form-control is-invalid";
+		document.getElementById("validation08").innerText ="배송정보를 입력해주세요";
+		ifprdeliveryimfo.focus();
+		whether = false;
+	}else{
+		ifprdeliveryimfo.className = "form-control";
+		document.getElementById("validation08").innerText ="";
+	}
+	if(ifprcomposition.value == null ||ifprcomposition.value == ""){
+		ifprcomposition.className = "form-control is-invalid";
+		document.getElementById("validation09").innerText ="상품구성를 입력해주세요";
+		ifprcomposition.focus();
+		whether = false;
+	}else{
+		ifprcomposition.className = "form-control";
+		document.getElementById("validation09").innerText  ="";
+	}
+	if(ifprproductNumber.value == null ||ifprproductNumber.value == ""){
+		ifprproductNumber.className = "form-control is-invalid";
+		document.getElementById("validation10").innerText ="제품번호를 입력해주세요";
+		ifprproductNumber.focus();
+		whether = false;
+	}else{
+		ifprproductNumber.className = "form-control";
+		document.getElementById("validation10").innerText ="";
+	}
+	
+	
+	return whether ;
+}
+
+function save() {
+	let seq = document.querySelector("input[name=ifprseq]");		
+	if(seq.value == "0" || seq.value == "") {
+//			if(validationInst() == false) return false;
+//			$("#exampleModal").modal("show");
+		form.action = "/xdm/adminproduct/AdminProductXdmInst";
+		form.submit();
+	} else {
+//			if(validationUpdt() == false) return false;
+//			$("#exampleModal").modal("show");
+		form.action = "AdminProductXdmUpdt";
+		form.submit();
+	}
+}
+
+</script>
+
+<div th:replace="~{/xdm/include/footer :: footer}"></div>

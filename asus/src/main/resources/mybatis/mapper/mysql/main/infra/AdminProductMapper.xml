@@ -8,27 +8,104 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 <mapper namespace="com.asus.module.adminproduct.AdminProductDao">
 <resultMap id="resultMapObj" type="com.asus.module.adminproduct.AdminProductDto"></resultMap>
 
+<sql id="selectCommon">
+	FROM product a
+	WHERE 1=1
+		AND a.ifprdelNy=0
+		
+		<if test="shUseNy != null and !shUseNy.equals('')">AND a.ifpruseNy = #{shUseNy}</if>
+        <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifprdelNy = #{shDelNy}</if>
+<!-- 				
+				<choose>
+					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+ -->				
+        <choose>
+            <when test="shOption == 1">AND a.ifprcategory = #{shValue}</when>
+            <when test="shOption == 2">AND a.ifprtitle LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 2">AND a.ifprtypeNy LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose>
+</sql>
+
 <select id="selectList" resultMap="resultMapObj">
+select aa.* from(
 SELECT
-	ifprseq,
- 	ifprcategory, 
- 	ifprtitle, 
- 	ifprprice,
-  	ifprdiscout, 
-	ifprspecialNy, 
-	ifprimfo, 
- 	ifprorigin,
- 	ifprdeliveryimfo, 
-	ifprcomposition, 
-	ifprproductNumber, 
-	ifprinvetory, 
-	ifprtypeNy, 
-	ifprdelNy, 
-	ifpruseNy
-FROM product
-WHERE 1=1
+	a.ifprseq,
+ 	a.ifprcategory, 
+ 	a.ifprtitle, 
+ 	a.ifprprice,
+  	a.ifprdiscout, 
+	a.ifprimfo, 
+ 	a.ifprorigin,
+ 	a.ifprdeliveryimfo, 
+	a.ifprcomposition, 
+	a.ifprproductNumber, 
+	a.ifprinvetory, 
+	a.ifprtypeNy, 
+	a.ifprdelNy, 
+	a.ifpruseNy
+<include refid="selectCommon" />
+	ORDER BY a.ifprseq DESC
+) aa
+limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
 
+<select id="selectOne" resultMap="resultMapObj">
+SELECT
+	a.ifprseq,
+ 	a.ifprcategory, 
+ 	a.ifprtitle, 
+ 	a.ifprprice,
+  	a.ifprdiscout, 
+	a.ifprimfo, 
+ 	a.ifprorigin,
+ 	a.ifprdeliveryimfo, 
+	a.ifprcomposition, 
+	a.ifprproductNumber, 
+	a.ifprinvetory, 
+	a.ifprtypeNy, 
+	a.ifprdelNy, 
+	a.ifpruseNy
+FROM product a
+WHERE 1=1
+	AND a.ifprseq = #{ifprseq}
+	order by a.ifprseq DESC
+</select>
+<select id="selectOneCount" resultType="Integer">
+	SELECT COUNT(*)
+FROM product 
+</select>
 
-
+<insert id="insert">
+INSERT INTO product(
+    ifprcategory, 
+    ifprtitle, 
+    ifprprice, 
+    ifprdiscout, 
+    ifprimfo, 
+    ifprorigin, 
+    ifprdeliveryimfo, 
+    ifprcomposition, 
+    ifprproductNumber, 
+    ifprinvetory, 
+    ifprtypeNy, 
+    ifprdelNy, 
+    ifpruseNy
+) values(
+    ifprcategory = #{ifprcategory}, 
+    ifprtitle = #{ifprtitle}, 
+    ifprprice = #{ifprprice}, 
+    ifprdiscout = #{ifprdiscout}, 
+    ifprimfo = #{ifprimfo}, 
+    ifprorigin = #{ifprorigin}, 
+    ifprdeliveryimfo = #{ifprdeliveryimfo}, 
+    ifprcomposition = #{ifprcomposition}, 
+    ifprproductNumber = #{ifprproductNumber}, 
+    1, 
+    ifprtypeNy = #{ifprtypeNy},
+    0,
+    1
+)
+</insert>
 </mapper>
