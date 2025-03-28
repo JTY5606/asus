@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "
+
+http://mybatis.org/dtd/mybatis-3-mapper.dtd
+
+">
+
+<mapper namespace="com.asus.module.adminproduct.AdminProductDao">
+<resultMap id="resultMapObj" type="com.asus.module.adminproduct.AdminProductDto"></resultMap>
+
+<select id="selectList" resultMap="resultMapObj">
+SELECT
+	ifprseq,
+ 	ifprcategory, 
+ 	ifprtitle, 
+ 	ifprprice,
+  	ifprdiscout, 
+	ifprspecialNy, 
+	ifprimfo, 
+ 	ifprorigin,
+ 	ifprdeliveryimfo, 
+	ifprcomposition, 
+	ifprproductNumber, 
+	ifprinvetory, 
+	ifprtypeNy, 
+	ifprdelNy, 
+	ifpruseNy
+FROM product
+WHERE 1=1
+</select>
+
+
+
+</mapper>

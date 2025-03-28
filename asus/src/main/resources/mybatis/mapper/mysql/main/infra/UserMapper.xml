@@ -28,6 +28,7 @@ limit #{rowNumToShow} offset #{startRnumForMysql}
 
 <select id="selectSigin" resultMap="resultMapObj">
 SELECT
+	userseq,
 	userid,
 	userpassword,
 	username

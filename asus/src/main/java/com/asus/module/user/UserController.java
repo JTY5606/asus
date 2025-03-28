@@ -39,15 +39,13 @@ public class UserController {
 		UserDto che = userService.selectSigin(userDto);
 		
 		if(che != null) {
-			returnMap.put("rt", "success");
-			returnMap.put("success", true);
 			
 			httpSession.setAttribute("sessSeqXdm", che.getUserseq());
 			httpSession.setAttribute("sessIdXdm", che.getUserid());
 			httpSession.setAttribute("sessNameXdm", che.getUsername());
-		}else {
 			returnMap.put("rt", "success");
-			returnMap.put("success", false);
+		}else {
+			returnMap.put("rt", false);
 		}
 		return returnMap;
 		
@@ -55,9 +53,12 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/signoutXdmProc")
-	public Map<String, Object> signoutXdmProc(UserDto userDto) throws Exception {
+	public Map<String, Object> signoutXdmProc(UserDto userDto,HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
+		httpSession.setAttribute("sessSeqXdm", null);
+		httpSession.setAttribute("sessIdXdm", null);
+		httpSession.setAttribute("sessNameXdm", null);
 		returnMap.put("rt", "success");
 		return returnMap;
 		
