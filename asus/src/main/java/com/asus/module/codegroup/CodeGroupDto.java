@@ -8,8 +8,21 @@ public class CodeGroupDto {
 	private Integer ifcgdelNy;
 	private String ifcgseqcount;
 	private Integer ifcguseNy;
+	private String datetimestart;
+	private String datetimeend;
 	
-	
+	public String getDatetimestart() {
+		return datetimestart;
+	}
+	public void setDatetimestart(String datetimestart) {
+		this.datetimestart = datetimestart;
+	}
+	public String getDatetimeend() {
+		return datetimeend;
+	}
+	public void setDatetimeend(String datetimeend) {
+		this.datetimeend = datetimeend;
+	}
 	public Integer getIfcguseNy() {
 		return ifcguseNy;
 	}

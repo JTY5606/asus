@@ -118,11 +118,13 @@
       	</div>
     </div>
 </div>
+<div th:replace="~{/xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 
 document.getElementById("login").onclick = function(){
 	if(validation()){
 		loginLogic();
+	alert("asd");
 	}
 };
 
@@ -179,7 +181,6 @@ function validation(){
 
 
 function loginLogic (){
-	
 	if(validation() == false) return false;
 	$.ajax({
 		async: true 
@@ -187,6 +188,7 @@ function loginLogic (){
 		,type: "post"
 		/* ,dataType:"json" */
 		,url: "/signinXdmProc"
+		
 		/* ,data : $("#formLogin").serialize() */
 		,data : { "userid" : $("#userid").val(), "userpassword" : $("#userpassword").val()}
 		,success: function(response) {
@@ -205,20 +207,20 @@ function loginLogic (){
 }
 </script>
   <!-- General JS Scripts -->
-  <script src="/xdm/template/adminui/assets/jquery/jquery-3.7.1min.js"></script>
-  <script src="/xdm/template/adminui/assets/modules/popper.js"></script>
-  <script src="/xdm/template/adminui/assets/modules/tooltip.js"></script>
-  <script src="/xdm/template/adminui/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/xdm/template/adminui/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="/xdm/template/adminui/assets/modules/moment.min.js"></script>
-  <script src="/xdm/template/adminui/assets/js/stisla.js"></script>
+<!--   <script src="/xdm/template/adminui/assets/jquery/jquery-3.7.1min.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/modules/popper.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/modules/tooltip.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/modules/bootstrap/js/bootstrap.min.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/modules/nicescroll/jquery.nicescroll.min.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/modules/moment.min.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/js/stisla.js"></script> -->
   
   <!-- JS Libraies -->
 
   <!-- Page Specific JS File -->
   
   <!-- Template JS File -->
-  <script src="/xdm/template/adminui/assets/js/scripts.js"></script>
-  <script src="/xdm/template/adminui/assets/js/custom.js"></script>
+<!--   <script src="/xdm/template/adminui/assets/js/scripts.js"></script> -->
+<!--   <script src="/xdm/template/adminui/assets/js/custom.js"></script> -->
 </body>
 </html>

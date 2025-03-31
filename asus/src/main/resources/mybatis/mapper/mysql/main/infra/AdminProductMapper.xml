@@ -15,12 +15,19 @@ http://mybatis.org/dtd/mybatis-3-mapper.dtd
 		
 		<if test="shUseNy != null and !shUseNy.equals('')">AND a.ifpruseNy = #{shUseNy}</if>
         <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifprdelNy = #{shDelNy}</if>
-<!-- 				
+				
 				<choose>
-					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 1 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.ifprdate BETWEEN #{shDateStartdb} AND #{shDateEnddb}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 2 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.ifprredate BETWEEN #{shDateStartdb} AND #{shDateEnddb}</when>
 				</choose>
- -->				
         <choose>
             <when test="shOption == 1">AND a.ifprcategory = #{shValue}</when>
             <when test="shOption == 2">AND a.ifprtitle LIKE CONCAT('%',#{shValue},'%')</when>
@@ -44,7 +51,9 @@ SELECT
 	a.ifprinvetory, 
 	a.ifprtypeNy, 
 	a.ifprdelNy, 
-	a.ifpruseNy
+	a.ifpruseNy,
+	a.ifprdate,
+	a.ifprredate
 <include refid="selectCommon" />
 	ORDER BY a.ifprseq DESC
 ) aa
@@ -91,21 +100,53 @@ INSERT INTO product(
     ifprinvetory, 
     ifprtypeNy, 
     ifprdelNy, 
-    ifpruseNy
+    ifpruseNy,
+    ifprdate
 ) values(
-    ifprcategory = #{ifprcategory}, 
-    ifprtitle = #{ifprtitle}, 
-    ifprprice = #{ifprprice}, 
-    ifprdiscout = #{ifprdiscout}, 
-    ifprimfo = #{ifprimfo}, 
-    ifprorigin = #{ifprorigin}, 
-    ifprdeliveryimfo = #{ifprdeliveryimfo}, 
-    ifprcomposition = #{ifprcomposition}, 
-    ifprproductNumber = #{ifprproductNumber}, 
-    1, 
-    ifprtypeNy = #{ifprtypeNy},
-    0,
-    1
+     #{ifprcategory}, 
+     #{ifprtitle}, 
+     #{ifprprice}, 
+     #{ifprdiscout}, 
+     #{ifprimfo}, 
+     #{ifprorigin}, 
+     #{ifprdeliveryimfo}, 
+     #{ifprcomposition}, 
+     #{ifprproductNumber}, 
+     1, 
+     #{ifprtypeNy},
+     0,
+     1,
+     now()
 )
 </insert>
+<update id="update">
+update product
+	set
+		ifprseq = #{ifprseq},
+		ifprcategory = #{ifprcategory}, 
+   	 	ifprtitle = #{ifprtitle}, 
+    	ifprprice = #{ifprprice}, 
+    	ifprdiscout = #{ifprdiscout}, 
+    	ifprimfo = #{ifprimfo}, 
+    	ifprorigin = #{ifprorigin}, 
+    	ifprdeliveryimfo = #{ifprdeliveryimfo}, 
+    	ifprcomposition = #{ifprcomposition}, 
+    	ifprproductNumber = #{ifprproductNumber}, 
+    	ifprinvetory = 1, 
+    	ifprtypeNy = #{ifprtypeNy}, 
+    	ifprdelNy = 0, 
+    	ifpruseNy = 1,
+		ifprredate = now()
+	where 
+		ifprseq = #{ifprseq}
+</update>
+
+<update id="uelete">
+	update product
+	set
+		ifprdelNy = 1
+	where 
+		ifprseq=#{ifprseq}
+	</update>
+
 </mapper>

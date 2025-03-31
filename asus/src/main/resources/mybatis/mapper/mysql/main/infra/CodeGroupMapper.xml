@@ -15,7 +15,9 @@ SELECT
 	a.ifcgdelNy,
 	a.ifcgname,
 	a.ifcguseNy,
-	(select count(aa.ifcdseq) from code aa where 1=1 and aa.ifcddelNy = 0 and aa.codegroup_ifcgseq = a.ifcgseq) as ifcgseqcount
+	(select count(aa.ifcdseq) from code aa where 1=1 and aa.ifcddelNy = 0 and aa.codegroup_ifcgseq = a.ifcgseq) as ifcgseqcount,
+	a.datetimestart,
+	a.datetimeend
 <include refid="selectCommon" />
 	ORDER BY a.ifcgseq DESC
 ) aa
@@ -37,11 +39,13 @@ WHERE 1=1
 INSERT INTO codegroup(
 	ifcgdelNy,
 	ifcgname,
-	ifcguseNy
+	ifcguseNy,
+	datetimestart
 )values(
 	0,
 	#{ifcgname},
-	1
+	1,
+	now(),
 )
 </insert>
 
@@ -50,7 +54,8 @@ update codegroup
 	set
 		ifcgseq=#{ifcgseq},
 		ifcgname=#{ifcgname},
-		ifcguseNy=#{ifcguseNy}
+		ifcguseNy=#{ifcguseNy},
+		datetimeend=now()
 	where 
 		ifcgseq=#{ifcgseq}
 </update>
@@ -75,12 +80,20 @@ update codegroup
 		
 		<if test="shUseNy != null and !shUseNy.equals('')">AND a.ifcguseNy = #{shUseNy}</if>
         <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcgdelNy = #{shDelNy}</if>
-<!-- 				
+				
 				<choose>
-					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 1 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.datetimestart BETWEEN #{shDateStartdb} AND #{shDateEnddb}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 2 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.datetimeend BETWEEN #{shDateStartdb} AND #{shDateEnddb}</when>
 				</choose>
- -->				
+		
         <choose>
             <when test="shOption == 1">AND a.ifcgseq = #{shValue}</when>
             <when test="shOption == 2">AND a.ifcgname LIKE CONCAT('%',#{shValue},'%')</when>
@@ -95,7 +108,8 @@ update codegroup
 SELECT
 	a.ifcgseq,
 	a.ifcgname
-	FROM codegroup a
+	
+FROM codegroup a
 	WHERE 1=1
 		AND a.ifcgdelNy=0
 </select>

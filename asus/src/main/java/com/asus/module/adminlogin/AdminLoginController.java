@@ -8,7 +8,6 @@ public class AdminLoginController {
 	
 	@RequestMapping(value = "/xdm/adminlogin/AdminLoginXdmList")
 	public String AdminLoginXdmList() {
-		
 		return "xdm/adminlogin/AdminLoginXdmList"; 
 		}
 

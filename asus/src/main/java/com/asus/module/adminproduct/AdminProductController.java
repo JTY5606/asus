@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.asus.module.codegroup.CodeGroupDto;
-
 @Controller
 public class AdminProductController {
 	
@@ -43,7 +41,17 @@ public class AdminProductController {
 	public String AdminProductXdmInst(AdminProductDto adminProductDto) {
 		
 		adminProductService.insert(adminProductDto);
-		System.out.println("asdf");
+		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
+		}
+	
+	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmUpdt")
+	public String AdminProductXdmUpdt(AdminProductDto adminProductDto) {
+		adminProductService.update(adminProductDto);
+		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
+		}
+	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmUele")
+	public String AdminProductXdmUele(AdminProductDto adminProductDto) {
+		adminProductService.uelete(adminProductDto);
 		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
 		}
 }

@@ -16,4 +16,6 @@ public interface AdminProductDao {
 	public int selectOneCount(AdminProductVo vo); 
 	public AdminProductDto selectOne(AdminProductVo vo);
 	public int insert(AdminProductDto adminProductDto);
+	public int update(AdminProductDto adminProductDto);
+	public int uelete(AdminProductDto adminProductDto);
 }

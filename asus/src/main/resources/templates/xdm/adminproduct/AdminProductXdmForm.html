@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
+<body>
 <div th:replace="~{/xdm/include/head :: head}"></div>
 <div class="main-content">
 	<form method="post" id="form" class="needs-validation" novalidate="">	
@@ -26,7 +27,7 @@
 	        		<div class="col-3">
 	          			<div class="form-group">
 	            			<label>카테고리<code>*</code></label>
-	            			<input type="text" name="ifprcategory" id="ifprcategory" th:value="${item?.ifprcategory}" class="form-control" placeholder="자동생성"  />
+	            			<input type="text" id="ifprcategory" name="ifprcategory"  th:value="${item?.ifprcategory}" class="form-control" placeholder="자동생성"  />
 	            			<span id="validation02" style="color:red"></span>
 	          			</div>
 	        		</div>
@@ -131,12 +132,32 @@
 		</div>
 	</form>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" date-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+        	<div class="modal-header">
+ 	 			<h5 class="modal-title" id="modalConfirmTitle"></h5>
+          		<button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          			<span aria-hidden="true">&times;</span>
+          		</button>
+        	</div>
+        	<div class="modal-body">
+          		<span id="modalConfirmBody"></span>
+        	</div>
+        	<div class="modal-footer bg-whitesmoke br">
+        		<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalDelete"><i class="fa-solid fa-x fa-lg">영구삭제</i></button>
+				<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalUelete"><i class="far fa-trash-alt fa-lg"></i></button>
+        	</div>
+      	</div>
+    </div>
+</div>	
+<div th:replace="~{/xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 
-document.getElementById("btnSubmit").onclick = function(){
-	 if(validation() == false) return false;
-	 save();
-};
+// document.getElementById("btnSubmit").onclick = function(){
+// 	 if(validation() == false) return false;
+// 	 save();
+// };
 function validation(){
 	let whether = true;
 	let ifprtitle = document.getElementById("ifprtitle");
@@ -238,7 +259,8 @@ function validation(){
 	return whether ;
 }
 
-function save() {
+document.getElementById("btnSubmit").onclick = function(){
+	let form = document.getElementById("form");
 	let seq = document.querySelector("input[name=ifprseq]");		
 	if(seq.value == "0" || seq.value == "") {
 //			if(validationInst() == false) return false;
@@ -248,11 +270,24 @@ function save() {
 	} else {
 //			if(validationUpdt() == false) return false;
 //			$("#exampleModal").modal("show");
-		form.action = "AdminProductXdmUpdt";
+		form.action = "/xdm/adminproduct/AdminProductXdmUpdt";
 		form.submit();
 	}
 }
-
+if(document.getElementById("btnUelete")){
+	document.getElementById("btnUelete").onclick = function () {
+		document.querySelector("#modalConfirmTitle").textContent = "확 인";
+		document.querySelector("#modalConfirmBody").textContent = "해당 데이터를 삭제하시겠습니까 ?";
+		document.querySelector("#btnModalUelete").style.display = '';
+// 		document.querySelector("#btnModalDelete").style.display = 'none';
+		$("#exampleModal").modal("show");      	
+	}
+}
+document.getElementById("btnModalUelete").onclick = function () {
+	form.action = "AdminProductXdmUele";
+	form.submit();
+}
 </script>
 
-<div th:replace="~{/xdm/include/footer :: footer}"></div>
+</body>
+</html>

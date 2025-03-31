@@ -16,8 +16,22 @@ public class AdminProductDto {
 	private Integer ifprtypeNy; 
 	private Integer ifprdelNy;
 	private Integer ifpruseNy;
+	private String ifprdate;
+	private String ifprredate;
 	
 	
+	public String getIfprdate() {
+		return ifprdate;
+	}
+	public void setIfprdate(String ifprdate) {
+		this.ifprdate = ifprdate;
+	}
+	public String getIfprredate() {
+		return ifprredate;
+	}
+	public void setIfprredate(String ifprredate) {
+		this.ifprredate = ifprredate;
+	}
 	public String getIfprseq() {
 		return ifprseq;
 	}

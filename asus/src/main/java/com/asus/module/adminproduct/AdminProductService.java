@@ -33,4 +33,11 @@ public class AdminProductService {
 	public int insert(AdminProductDto adminProductDto) {
 		return adminProductDao.insert(adminProductDto);
 	}
+	
+	public int update(AdminProductDto adminProductDto) {
+		return adminProductDao.update(adminProductDto);
+	}
+	public int uelete(AdminProductDto adminProductDto) {
+		return adminProductDao.uelete(adminProductDto);
+	}
 }

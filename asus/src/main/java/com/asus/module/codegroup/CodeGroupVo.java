@@ -62,7 +62,9 @@ public class CodeGroupVo {
 	public String getShDateStart() {
 		return shDateStart;
 	}
-
+	public String getShDateStartdb() {
+		return shDateStart + " 00:00:00";
+	}
 	public void setShDateStart(String shDateStart) {
 		this.shDateStart = shDateStart;
 	}
@@ -70,7 +72,9 @@ public class CodeGroupVo {
 	public String getShDateEnd() {
 		return shDateEnd;
 	}
-
+	public String getShDateEnddb() {
+		return shDateEnd + " 23:59:59";
+	}
 	public void setShDateEnd(String shDateEnd) {
 		this.shDateEnd = shDateEnd;
 	}
