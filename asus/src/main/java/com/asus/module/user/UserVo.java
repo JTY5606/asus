@@ -64,6 +64,9 @@ public class UserVo {
 	public String getShDateStart() {
 		return shDateStart;
 	}
+	public String getShDateStartDB() {
+		return shDateStart + " 00:00:00";
+	}
 
 	public void setShDateStart(String shDateStart) {
 		this.shDateStart = shDateStart;
@@ -72,7 +75,9 @@ public class UserVo {
 	public String getShDateEnd() {
 		return shDateEnd;
 	}
-
+	public String getShDateEndDB() {
+		return shDateEnd + " 23:59:59";
+	}
 	public void setShDateEnd(String shDateEnd) {
 		this.shDateEnd = shDateEnd;
 	}

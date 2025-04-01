@@ -20,7 +20,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/xdm/user/UserXdmList")
 	public String UserXdmList(Model model,@ModelAttribute("vo")UserVo vo) {
-		
 		vo.setParamsPaging(userService.selectOneCount(vo));
 		
 		if (vo.getTotalRows() > 0) {
@@ -35,7 +34,6 @@ public class UserController {
 	@RequestMapping(value = "/signinXdmProc")
 	public Map<String, Object> signinXdmProc(UserDto userDto,HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		System.out.println("1234");
 		UserDto che = userService.selectSigin(userDto);
 		
 		if(che != null) {

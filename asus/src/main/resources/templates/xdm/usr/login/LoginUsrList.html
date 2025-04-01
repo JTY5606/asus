@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta content="Codescandy" name="author">
+	<title>Homepage v4 - eCommerce HTML Template - FreshCart</title>
+	<link href="/xdm/template/freshcart-14.0/assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet" />
+	<link href="/xdm/template/freshcart-14.0/assets/libs/slick-carousel/slick/slick.css" rel="stylesheet" />
+	<link href="/xdm/template/freshcart-14.0/assets/libs/slick-carousel/slick/slick-theme.css" rel="stylesheet" />
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/x-icon" href="/xdm/template/freshcart-14.0/assets/images/favicon/favicon.ico">
+
+
+	<!-- Libs CSS -->
+	<link href="/xdm/template/freshcart-14.0/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="/xdm/template/freshcart-14.0/assets/libs/feather-webfont/dist/feather-icons.css" rel="stylesheet">
+	<link href="/xdm/template/freshcart-14.0/assetss/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="/xdm/template/freshcart-14.0/assets/css/theme.min.css">
+</head>
+
+<body>
+	<!-- navigation -->
+	<header class="py-lg-5 py-4 border-bottom border-bottom-lg-0">
+		<div class="container">
+			<div class="row w-100 align-items-center gx-3">
+				<div class="col-xl-7 col-lg-8">
+					<div class="d-flex align-items-center">
+						<a class="navbar-brand d-none d-lg-block" href="/xdm/usr/index/IndexUsrList">
+							<img src="/xdm/template/freshcart-14.0/assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template" />
+						</a>
+						<div class="w-100 ms-4 d-none d-lg-block">
+							<form action="#">
+								<div class="input-group">
+									<input class="form-control rounded" type="search"
+										placeholder="제품 검색" />
+									<span class="input-group-append">
+										<button class="btn bg-white border border-start-0 ms-n10 rounded-0 rounded-end"
+											type="button">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-search">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+											</svg>
+										</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="d-flex justify-content-between align-items-center w-100 d-lg-none">
+						<a class="navbar-brand mb-0" href="index-4.html">
+							<img src="/xdm/template/freshcart-14.0/assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template" />
+						</a>
+
+					</div>
+				</div>
+
+				<div class="col-xl-5 col-lg-4 d-flex align-items-center">
+					<div class="list-inline ms-auto d-lg-block d-none">
+
+
+						<div class="list-inline-item me-3 ">
+							<a class="text-muted position-relative" data-bs-toggle="offcanvas"
+								data-bs-target="#offcanvasRight" href="#offcanvasExample" role="button"
+								aria-controls="offcanvasRight">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+									fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" class="feather feather-shopping-bag">
+									<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+									<line x1="3" y1="6" x2="21" y2="6"></line>
+									<path d="M16 10a4 4 0 0 1-8 0"></path>
+								</svg>
+								<span
+									class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+									1
+									<span class="visually-hidden">unread messages</span>
+								</span>
+							</a>
+						</div>
+						<div class="list-inline-item">
+							<a href="/xdm/usr/login/LoginUsrList" class="btn btn-dark d-none d-xl-block">로그인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<hr>
+
+  <main>
+    <!-- section -->
+    <section class="my-lg-14 my-8">
+      <div class="container">
+        <!-- row -->
+        <div class="row justify-content-center align-items-center">
+          <div class="col-12 col-md-6 col-lg-4 order-lg-1 order-2">
+            <!-- img -->
+            <img src="/xdm/template/freshcart-14.0/assets/images/svg-graphics/signin-g.svg" alt="" class="img-fluid" />
+          </div>
+          <!-- col -->
+          <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
+            <div class="mb-lg-9 mb-5">
+              <h1 class="mb-1 h2 fw-bold">로그인</h1>
+              <p></p>
+            </div>
+
+            <form class="needs-validation" novalidate>
+              <div class="row g-3">
+                <!-- row -->
+
+                <div class="col-12">
+                  	<div class="form-group">
+                   		<label for="id">id</label>
+                   		<input id="userid" type="text" class="form-control" name="userid" tabindex="1" value="sun" placeholder="ex>sun" required autofocus />
+                   		<div class="invalid-feedback" id="validation01">
+                   		</div>
+                 	</div>
+                </div>
+                <div class="col-12">
+                  <!-- input -->
+                  <div class="password-field position-relative">
+                    <label for="password" class="form-label visually-hidden">비밀번호</label>
+                    <div class="password-field position-relative">
+                      <input id="userpassword" type="password" class="form-control" name="userpassword" tabindex="2" value="1" placeholder="password" required>
+                   		<div class="invalid-feedback" id="validation02">
+                   		</div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <!-- form check -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <!-- label -->
+                    <label class="form-check-label" for="flexCheckDefault">아이디 기억하기</label>
+                  </div>
+                  <div>
+                    
+                    <a href="../pages/forgot-password.html">비밀번호 찾기</a>
+                  </div>
+                </div>
+                <!-- btn -->
+                <div class="col-12 d-grid"><button type="button" id="login" class="btn btn-primary">로그인</button></div>
+                <!-- link -->
+                <div>
+                  
+                  <a href="/xdm/usr/signup/SignupUsrList">회원가입</a>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAlertTitle">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span id="modalAlertBody"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<!-- Javascript-->
+	<!-- Libs JS -->
+	<script src="/xdm/template/freshcart-14.0/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+	<!-- Theme JS -->
+	<script src="/xdm/template/freshcart-14.0/assets/js/theme.min.js"></script>
+
+	<script src="/xdm/template/freshcart-14.0/assets/js/vendors/jquery.min.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/libs/slick-carousel/slick/slick.min.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/js/vendors/slick-slider.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/js/vendors/tns-slider.js"></script>
+	<script src="/xdm/template/freshcart-14.0/assets/js/vendors/zoom.js"></script>
+
+<script type="text/javascript">
+
+document.getElementById("login").onclick = function(){
+	if(validation()){
+		loginLogic();
+	}
+};
+
+function validation(){
+	let whether = true;
+	let id = document.getElementById("userid");
+	let password = document.getElementById("userpassword");
+	
+	if(id.value == null ||id.value == ""){
+		id.className = "form-control is-invalid";
+		document.getElementById("validation01").innerText ="아이디를 입력해주세요";
+		id.focus();
+		whether = false;
+	}else{
+		id.className = "form-control";
+		id.innerText ="";
+	}
+	
+	if(password.value == null || password.value == "" ){
+		password.className = "form-control is-invalid";
+		document.getElementById("validation02").innerText ="비밀번호를 입력해주세요";
+		password.focus();
+		whether = false;
+	}else{
+		password.className = "form-control";
+		password.innerText= "";
+	}
+	
+	return whether ;
+}
+
+
+
+function loginLogic (){
+	if(validation() == false) return false;
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/signinXdmProc"
+		
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "userid" : $("#userid").val(), "userpassword" : $("#userpassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/xdm/usr/index/IndexUsrList";
+			} else if(response.rt == false){
+		 		document.getElementById("modalAlertTitle").innerText = "확 인";
+		 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
+		 		$("#exampleModal").modal("show");	
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+}
+</script>"

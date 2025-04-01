@@ -15,7 +15,21 @@ public class UserDto {
 	private String userthirdaddress;
 	private Integer userdelNy;
 	private Integer useruseNy;
+	private String userdb;
+	private String userredb;
 	
+	public String getUserdb() {
+		return userdb;
+	}
+	public void setUserdb(String userdb) {
+		this.userdb = userdb;
+	}
+	public String getUserredb() {
+		return userredb;
+	}
+	public void setUserredb(String userredb) {
+		this.userredb = userredb;
+	}
 	public Integer getUserdelNy() {
 		return userdelNy;
 	}

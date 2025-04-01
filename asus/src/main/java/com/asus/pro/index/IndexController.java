@@ -11,10 +11,10 @@ public class IndexController {
 	@Autowired //인터페이스
 	IndexService indexSerice;
 	
-	@RequestMapping(value = "/xdm/index/IndexXdmList")
-	public String IndexXdmList(Model model) {
+	@RequestMapping(value = "/xdm/usr/index/IndexUsrList")
+	public String IndexUsrList(Model model) {
 		
-		return "xdm/index/IndexXdmList"; 
+		return "xdm/usr/index/IndexUsrList"; 
 		}
 
 }

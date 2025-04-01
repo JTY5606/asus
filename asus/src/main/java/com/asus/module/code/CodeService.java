@@ -51,10 +51,11 @@ public class CodeService {
 		}
 		
 		
-		public static List<CodeDto> selectListCachedCode(String ifcgseq) throws Exception {
+		public static List<CodeDto> selectListCachedCode(String codegroup_ifcgseq) throws Exception {
 			List<CodeDto> rt = new ArrayList<CodeDto>();
 			for(CodeDto codeRow : CodeDto.cachedCodeArrayList) {
-				if (codeRow.getIfcgseq().equals(ifcgseq)) {
+				if (codeRow.getCodegroup_ifcgseq().equals(codegroup_ifcgseq)) {
+					
 					rt.add(codeRow);
 				} else {
 					// by pass

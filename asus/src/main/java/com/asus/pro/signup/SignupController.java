@@ -1,4 +1,4 @@
-package com.asus.pro.login;
+package com.asus.pro.signup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,15 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController {
-	
-	@Autowired //인터페이스
-	LoginService loginServive;
-	
-	@RequestMapping(value = "/xdm/usr/login/LoginUsrList")
-	public String LoginUsrList(Model model) {
-		
-		return "xdm/usr/login/LoginUsrList"; 
-		}
+public class SignupController {
 
+	@Autowired //인터페이스
+	SignupService signupServive;
+	
+	@RequestMapping(value = "/xdm/usr/signup/SignupUsrList")
+	public String SignupUsrList(Model model) {
+		
+		return "xdm/usr/signup/SignupUsrList"; 
+		}
 }

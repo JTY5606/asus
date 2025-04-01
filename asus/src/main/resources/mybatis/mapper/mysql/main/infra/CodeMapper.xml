@@ -16,12 +16,18 @@ WHERE 1=1
 	
 	 	<if test="shUseNy != null and !shUseNy.equals('')">AND a.ifcduseNy = #{shUseNy}</if>
         <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcddelNy = #{shDelNy}</if>
-<!-- 				
-				<choose>
-					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-				</choose>
- -->				
+<choose>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 1 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.ifcddate BETWEEN #{shDateStartDB} AND #{shDateEndDB}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 2 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.ifcdredate BETWEEN #{shDateStartDB} AND #{shDateEndDB}</when>
+				</choose>				
         <choose>
             <when test="shOption == 1">AND a.ifcdseq = #{shValue}</when>
             <when test="shOption == 2">AND b.ifcgname LIKE CONCAT('%',#{shValue},'%')</when>
@@ -40,7 +46,9 @@ SELECT
 	a.ifcddelNy,
 	b.ifcgname,
 	a.ifcdcodename,
-	a.codegroup_ifcgseq
+	a.codegroup_ifcgseq,
+	a.ifcddate,
+	a.ifcdredate
 		<include refid="selectCommon" />
 
 	ORDER BY a.ifcdseq DESC
@@ -52,12 +60,14 @@ INSERT INTO code(
 	ifcddelNy,
 	ifcdcodename,
 	codegroup_ifcgseq,
-	ifcduseNy
+	ifcduseNy,
+	ifcddate
 )VALUES(
 	0,
 	#{ifcdcodename},
 	#{ifcgseq},
-	1
+	1,
+	now()
 )
 </insert>
 
@@ -66,7 +76,8 @@ update code
 	set
 		codegroup_ifcgseq = #{ifcgseq},
 		ifcdcodename=#{ifcdcodename},
-		ifcduseNy=1
+		ifcduseNy=1,
+		ifcdredate = now()
 	where 
 		ifcdseq=#{ifcdseq}
 		

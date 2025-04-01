@@ -19,9 +19,11 @@ SELECT
   	a.usersecondaddress,
   	a.userthirdaddress,
   	a.userdelNy,
-  	a.useruseNy
+  	a.useruseNy,
+  	a.userdb,
+  	a.userredb
 <include refid="selectCommon" />
- 	ORDER BY userseq DESC
+ 	ORDER BY a.userseq DESC
 ) aa
 limit #{rowNumToShow} offset #{startRnumForMysql}
 </select>
@@ -60,10 +62,10 @@ SELECT
   	a.userthirdaddress,
   	a.userdelNy,
   	a.useruseNy
-FROM codegroup 
+FROM user a 
 WHERE 1=1
-	AND userseq = #{userseq}
-	order by userseq DESC
+	AND a.userseq = #{userseq}
+	order by a.userseq DESC
 </select>
 
 <insert id="insert" >
@@ -79,33 +81,43 @@ INSERT INTO user(
   	usersecondaddress,
   	userthirdaddress,
   	userdelNy,
-  	useruseNy
+  	useruseNy,
+  	userdb
 )values(
-	username = #{username},
-  	usergender = #{usergender},
-  	userid = #{userid},
-  	useremail = #{useremail},
-  	userpassword = #{userpassword},
-  	userdate = #{userdate},
-  	userphoneNumber = #{userphoneNumber},
-  	userfirstaddress = #{userfirstaddress},
-  	usersecondaddress = #{usersecondaddress},
-  	userthirdaddress = #{userthirdaddress},
+	#{username},
+  	#{usergender},
+  	#{userid},
+  	 #{useremail},
+  	#{userpassword},
+  	#{userdate},
+  	#{userphoneNumber},
+  	#{userfirstaddress},
+  	 #{usersecondaddress},
+  	#{userthirdaddress},
   	0,
-  	1
+  	1,
+  	now()
 )
 </insert>
 <sql id="selectCommon">
         FROM user a
         WHERE 1=1
+        AND userdelNy = 0
+        AND useruseNy = 1
         <if test="shUseNy != null and !shUseNy.equals('')">AND a.useruseNy = #{shUseNy}</if>
         <if test="shDelNy != null and !shDelNy.equals('')">AND a.userdelNy = #{shDelNy}</if>
-<!-- 				
-				<choose>
-					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-				</choose>
- -->				
+<choose>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 1 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.userdb BETWEEN #{shDateStartDB} AND #{shDateEndDB}</when>
+					<when test="shOptionDate != null and !shOptionDate.equals('') 
+					and shOptionDate == 2 
+					and shDateStart != null and !shDateStart.equals('')
+					and shDateEnd != null and !shDateEnd.equals('')">
+					AND a.userredb BETWEEN #{shDateStartDB} AND #{shDateEndDB}</when>
+				</choose>				
         <choose>
             <when test="shOption == 1">AND a.userseq = #{shValue}</when>
             <when test="shOption == 2">AND a.username LIKE CONCAT('%',#{shValue},'%')</when>

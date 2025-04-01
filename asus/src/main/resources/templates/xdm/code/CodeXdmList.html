@@ -41,16 +41,16 @@
                   </select>
                 </div>
               </div>
-              <div class="col-2">
-      						<div class="form-group">
-        						<input type="text" class="form-control" placeholder="2025-01-25" >
-      						</div>
-    					</div>
-    					<div class="col-2">
-      						<div class="form-group">
-        						<input type="text" class="form-control" placeholder="2025-02-04" >
-      						</div>
-    					</div>
+   				<div class="col-2">
+		      		<div class="form-group">
+		      			<input type="text" id="shDateStart" name="shDateStart"  placeholder="시작일" class="form-control" />
+		      		</div>
+		    	</div>
+		    	<div class="col-2">
+		      		<div class="form-group">
+		      			<input type="text" id="shDateEnd" name="shDateEnd"  placeholder="종료일" class="form-control" />
+		      		</div>
+		    	</div>
             </div>
             <div class="row">
               <div class="col-2">
@@ -124,8 +124,8 @@
 					      		<td th:text="${list.ifcdname}"></td>
 					      		<td th:text="${list.ifcdseq}">381</td>
 					      		<td><a href="javascript:void(0);" th:text="${list.ifcdcodename}" th:attr="onclick=|goForm('${list.ifcdseq}')|" >공식홈페이지</a></td>
-					     		<td></td>
-					      		<td></td>
+					     		<td th:text="${list.ifcddate}"></td>
+					      		<td th:text="${list.ifcdredate}"></td>
  							</tr>
 						</tbody>
 					</table>
@@ -159,6 +159,7 @@
 			</div>
 		</div>
 	</form>
+	 <div th:replace="~{/xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 let form = document.querySelector("form[name=formList]");
 let seq = document.querySelector("input[name=ifcdseq]");	
@@ -196,7 +197,30 @@ document.getElementById("changeRowNum").onchange = function () {
     form.action = "CodeXdmList";
     form.submit();
 }
+jQuery.datetimepicker.setLocale('ko');
 
+jQuery(function(){
+	jQuery('#shDateStart').datetimepicker({
+		format:'Y-m-d',
+		timepicker:false,
+		onShow:function(ct) {
+			this.setOptions({
+				maxDate:jQuery('#shDateEnd').val()?jQuery('#shDateEnd').val():false
+			})
+		},
+	 });
+	
+	jQuery('#shDateEnd').datetimepicker({
+		/*datepicker:false,
+		format:'H:i',*/
+		format:'Y-m-d',
+		timepicker:false,
+		onShow:function(ct) {
+			this.setOptions({
+				minDate:jQuery('#shDateStart').val()?jQuery('#shDateStart').val():false
+			})
+		},
+	});
+});
 </script>
-        <div th:replace="~{/xdm/include/footer :: footer}"></div>
 </html>

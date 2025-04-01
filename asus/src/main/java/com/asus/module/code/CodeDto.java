@@ -10,7 +10,21 @@ public class CodeDto {
 	private String ifcdcodename;
 	private String codegroup_ifcgseq;
 	private String ifcduseNy;
+	private String ifcddate;
+	private String ifcdredate;
 	
+	public String getIfcddate() {
+		return ifcddate;
+	}
+	public void setIfcddate(String ifcddate) {
+		this.ifcddate = ifcddate;
+	}
+	public String getIfcdredate() {
+		return ifcdredate;
+	}
+	public void setIfcdredate(String ifcdredate) {
+		this.ifcdredate = ifcdredate;
+	}
 	//codegroup
 	private String ifcdname;
 	private String ifcgseq;

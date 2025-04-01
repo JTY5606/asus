@@ -11,10 +11,10 @@ public class ProductController {
 	@Autowired //인터페이스
 	ProductService productService;
 	
-	@RequestMapping(value = "/xdm/product/ProductXdmList")
-	public String LoginXdmList(Model model) {
+	@RequestMapping(value = "/xdm/usr/product/ProductUsrList")
+	public String LoginUsrList(Model model) {
 		
-		return "xdm/product/ProductXdmList"; 
+		return "xdm/usr/product/ProductUsrList"; 
 		}
 
 }

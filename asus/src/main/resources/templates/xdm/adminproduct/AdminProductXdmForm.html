@@ -102,10 +102,11 @@
 	        	<div class="row">
 	        		<div class="col-3">
 	          			<div class="form-group">
-	            			<label>할인타입<code>*</code></label>
-	            			<input type="int" name="ifprtypeNy" id="ifprtypeNy" th:value="${item?.ifprtypeNy}" class="form-control" placeholder="자동생성"  />
-	            			<span id="validation12" style="color : red";></span>
-	          			</div>
+                      		<label>할인타입</label>
+                    		<select class="form-control" id="ifprtypeNy" name="ifprtypeNy">
+                      			<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.ifcdseq}" th:text="${list.ifcdcodename}" th:selected="${list.ifcdseq} == ${item?.ifprtypeNy}"></option>
+                    		</select>
+                    	</div>
 	        		</div>
 	        		<div class="col-3">
 	          			<div class="form-group">

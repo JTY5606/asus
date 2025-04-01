@@ -124,7 +124,6 @@
 document.getElementById("login").onclick = function(){
 	if(validation()){
 		loginLogic();
-	alert("asd");
 	}
 };
 
@@ -156,28 +155,6 @@ function validation(){
 	return whether ;
 }
 
-// document.getElementById("login").onclick = function(){
-// 	if(document.getElementById("id").value == null || document.getElementById("id").value == ""){
-// 		document.getElementById("id").className = "form-control is-invalid";
-// 		document.getElementById("validation01").innerText ="아이디를 입력해주세요";
-// 		document.getElementById("id").focus();
-// 		whether = false;
-// 	}else{
-// 		document.getElementById("id").className = "form-control";
-// 		document.getElementById("validation01").innerText ="";
-// 	}
-	
-// 	if(document.getElementById("password").value == null || document.getElementById("password").value == ""){
-// 		document.getElementById("password").className = "form-control is-invalid";
-// 		document.getElementById("validation02").innerText ="비밀번호를 입력해주세요";
-// 		document.getElementById("password").focus();
-// 		whether = false;
-// 	}else{
-// 		document.getElementById("password").className = "form-control";
-// 		document.getElementById("validation02").innerText ="";
-// 	}
-	
-// }
 
 
 function loginLogic (){

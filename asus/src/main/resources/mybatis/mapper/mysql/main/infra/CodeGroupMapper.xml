@@ -45,7 +45,7 @@ INSERT INTO codegroup(
 	0,
 	#{ifcgname},
 	1,
-	now(),
+	now()
 )
 </insert>
 

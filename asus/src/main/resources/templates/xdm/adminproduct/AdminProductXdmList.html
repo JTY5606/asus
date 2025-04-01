@@ -133,7 +133,7 @@
 	                  		<td th:text="${list.ifprprice}"></td>
 	                  		<td th:text="${list.ifprdiscout}"></td>
 	                  		<td th:text="${list.ifprimfo}"></td>
-	                  		<td th:text="${list.ifprtypeNy}"></td>
+	                  		<td th:text="${@codeService.selectOneCachedCode(list.ifprtypeNy)}"></td>
 	                  		<td th:text="${list.ifprdelNy}"></td>
 	                  		<td th:text="${list.ifpruseNy}"></td>
 	                  		<td th:text="${list.ifprdate}"></td>

@@ -31,12 +31,13 @@
           			</div>
         		</div>
         		<div class="col-3">
-          			<div class="form-group">
-            			<label for="usergender">성별<code>*</code></label>
-            			<input type="text" name="usergender" id="usergender" th:value="${item?.usergender}" class="form-control" placeholder="한글,영대소문자,숫자" />
-            			<span id="validation01" style="color : red";></span>
-          			</div>
-        		</div>
+	          			<div class="form-group">
+                      		<label>할인타입</label>
+                    		<select class="form-control" id="usergender" name="usergender">
+                      			<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.ifcdseq}" th:text="${list.ifcdcodename}" th:selected="${list.ifcdseq} == ${item?.usergender}"></option>
+                    		</select>
+                    	</div>
+	        		</div>
       		</div> 
       		<div class="row">
         		<div class="col-3">
@@ -68,7 +69,7 @@
         		<div class="col-3">
           			<div class="form-group">
             			<label>핸드폰번호<code>*</code></label>
-            			<input type="text" name="userphonenumber" id="userphonenumber" th:value="${item?.userphonenumber}" class="form-control" placeholder="ex>01012341234"  />
+            			<input type="text" name="userphoneNumber" id="userphoneNumber" th:value="${item?.userphoneNumber}" class="form-control" placeholder="ex>01012341234"  />
           			</div>
         		</div>
         		<div class="col-3">
@@ -132,7 +133,7 @@
       	</div>
     </div>
 </div>	   
-        
+  <div th:replace="~{/xdm/include/footer :: footer}"></div>       
  <script type="text/javascript">
 
 	let whether = true;
@@ -171,4 +172,3 @@ document.getElementById("btnSubmit").onclick = function () {
 
 </script>
         
- <div th:replace="~{/xdm/include/footer :: footer}"></div>
