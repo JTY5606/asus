@@ -108,90 +108,88 @@
         			<p></p>
       			</div>
       			<!-- form -->
-      			<form class="needs-validation" novalidate>
+      			<form id="formList" name="formList" method="post" class="needs-validation" novalidate>
         			<div class="row g-3">
           				<!-- col -->
           				<div class="col">
             				<!-- input -->
-            				<label for="formSignupfname" class="form-label visually-hidden">이름</label>
-            				<input type="text" maxlength="20"  class="form-control" id="formSignupfname" placeholder="이름" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden">이름</label>
+            				<input id="username" name="username" type="text" maxlength="20"  class="form-control"  placeholder="이름" required />
+            				<div class="invalid-feedback" id="val1">다시 입력해주세요</div>
           				</div>
           				<div class="col" >
             				<div class="form-check form-check-inline">
-              					<input class="form-check-input" type="radio" name="inlineRadioOptions"
-                				id="inlineRadio1" value="option1" checked />
+              					<input class="form-check-input" type="radio" name="usergender"
+                				id="usergender" value="1" checked />
               					<label class="form-check-label" for="inlineRadio1">남</label>
             				</div>
             				<!-- input -->
             				<div class="form-check form-check-inline">
-              					<input class="form-check-input" type="radio" name="inlineRadioOptions"
-                				id="inlineRadio2" value="option2" />
+              					<input class="form-check-input" type="radio" name="usergender"
+                				id="usergender" value="2" />
               					<label class="form-check-label" for="inlineRadio2">여</label>
             				</div>
             				<!-- input -->
           				</div>
           				<div class="col-12">
             				<!-- input -->
-            				<label for="formSignuplname" class="form-label visually-hidden">ID</label>
-            				<input type="text" maxlength="15" class="form-control" id="formSignuplname" placeholder="ID" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden">ID</label>
+            				<input id="userid" name="userid" type="text" maxlength="15" class="form-control"  placeholder="ID"  />
+            				<div class="invalid-feedback" id="val2">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
             				<!-- input -->
-            				<label for="formSignupEmail" class="form-label visually-hidden">Email address</label>
-            				<input type="email" maxlength="40" class="form-control" id="formSignupEmail" placeholder="Email" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden">Email address</label>
+            				<input id="useremail" name="useremail" type="email" maxlength="40" class="form-control"  placeholder="Email"  />
+            				<div class="invalid-feedback" id="val3">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
             				<div class="password-field position-relative">
-              					<label for="formSignupPassword" class="form-label visually-hidden">Password</label>
+              					<label  class="form-label visually-hidden">Password</label>
               					<div class="password-field position-relative">
-                					<input type="password" maxlength="20"class="form-control fakePassword" id="formSignupPassword"
-                  					placeholder="비밀번호 확인" required />
+                					<input id="userpassword" name="userpassword" type="password" maxlength="20"class="form-control fakePassword" placeholder="비밀번호"  />
                 					<span><i class="bi bi-eye-slash passwordToggler"></i></span>
-                					<div class="invalid-feedback">12자 이상 입력해주세요</div>
+                					<div class="invalid-feedback" id="val4">12자 이상 입력해주세요</div>
               					</div>
             				</div>
           				</div>
           				<div class="col-12">
             				<div class="password-field position-relative">
-              					<label for="formSignupPassword" class="form-label visually-hidden">Password</label>
+              					<label  class="form-label visually-hidden">Password</label>
               					<div class="password-field position-relative">
-                					<input type="password" maxlength="20" class="form-control fakePassword" id="formSignupPassword"
-                  					placeholder="비밀번호 확인" required />
+                					<input id="userpassword1" name="userpassword1" type="password" maxlength="20" class="form-control" placeholder="비밀번호 확인"  />
                 					<span><i class="bi bi-eye-slash passwordToggler"></i></span>
-                				<div class="invalid-feedback">12자 이상 입력해주세요</div>
+                				<div class="invalid-feedback" id="val10">12자 이상 입력해주세요</div>
               					</div>
             				</div>
           				</div>
           				<div class="col">
-            				<label for="formSignupfname" class="form-label visually-hidden"></label>
-            				<input type="text" maxlength="8" class="form-control" id="formSignupfname" placeholder="생년월일 ex)19920228" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden"></label>
+            				<input id="userdate" name="userdate" type="text" maxlength="8" class="form-control"  placeholder="생년월일 ex)19920228"  />
+            				<div class="invalid-feedback" id="val5">다시 입력해주세요</div>
           				</div>
           				<div class="col">
-            				<label for="formSignupfname" class="form-label visually-hidden"></label>
-            				<input type="text" maxlength="11" class="form-control" id="formSignupfname" placeholder="핸드폰 번호(-빼고입력)" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden"></label>
+            				<input id="userphoneNumber" name="userphoneNumber" type="text" maxlength="11" class="form-control"  placeholder="핸드폰 번호(-빼고입력)"  />
+            				<div class="invalid-feedback" id="val6">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
-            				<label for="formSignupfname" class="form-label visually-hidden"></label>
-            				<input type="text" maxlength="30" class="form-control" id="formSignupfname" placeholder="주소입력" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden"></label>
+            				<input id="userfirstaddress" name="userfirstaddress" type="text" maxlength="30" class="form-control"  placeholder="주소입력"  />
+            				<div class="invalid-feedback" id="val7">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
-            				<label for="formSignupfname" class="form-label visually-hidden"></label>
-            				<input type="text" maxlength="30" class="form-control" id="formSignupfname" placeholder="상세주소" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label  class="form-label visually-hidden"></label>
+            				<input id="usersecondaddress" name="usersecondaddress" type="text" maxlength="30" class="form-control"  placeholder="상세주소"  />
+            				<div class="invalid-feedback" id="val8">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
-            				<label for="formSignupfname" class="form-label visually-hidden"></label>
-            				<input type="text" maxlength="30" class="form-control" id="formSignupfname" placeholder="우편번호" required />
-            				<div class="invalid-feedback">다시 입력해주세요</div>
+            				<label class="form-label visually-hidden"></label>
+            				<input id="userthirdaddress" name="userthirdaddress" type="text" maxlength="30" class="form-control"  placeholder="우편번호"  />
+            				<span id="val9"></span>
           				</div>
           				<!-- btn -->
-          				<div class="col-12 d-grid"><button type="submit" class="btn btn-primary">가입</button></div>
+          				<div class="col-12 d-grid"><button type="button" id="btnSubmit" class="btn btn-primary">가입</button></div>
 
           				<!-- text -->
               			<p>
@@ -213,7 +211,7 @@
 
   <!-- Javascript-->
   <!-- Libs JS -->
-  <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script> -->
+  <script src="/xdm/template/adminui/assets/jquery/jquery-3.7.1.min.js"></script>
   <script src="/xdm/template/freshcart-14.0/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/xdm/template/freshcart-14.0/assets/libs/simplebar/dist/simplebar.min.js"></script>
 
@@ -225,6 +223,139 @@
   <script src="/xdm/template/freshcart-14.0/assets/js/vendors/validation.js"></script>
 
 <script type="text/javascript">
+let form = document.querySelector("form[name=formList]");
+
+
+function validation(){
+	let whether = true;
+	let username = document.getElementById("username");
+	let userid = document.getElementById("userid");
+	let useremail = document.getElementById("useremail");
+	let userpassword = document.getElementById("userpassword");
+	let userdate = document.getElementById("userdate");
+	let userphoneNumber = document.getElementById("userphoneNumber");
+	let userfirstaddress = document.getElementById("userfirstaddress");
+	let usersecondaddress = document.getElementById("usersecondaddress");
+	let userthirdaddress = document.getElementById("userthirdaddress");
+	
+	if(username.value == null || username.value == "" ){
+		username.className = "form-control is-invalid";
+		document.getElementById("val1").innerText ="이름을 입력해주세요";
+		username.focus();
+		whether = false;
+	}else{
+		username.className = "form-control";
+		document.getElementById("val1").innerText ="";
+	}
+	
+	if(userid.value == null || userid.value == "" ){
+		userid.className = "form-control is-invalid";
+		document.getElementById("val2").innerText ="다시 입력해주세요";
+		userid.focus();
+		whether = false;
+	}else{
+		userid.className = "form-control";
+		document.getElementById("val2").innerText ="";
+	}
+	
+	if(useremail.value == null || useremail.value == "" ){
+		useremail.className = "form-control is-invalid";
+		document.getElementById("val3").innerText ="다시 입력해주세요";
+		useremail.focus();
+		whether = false;
+	}else{
+		useremail.className = "form-control";
+		document.getElementById("val3").innerText ="";
+	}
+	
+	if(userpassword.value == null || userpassword.value == "" ){
+		userpassword.className = "form-control is-invalid";
+		document.getElementById("val4").innerText ="다시 입력해주세요";
+		userpassword.focus();
+		whether = false;
+	}else{
+		userpassword.className = "form-control";
+		document.getElementById("val4").innerText ="";
+	}
+	
+	if(userdate.value == null || userdate.value == "" ){
+		userdate.className = "form-control is-invalid";
+		document.getElementById("val5").innerText ="다시 입력해주세요";
+		userdate.focus();
+		whether = false;
+	}else{
+		userdate.className = "form-control";
+		document.getElementById("val5").innerText ="";
+	}
+	if(userphoneNumber.value == null || userphoneNumber.value == "" ){
+		userphoneNumber.className = "form-control is-invalid";
+		document.getElementById("val6").innerText ="다시 입력해주세요";
+		userphoneNumber.focus();
+		whether = false;
+	}else{
+		userphoneNumber.className = "form-control";
+		document.getElementById("val6").innerText ="";
+	}
+	
+	if(userfirstaddress.value == null || userfirstaddress.value == "" ){
+		userfirstaddress.className = "form-control is-invalid";
+		document.getElementById("val7").innerText ="이름을 입력해주세요";
+		userfirstaddress.focus();
+		whether = false;
+	}else{
+		userfirstaddress.className = "form-control";
+		document.getElementById("val7").innerText ="";
+	}
+	
+	if(usersecondaddress.value == null || usersecondaddress.value == "" ){
+		usersecondaddress.className = "form-control is-invalid";
+		document.getElementById("val8").innerText ="다시 입력해주세요";
+		usersecondaddress.focus();
+		whether = false;
+	}else{
+		usersecondaddress.className = "form-control";
+		document.getElementById("val8").innerText ="";
+	}
+	
+	if(userthirdaddress.value == null || userthirdaddress.value == "" ){
+		userthirdaddress.className = "form-control is-invalid";
+		document.getElementById("val9").innerText ="다시 입력해주세요";
+		userthirdaddress.focus();
+		whether = false;
+	}else{
+		userthirdaddress.className = "form-control";
+		document.getElementById("val9").innerText ="";
+	}
+	
+	if(userpassword1.value == null || userpassword1.value == "" ){
+		userpassword1.className = "form-control is-invalid";
+		document.getElementById("val10").innerText ="다시 입력해주세요";
+		userpassword1.focus();
+		whether = false;
+	}else{
+		userpassword1.className = "form-control";
+		document.getElementById("val10").innerText ="";
+	}
+	return whether;
+};
+
+document.getElementById("btnSubmit").onclick = function(){
+	if(validation() == true){
+		form.action = "UserUsrInst";
+		form.submit();
+	}else{
+		return false;
+	}
+};
+// document.getElementById("btnSubmit").onclick = function(){
+// 	let form = document.getElementById("form");
+// 	if(validation() == true){
+		
+		
+// 		form.action = "xdm/user/UserXdmInst";
+// 		form.submit();
+// 	} return false;
+// }
 
 </script>
 </html>

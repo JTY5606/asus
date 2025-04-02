@@ -72,17 +72,24 @@ public class UserController {
 			model.addAttribute("item", userService.selectOne(vo));
 //			model.addAttribute("list", codeService.selectList(cvo));
 		}
-		System.out.println("update");
 		return "xdm/user/UserXdmForm";
 	}
 	
-	@RequestMapping(value = "/xdm/user/UserXdmInst")
-	public String UserXdmInst(UserDto userDto) {
+	@RequestMapping(value = "/xdm/usr/signup/UserUsrInst")
+	public String UserUsrInst(UserDto userDto) {
 		
 		userService.insert(userDto);
-		return "redirect:/xdm/user/UserXdmList"; 
+		return "xdm/usr/index/IndexUsrList"; 
 		}
 	
+	
+	
+	@RequestMapping(value = "/xdm/user/UserXdmView")
+	public String UserXdmView(Model model,UserVo vo) {
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/user/UserXdmView"; 
+		}
 //	@RequestMapping(value = "/signinUsrForm")
 //	public String signinUsrForm(UserVo vo,HttpSession httpSession) {
 		

@@ -105,6 +105,7 @@
                       		<label>할인타입</label>
                     		<select class="form-control" id="ifprtypeNy" name="ifprtypeNy">
                       			<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.ifcdseq}" th:text="${list.ifcdcodename}" th:selected="${list.ifcdseq} == ${item?.ifprtypeNy}"></option>
+                      			<span id="validation12" style="color : red";></span>
                     		</select>
                     	</div>
 	        		</div>
@@ -152,6 +153,8 @@
       	</div>
     </div>
 </div>	
+</body>
+</html>
 <div th:replace="~{/xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 
@@ -255,6 +258,15 @@ function validation(){
 		ifprproductNumber.className = "form-control";
 		document.getElementById("validation10").innerText ="";
 	}
+	if(ifprtypeNy.value == null ||ifprtypeNy.value == ""){
+		ifprtypeNy.className = "form-control is-invalid";
+		document.getElementById("validation12").innerText ="제품번호를 입력해주세요";
+		ifprtypeNy.focus();
+		whether = false;
+	}else{
+		ifprtypeNy.className = "form-control";
+		document.getElementById("validation12").innerText ="";
+	}
 	
 	
 	return whether ;
@@ -264,7 +276,7 @@ document.getElementById("btnSubmit").onclick = function(){
 	let form = document.getElementById("form");
 	let seq = document.querySelector("input[name=ifprseq]");		
 	if(seq.value == "0" || seq.value == "") {
-//			if(validationInst() == false) return false;
+			if(validation() == false) return false;
 //			$("#exampleModal").modal("show");
 		form.action = "/xdm/adminproduct/AdminProductXdmInst";
 		form.submit();
@@ -290,5 +302,3 @@ document.getElementById("btnModalUelete").onclick = function () {
 }
 </script>
 
-</body>
-</html>

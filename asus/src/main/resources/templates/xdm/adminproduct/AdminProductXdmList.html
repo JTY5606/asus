@@ -9,7 +9,7 @@
 <div class="main-content">
 	<div class="card">
       	<div class="card-header">
-        	<h2>CodeGroup</h2z>
+        	<h2>Product</h2z>
       	</div>
       	<div class="card-body">
         	<div class="row">
@@ -98,7 +98,7 @@
             	<table class="table text-center">
               		<thead>
                 		<tr>
-                  			<th scope="col" ><input class="form-check-input" type="checkbox" id="defaultCheck1"></th>
+                  			<th scope="col" ><input class="form-check-input" type="checkbox" id="checkall" team="1"></th>
                   			<th scope="col">#</th>
 			                <th scope="col">seq</th>
 			                <th scope="col">카테고리</th>
@@ -112,7 +112,6 @@
 <!-- 			                <th scope="col">제품번호</th> -->
 <!-- 			                <th scope="col">재고</th> -->
 			                <th scope="col">할인타입</th>
-			                <th scope="col">삭제여부</th>
 			                <th scope="col">사용여부</th>
 			                <th scope="col">등록일</th>
 			                <th scope="col">수정일</th>
@@ -125,16 +124,15 @@
                 			</td>
                 		</tr>
 	                		<tr th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
-			                <td><input class="form-check-input" type="checkbox" id="defaultCheck1"></td>
+			                <td><input class="form-check-input" type="checkbox" id="checkbox" name="checkbox" team="1"></td>
 			                <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 			                <td th:text="${list.ifprseq}"></td>
 			                <td th:text="${list.ifprcategory}"></td>
-	                  		<td><a <a href="javascript:void(0);" th:text="${list.ifprtitle}" th:attr="onclick=|goForm('${list.ifprseq}')|">></a></td>
+	                  		<td><a href="javascript:void(0);" th:text="${list.ifprtitle}" th:attr="onclick=|goForm('${list.ifprseq}')|"></a></td>
 	                  		<td th:text="${list.ifprprice}"></td>
 	                  		<td th:text="${list.ifprdiscout}"></td>
 	                  		<td th:text="${list.ifprimfo}"></td>
 	                  		<td th:text="${@codeService.selectOneCachedCode(list.ifprtypeNy)}"></td>
-	                  		<td th:text="${list.ifprdelNy}"></td>
 	                  		<td th:text="${list.ifpruseNy}"></td>
 	                  		<td th:text="${list.ifprdate}"></td>
 	                  		<td th:text="${list.ifprredate}"></td>
@@ -165,11 +163,31 @@
             	<div class="row">
               		<div class="col-12">
 						<button type="button" id="btnForm" class="btn btn-primary btn-sm btn_custom"><i class="fas fa-plus fa-lg">등록</i></button>
+						<button type="button" id="btnUelete" class="btn btn-danger btn-sm btn_custom" name="" ><i class="far fa-trash-alt fa-lg"></i></button>						
               		</div>
               </div>
           </div>
 	</div>
 </form>
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" date-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+        	<div class="modal-header">
+ 	 			<h5 class="modal-title" id="modalConfirmTitle"></h5>
+          		<button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          			<span aria-hidden="true">&times;</span>
+          		</button>
+        	</div>
+        	<div class="modal-body">
+          		<span id="modalConfirmBody"></span>
+        	</div>
+        	<div class="modal-footer bg-whitesmoke br">
+<!--         		<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalDelete"><i class="fa-solid fa-x fa-lg">영구삭제</i></button> -->
+				<button type="button" class="btn btn-danger btn-sm btn_custom" name="" id="btnModalUelete"><i class="far fa-trash-alt fa-lg"></i></button>
+        	</div>
+      	</div>
+    </div>
+</div>	
 <div th:replace="~{/xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 
@@ -242,6 +260,23 @@ jQuery(function(){
 		},
 	});
 });
+
+$('#checkall').on('click', function() {
+	  if ($('#checkall').is(':checked')){
+	    $('input[team=1]').prop('checked', true);
+	  } else {
+	    $('input[team=1]').prop('checked', false);
+	  }
+	});
+	
+document.getElementById("btnUelete").onclick = function () {
+	$("#exampleModal").modal("show");      	
+	document.querySelector("#modalConfirmTitle").textContent = "확 인";
+	document.querySelector("#modalConfirmBody").textContent = "해당 데이터를 삭제하시겠습니까 ?";
+	document.querySelector("#btnModalUelete").style.display = '';
+		
+	}
+
 </script>
 
 
