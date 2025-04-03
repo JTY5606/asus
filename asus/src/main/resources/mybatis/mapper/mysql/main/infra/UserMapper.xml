@@ -41,6 +41,18 @@ WHERE 1=1
 	AND userpassword =#{userpassword}
 </select>
 
+<select id="selectSigup" resultMap="resultMapObj">
+SELECT
+	userseq,
+	userid,
+	useremail
+FROM
+	user
+WHERE 1=1
+	AND userid = #{userid}
+	AND useremail =#{useremail}
+</select>
+
 <select id="selectOneCount" resultType="Integer">
 	SELECT COUNT(*)
 FROM user a

@@ -62,9 +62,27 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value = "/xdm/user/UserXdmForm")
-	public String codeGroupXdmForm(@ModelAttribute("vo") UserVo vo, Model model) throws Exception{
+	@ResponseBody
+	@RequestMapping(value = "/signupUsrProc")
+	public Map<String, Object> signupUsrProc(UserDto userDto,HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
+		UserDto che = userService.selectSigup(userDto);
+		
+		if(che != null) {
+			
+			httpSession.setAttribute("sessIdXdm", che.getUserid());
+			httpSession.setAttribute("sessEmailXdm", che.getUseremail());
+			returnMap.put("rt", "success");
+		}else {
+			returnMap.put("rt", false);
+		}
+		return returnMap;
+		
+	}
+	@RequestMapping(value = "/xdm/user/UserXdmForm")
+	public String userXdmForm(@ModelAttribute("vo") UserVo vo, Model model) throws Exception{
+		System.out.println(vo.getUserseq());
 		if (vo.getUserseq().equals("0") || vo.getUserseq().equals("")) {
 //			insert mode
 		} else {

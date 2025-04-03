@@ -28,6 +28,11 @@ public class UserService {
 	public UserDto selectSigin(UserDto userDto) {
 		return userDao.selectSigin(userDto);
 	}
+	
+	public UserDto selectSigup(UserDto userDto) {
+		return userDao.selectSigup(userDto);
+	}
+	
 	public int selectOneCount(UserVo vo) {
 		return userDao.selectOneCount(vo);
 	}

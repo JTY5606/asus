@@ -170,7 +170,7 @@
           				</div>
           				<div class="col">
             				<label  class="form-label visually-hidden"></label>
-            				<input id="userphoneNumber" name="userphoneNumber" type="text" maxlength="11" class="form-control"  placeholder="핸드폰 번호(-빼고입력)"  />
+            				<input id="userphoneNumber" name="userphoneNumber" type="text" maxlength="14" class="form-control"  placeholder="핸드폰 번호(-빼고입력)"  />
             				<div class="invalid-feedback" id="val6">다시 입력해주세요</div>
           				</div>
           				<div class="col-12">
@@ -208,7 +208,24 @@
 </section>
 </main>
 </body>
-
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAlertTitle">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span id="modalAlertBody"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Javascript-->
   <!-- Libs JS -->
   <script src="/xdm/template/adminui/assets/jquery/jquery-3.7.1.min.js"></script>
@@ -225,6 +242,11 @@
 <script type="text/javascript">
 let form = document.querySelector("form[name=formList]");
 
+document.getElementById("btnSubmit").onclick = function(){
+	if(validation()){
+		loginLogic();
+	}
+};
 
 function validation(){
 	let whether = true;
@@ -357,5 +379,30 @@ document.getElementById("btnSubmit").onclick = function(){
 // 	} return false;
 // }
 
+function loginLogic (){
+	if(validation() == false) return false;
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/signupUsrProc"
+		
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "userid" : $("#userid").val(), "useremail" : $("#useremail").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/xdm/usr/index/IndexUsrList";
+			} else if(response.rt == false){
+		 		document.getElementById("modalAlertTitle").innerText = "확 인";
+		 		document.getElementById("modalAlertBody").innerText = "id 또는 email을 다시입력해주세요";
+		 		$("#exampleModal").modal("show");	
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+}
 </script>
 </html>

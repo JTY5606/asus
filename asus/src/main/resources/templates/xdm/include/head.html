@@ -279,17 +279,17 @@
 <!--     						<li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li> -->
 <!--   						</ul> -->
 <!-- 					</li> -->
-					<li class="dropdown">
-  						<a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>회원관리</span></a>
+					<li class="dropdown " id="drop">
+  						<a href="#" class="nav-link has-dropdown active" ><i class="fas fa-fire"></i><span>회원관리</span></a>
   						<ul class="dropdown-menu">
-    						<li ><a class="nav-link" href="/xdm/user/UserXdmList">회원정보</a></li>
+    						<li class="" id="drop1"><a class="nav-link" href="/xdm/user/UserXdmList">회원정보</a></li>
 <!--     						<li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li> -->
   						</ul>
 					</li>
-					<li class="dropdown">
+					<li class="dropdown" id="admin">
   						<a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>서비스관리</span></a>
   						<ul class="dropdown-menu">
-    						<li ><a class="nav-link" href="/xdm/adminproduct/AdminProductXdmList">상품관리</a></li>
+    						<li class="" id="admin1"><a class="nav-link" href="/xdm/adminproduct/AdminProductXdmList">상품관리</a></li>
 <!--     						<li><a class="nav-link" href="index.html">상품리스트</a></li> -->
   						</ul>
 					</li>
@@ -300,11 +300,11 @@
 <!--     						<li><a class="nav-link" href="2_codegroub_basedate.html">코드그룹</a></li> -->
 <!--   						</ul> -->
 <!-- 					</li> -->
-					<li class="dropdown">
+					<li class="dropdown" id="dropcode">
   						<a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>시스템관리</span></a>
   						<ul class="dropdown-menu">
-    						<li><a class="nav-link" href="/xdm/code/CodeXdmList">코드관리</a></li>
-    						<li ><a class="nav-link " href="/xdm/codegroup/CodeGroupXdmList" >코드그룹관리</a></li>
+    						<li class="" id="dropcode1"><a class="nav-link" href="/xdm/code/CodeXdmList">코드관리</a></li>
+    						<li calss="" id="dropcodegorup"><a class="nav-link " href="/xdm/codegroup/CodeGroupXdmList" >코드그룹관리</a></li>
   						</ul>
 					</li>
 					<li class="dropdown">
@@ -346,6 +346,32 @@ document.getElementById("btnSignout").onclick = function(){
 		}
 	});
 };
+
+document.addEventListener("DOMContentLoaded", function () {
+	 let pathName = window.location.pathname;
+	 if(pathName.startsWith("/xdm/user")){
+		document.getElementById("drop").className="active"
+		document.getElementById("drop1").className="active"
+	 }
+	 if(pathName.startsWith("/xdm/code/CodeXdm")){
+		document.getElementById("dropcode").className="active"
+		document.getElementById("dropcode1").className="active"
+	 }
+	 if(pathName.startsWith("/xdm/codegroup/CodeGroupXdm")){
+		document.getElementById("dropcode").className="active"
+		document.getElementById("dropcodegorup").className="active"
+		 }
+	 if(pathName.startsWith("/xdm/adminproduct/AdminProductXdm")){
+		 document.getElementById("admin").className="active"
+		document.getElementById("admin1").className="active"
+		 }
+});
+// function changeActive(id){
+// 	var id = document.getElementById("drop");
+// 	id.addclass("active");
+// 	var id = $('#'+id);
+// 	id.addclass("active")
+// }
 </script>
     </th:block>
  </html>
