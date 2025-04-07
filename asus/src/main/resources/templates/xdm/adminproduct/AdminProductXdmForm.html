@@ -26,10 +26,12 @@
 	        		</div>
 	        		<div class="col-3">
 	          			<div class="form-group">
-	            			<label>카테고리<code>*</code></label>
-	            			<input type="text" id="ifprcategory" name="ifprcategory"  th:value="${item?.ifprcategory}" class="form-control" placeholder="자동생성"  />
-	            			<span id="validation02" style="color:red"></span>
-	          			</div>
+                      		<label>카테고리</label>
+                    		<select class="form-control" id="ifprcategory" name="ifprcategory">
+                      			<option th:each="list : ${@codeService.selectListCachedCode(5)}" th:value="${list.ifcdseq}" th:text="${list.ifcdcodename}" th:selected="${list.ifcdseq} == ${item?.ifprcategory}"></option>
+                      			<span id="validation02" style="color : red";></span>
+                    		</select>
+                    	</div>
 	        		</div>
 	        		<div class="col-3">
 	          			<div class="form-group">

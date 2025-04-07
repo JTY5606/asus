@@ -25,6 +25,12 @@ public class AdminProductController {
 		return "xdm/adminproduct/AdminProductXdmList"; 
 		}
 	
+	@RequestMapping(value = "/xdm/usr/productlist/ProductListUsrList")
+	public String ProuctListUsrList() {
+		
+		return "xdm/usr/productlist/ProductListUsrList"; 
+		}
+	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")
 	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model) throws Exception{
 		if (vo.getIfprseq().equals("0") || vo.getIfprseq().equals("")) {

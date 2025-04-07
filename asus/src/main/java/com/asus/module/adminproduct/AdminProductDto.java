@@ -3,7 +3,7 @@ package com.asus.module.adminproduct;
 public class AdminProductDto {
 	
 	private String ifprseq;
-	private String ifprcategory;
+	private Integer ifprcategory;
 	private String ifprtitle;
 	private String ifprprice;
 	private String ifprdiscout;
@@ -38,10 +38,10 @@ public class AdminProductDto {
 	public void setIfprseq(String ifprseq) {
 		this.ifprseq = ifprseq;
 	}
-	public String getIfprcategory() {
+	public Integer getIfprcategory() {
 		return ifprcategory;
 	}
-	public void setIfprcategory(String ifprcategory) {
+	public void setIfprcategory(Integer ifprcategory) {
 		this.ifprcategory = ifprcategory;
 	}
 	public String getIfprtitle() {
