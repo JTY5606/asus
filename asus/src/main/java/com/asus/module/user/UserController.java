@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,8 +17,20 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class UserController {
 	
+	
+	
 	@Autowired
 	UserService userService;
+	
+	public String encodeBcrypt(String planeText, int strength) {
+		  return new BCryptPasswordEncoder(strength).encode(planeText);
+	}
+
+			
+	public boolean matchesBcrypt(String planeText, String hashValue, int strength) {
+	  BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(strength);
+	  return passwordEncoder.matches(planeText, hashValue);
+	}
 	
 	@RequestMapping(value = "/xdm/user/UserXdmList")
 	public String UserXdmList(Model model,@ModelAttribute("vo")UserVo vo) {
@@ -37,11 +51,16 @@ public class UserController {
 		UserDto che = userService.selectSigin(userDto);
 		
 		if(che != null) {
+			if(matchesBcrypt(userDto.getUserpassword(), che.getUserpassword(), 10)) {
+				
 			
 			httpSession.setAttribute("sessSeqXdm", che.getUserseq());
 			httpSession.setAttribute("sessIdXdm", che.getUserid());
 			httpSession.setAttribute("sessNameXdm", che.getUsername());
 			returnMap.put("rt", "success");
+			}else {
+				returnMap.put("rt", false);
+			}
 		}else {
 			returnMap.put("rt", false);
 		}
@@ -67,22 +86,24 @@ public class UserController {
 	public Map<String, Object> signupUsrProc(UserDto userDto,HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		UserDto che = userService.selectSigup(userDto);
-		
-		if(che != null) {
+		int checkid = userService.selectTwoCount(userDto);
+		if(checkid == 0) {
+			userDto.setUserpassword(encodeBcrypt(userDto.getUserpassword(),10));
 			
-			httpSession.setAttribute("sessIdXdm", che.getUserid());
-			httpSession.setAttribute("sessEmailXdm", che.getUseremail());
-			returnMap.put("rt", "success");
-		}else {
-			returnMap.put("rt", false);
+			int signup = userService.insert(userDto);
+			if(signup == 1) {
+				returnMap.put("rt", "success");
+			}else {
+				returnMap.put("rt", "fail");
+			}
+		}else{
+			returnMap.put("rt", "fail_id");
 		}
-		return returnMap;
+	return returnMap;
 		
 	}
 	@RequestMapping(value = "/xdm/user/UserXdmForm")
 	public String userXdmForm(@ModelAttribute("vo") UserVo vo, Model model) throws Exception{
-		System.out.println(vo.getUserseq());
 		if (vo.getUserseq().equals("0") || vo.getUserseq().equals("")) {
 //			insert mode
 		} else {
@@ -93,12 +114,14 @@ public class UserController {
 		return "xdm/user/UserXdmForm";
 	}
 	
-	@RequestMapping(value = "/xdm/usr/signup/UserUsrInst")
-	public String UserUsrInst(UserDto userDto) {
-		
-		userService.insert(userDto);
-		return "xdm/usr/index/IndexUsrList"; 
-		}
+//	@RequestMapping(value = "/xdm/usr/signup/UserUsrInst")
+//	public String UserUsrInst(UserDto userDto) {
+//		
+//		userDto.setUserpassword(encodeBcrypt(userDto.getUserpassword(),10));
+//		
+//		userService.insert(userDto);
+//		return "xdm/usr/index/IndexUsrList"; 
+//		}
 	
 	
 	
@@ -132,4 +155,83 @@ public class UserController {
 //			return "signinUsrForm";
 //		}
 //	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/MyPageUsrList")
+	public String MyPageUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession,UserDto userDto) {
+		//로그인하고 seq를 불러오는 함수
+		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
+		
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/usr/mypage/MyPageUsrList";
+	}
+	@RequestMapping(value = "/xdm/usr/mypage/PasswordChageUsrList")
+	public String PasswordChageUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+		//로그인하고 seq를 불러오는 함수
+		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/usr/mypage/PasswordChageUsrList";
+	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/IdDeleteUsrList")
+	public String IdDeleteUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+		//로그인하고 seq를 불러오는 함수
+		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/usr/mypage/IdDeleteUsrList";
+	}
+	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeUsrList")
+	public String AddressChangeUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+		//로그인하고 seq를 불러오는 함수
+		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/usr/mypage/AddressChangeUsrList";
+	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeCopyUsrList")
+	public String AddressChangeCopyUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+		//로그인하고 seq를 불러오는 함수
+		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
+		
+		model.addAttribute("item", userService.selectOne(vo));
+		return "xdm/usr/mypage/AddressChangeCopyUsrList";
+	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/MyPageChangeUpdt")
+	public String MyPageChangeUpdt(UserDto userDto) {
+		
+		userService.update(userDto);
+		return "redirect:/xdm/usr/mypage/MyPageUsrList";
+	}
+	
+	//비밀번호 변경
+	@ResponseBody
+	@RequestMapping(value = "/xdm/usr/mypage/PasswordUpdt")
+	public Map<String, Object> PasswordUpdt(UserDto userDto,@RequestParam(value="usernewpassword") String usernewpassword) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		System.out.println(userDto.getUserseq());
+		System.out.println(usernewpassword);
+		UserDto dto =userService.passwordcheck(userDto);
+		if(dto == null) {
+			returnMap.put("rt", "fail");
+		}else {
+			//입력한 비밀번호와 dto에 있는 비밀번호가 맞는지 확인
+			if(matchesBcrypt(userDto.getUserpassword(), dto.getUserpassword(), 10)) {
+				userDto.setUserpassword(encodeBcrypt(usernewpassword, 10));
+				int suc =userService.updatepassword(userDto);
+				if(suc == 1) {
+					returnMap.put("rt","success");
+				}else {
+					returnMap.put("rt","fail");
+				}
+			}else {
+				returnMap.put("rt", "fail_pwd");
+			}
+		}
+		return returnMap;
+		
+	}
 }

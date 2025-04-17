@@ -13,11 +13,40 @@ public class UserDto {
 	private String userfirstaddress;
 	private String usersecondaddress;
 	private String userthirdaddress;
+	private String userfourthaddress;
+	private String userfifthaddress;
+	private Double userlatitude;
+	private Double userhardness;
 	private Integer userdelNy;
 	private Integer useruseNy;
 	private String userdb;
 	private String userredb;
 	
+	
+	public Double getUserlatitude() {
+		return userlatitude;
+	}
+	public void setUserlatitude(Double userlatitude) {
+		this.userlatitude = userlatitude;
+	}
+	public Double getUserhardness() {
+		return userhardness;
+	}
+	public void setUserhardness(Double userhardness) {
+		this.userhardness = userhardness;
+	}
+	public String getUserfourthaddress() {
+		return userfourthaddress;
+	}
+	public void setUserfourthaddress(String userfourthaddress) {
+		this.userfourthaddress = userfourthaddress;
+	}
+	public String getUserfifthaddress() {
+		return userfifthaddress;
+	}
+	public void setUserfifthaddress(String userfifthaddress) {
+		this.userfifthaddress = userfifthaddress;
+	}
 	public String getUserdb() {
 		return userdb;
 	}

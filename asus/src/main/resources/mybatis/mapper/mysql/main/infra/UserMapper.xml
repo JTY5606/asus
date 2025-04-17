@@ -38,7 +38,6 @@ FROM
 	user
 WHERE 1=1
 	AND userid = #{userid}
-	AND userpassword =#{userpassword}
 </select>
 
 <select id="selectSigup" resultMap="resultMapObj">
@@ -56,6 +55,14 @@ WHERE 1=1
 <select id="selectOneCount" resultType="Integer">
 	SELECT COUNT(*)
 FROM user a
+
+</select>
+
+<select id="selectTwoCount" resultType="Integer">
+	SELECT COUNT(*)
+FROM user a
+WHERE
+	a.userid=#{userid}
 
 </select>
 
@@ -92,6 +99,10 @@ INSERT INTO user(
   	userfirstaddress,
   	usersecondaddress,
   	userthirdaddress,
+  	userfourthaddress,
+  	userfifthaddress,
+  	userlatitude,
+  	userhardness,
   	userdelNy,
   	useruseNy,
   	userdb
@@ -106,11 +117,40 @@ INSERT INTO user(
   	#{userfirstaddress},
   	#{usersecondaddress},
   	#{userthirdaddress},
+  	#{userfourthaddress},
+  	#{userfifthaddress},
+  	#{userlatitude},
+  	#{userhardness},
   	0,
   	1,
   	now()
 )
 </insert>
+
+<update id="update">
+UPDATE user set
+	useremail =#{useremail},
+	userphoneNumber = #{userphoneNumber}
+	
+	
+WHERE userseq = #{userseq}
+</update>
+
+<update id="updatepassword">
+UPDATE user set
+	userpassword =#{userpassword}
+	
+WHERE userseq = #{userseq}
+</update>
+
+<select id="passwordcheck" resultMap="resultMapObj">
+	select
+		userpassword
+	from
+		user
+	where 
+		userseq = #{userseq}
+</select>
 <sql id="selectCommon">
         FROM user a
         WHERE 1=1
