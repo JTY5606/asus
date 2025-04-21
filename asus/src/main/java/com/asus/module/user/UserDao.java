@@ -16,6 +16,8 @@ public interface UserDao {
 	public UserDto selectOne(UserVo vo);
 	public int insert(UserDto userDto);
 	public int update(UserDto userDto);
+	public int uelete(UserDto userDto);
+	
 	public int updatepassword(UserDto userDto);
 	
 	public UserDto passwordcheck(UserDto userDto);

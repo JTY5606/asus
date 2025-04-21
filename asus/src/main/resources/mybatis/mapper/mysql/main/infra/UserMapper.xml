@@ -151,6 +151,14 @@ WHERE userseq = #{userseq}
 	where 
 		userseq = #{userseq}
 </select>
+
+<update id="uelete">
+	update user
+	set
+		userdelNy = 1
+	where 
+		userdelNy=#{userdelNy}
+</update>
 <sql id="selectCommon">
         FROM user a
         WHERE 1=1

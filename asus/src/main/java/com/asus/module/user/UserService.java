@@ -50,6 +50,10 @@ public class UserService {
 		return userDao.update(userDto);
 	}
 	
+	public int uelete(UserDto userDto) {
+		return userDao.uelete(userDto);
+	}
+	
 	public int updatepassword(UserDto userDto) {
 		return userDao.updatepassword(userDto);
 	}

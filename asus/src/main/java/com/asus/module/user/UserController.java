@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.asus.common.mail.MailService;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -21,6 +23,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MailService mailService;
 	
 	public String encodeBcrypt(String planeText, int strength) {
 		  return new BCryptPasswordEncoder(strength).encode(planeText);
@@ -93,6 +98,15 @@ public class UserController {
 			int signup = userService.insert(userDto);
 			if(signup == 1) {
 				returnMap.put("rt", "success");
+				new Thread() {
+					public void run() {
+						try {
+							mailService.sendMailWelcome(userDto);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}.start();
 			}else {
 				returnMap.put("rt", "fail");
 			}
@@ -212,14 +226,14 @@ public class UserController {
 	@RequestMapping(value = "/xdm/usr/mypage/PasswordUpdt")
 	public Map<String, Object> PasswordUpdt(UserDto userDto,@RequestParam(value="usernewpassword") String usernewpassword) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		System.out.println(userDto.getUserseq());
-		System.out.println(usernewpassword);
+		
 		UserDto dto =userService.passwordcheck(userDto);
 		if(dto == null) {
 			returnMap.put("rt", "fail");
 		}else {
 			//입력한 비밀번호와 dto에 있는 비밀번호가 맞는지 확인
 			if(matchesBcrypt(userDto.getUserpassword(), dto.getUserpassword(), 10)) {
+				System.out.println("asdfasdfasdfasdf");
 				userDto.setUserpassword(encodeBcrypt(usernewpassword, 10));
 				int suc =userService.updatepassword(userDto);
 				if(suc == 1) {
@@ -228,10 +242,19 @@ public class UserController {
 					returnMap.put("rt","fail");
 				}
 			}else {
+				System.out.println("asdfasdf15515151");
 				returnMap.put("rt", "fail_pwd");
 			}
 		}
 		return returnMap;
 		
+	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/IdUeleteUsrList")
+	public String IdUeleteUsrList(UserDto userDto) {
+		
+		userService.uelete(userDto);
+		
+		return "redirect:/xdm/usr/mypage/MyPageUsrList";
 	}
 }
