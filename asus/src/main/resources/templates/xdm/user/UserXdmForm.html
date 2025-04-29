@@ -94,8 +94,34 @@
         	<div class="row">
         		<div class="col-3">
           			<div class="form-group">
-            			<label>사용여부<code>*</code></label>
+            			<label>상세주소<code>*</code></label>
+            			<input type="text" name="userfourthaddress" id="userfourthaddress" th:value="${item?.userfourthaddress}" class="form-control" placeholder="자동생성"  />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>상세주소<code>*</code></label>
+            			<input type="text" name="userfifthaddress" id="userfifthaddress" th:value="${item?.userfifthaddress}" class="form-control" placeholder="자동생성"  />
+          			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>위도<code>*</code></label>
             			<input type="text" name="userseq" id="userseq" th:value="${item?.userseq}" class="form-control" placeholder="자동생성" disabled />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>경도<code>*</code></label>
+            			<input type="text" name="userlatitude" id="userlatitude" th:value="${item?.userlatitude}" class="form-control" placeholder="자동생성" disabled />
+          			</div>
+        		</div>
+        		<div class="col-3">
+          			<div class="form-group">
+            			<label>사용여부<code>*</code></label>
+            			<input type="text" name="userhardness" id="userhardness" th:value="${item?.userhardness}" class="form-control" placeholder="자동생성" disabled />
           			</div>
         		</div>
         		<div class="col-3">

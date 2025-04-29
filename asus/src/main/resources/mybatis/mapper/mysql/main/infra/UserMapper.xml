@@ -18,10 +18,14 @@ SELECT
   	a.userfirstaddress,
   	a.usersecondaddress,
   	a.userthirdaddress,
+  	a.userfourthaddress,
+  	a.userfifthaddress,
   	a.userdelNy,
   	a.useruseNy,
   	a.userdb,
-  	a.userredb
+  	a.userredb,
+  	a.userlatitude,
+  	a.userhardness
 <include refid="selectCommon" />
  	ORDER BY a.userseq DESC
 ) aa
@@ -79,8 +83,12 @@ SELECT
   	a.userfirstaddress,
   	a.usersecondaddress,
   	a.userthirdaddress,
+  	a.userfourthaddress,
+  	a.userfifthaddress,
   	a.userdelNy,
-  	a.useruseNy
+  	a.useruseNy,
+  	a.userlatitude,
+  	a.userhardness
 FROM user a 
 WHERE 1=1
 	AND a.userseq = #{userseq}
