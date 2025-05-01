@@ -15,6 +15,7 @@ public interface UserDao {
 	public int selectTwoCount(UserDto userDto);
 	public UserDto selectOne(UserVo vo);
 	public int insert(UserDto userDto);
+	public int insertaddress(UserDto userDto);
 	public int update(UserDto userDto);
 	public int uelete(UserDto userDto);
 	

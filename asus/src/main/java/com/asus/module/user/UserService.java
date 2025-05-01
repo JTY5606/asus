@@ -46,6 +46,11 @@ public class UserService {
 	public int insert(UserDto userDto) {
 		return userDao.insert(userDto);
 	}
+	
+	public int insertaddress(UserDto userDto) {
+		return userDao.insertaddress(userDto);
+	}
+	
 	public int update(UserDto userDto) {
 		return userDao.update(userDto);
 	}

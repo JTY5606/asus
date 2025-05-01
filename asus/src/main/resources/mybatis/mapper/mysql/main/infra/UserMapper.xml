@@ -135,6 +135,32 @@ INSERT INTO user(
 )
 </insert>
 
+<insert id="insertaddress" >
+INSERT INTO address(
+	usernameF,
+  	useraddressF,
+  	useraddressS,
+  	useraddressT,
+  	useraddressFo,
+  	useraddressLa,
+  	useraddressHar,
+  	userdelNyF,
+  	useruseNyF,
+  	userdbF
+)values(
+	#{usernameF},
+  	#{useraddressF},
+  	#{useraddressS},
+  	#{useraddressT},
+  	#{useraddressFo},
+  	#{useraddressLa},
+  	#{useraddressHar},
+  	0,
+  	1,
+  	now()
+)
+</insert>
+
 <update id="update">
 UPDATE user set
 	useremail =#{useremail},
@@ -167,6 +193,9 @@ WHERE userseq = #{userseq}
 	where 
 		userdelNy=#{userdelNy}
 </update>
+
+
+
 <sql id="selectCommon">
         FROM user a
         WHERE 1=1

@@ -210,7 +210,6 @@ public class UserController {
 		//로그인하고 seq를 불러오는 함수
 		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
 		
-		model.addAttribute("item", userService.selectOne(vo));
 		return "xdm/usr/mypage/AddressChangeCopyUsrList";
 	}
 	
@@ -218,6 +217,14 @@ public class UserController {
 	public String MyPageChangeUpdt(UserDto userDto) {
 		
 		userService.update(userDto);
+		return "redirect:/xdm/usr/mypage/MyPageUsrList";
+	}
+	
+	//주소 추가 저장
+	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeCopyInst")
+	public String addressChangeCopyList(UserDto userDto) {
+		System.out.println(userDto.getUseraddressF());
+		userService.insertaddress(userDto);
 		return "redirect:/xdm/usr/mypage/MyPageUsrList";
 	}
 	

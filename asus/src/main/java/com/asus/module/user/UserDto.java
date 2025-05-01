@@ -22,7 +22,106 @@ public class UserDto {
 	private String userdb;
 	private String userredb;
 	
+	//주소 추가 Dto
+	private String aSer;
+	private String usernameF;
+	private String useraddressF;
+	private String useraddressS;
+	private String useraddressT;
+	private String useraddressFo;
+	private String useraddressFit;
+	private String useraddressHar;
+	private String useraddressLa;
+	private String user_userseq;
+	private String userdelNyF;
+	private String useruseNyF;
+	private Integer userdbF;
+	private Integer userrdbF;
 	
+	public String getUseraddressHar() {
+		return useraddressHar;
+	}
+	public void setUseraddressHar(String useraddressHar) {
+		this.useraddressHar = useraddressHar;
+	}
+	public String getUseraddressLa() {
+		return useraddressLa;
+	}
+	public void setUseraddressLa(String useraddressLa) {
+		this.useraddressLa = useraddressLa;
+	}
+	public String getUsernameF() {
+		return usernameF;
+	}
+	public void setUsernameF(String usernameF) {
+		this.usernameF = usernameF;
+	}
+	public Integer getUserdbF() {
+		return userdbF;
+	}
+	public void setUserdbF(Integer userdbF) {
+		this.userdbF = userdbF;
+	}
+	public Integer getUserrdbF() {
+		return userrdbF;
+	}
+	public void setUserrdbF(Integer userrdbF) {
+		this.userrdbF = userrdbF;
+	}
+	public String getUserdelNyF() {
+		return userdelNyF;
+	}
+	public void setUserdelNyF(String userdelNyF) {
+		this.userdelNyF = userdelNyF;
+	}
+	public String getUseruseNyF() {
+		return useruseNyF;
+	}
+	public void setUseruseNyF(String useruseNyF) {
+		this.useruseNyF = useruseNyF;
+	}
+	public String getaSer() {
+		return aSer;
+	}
+	public void setaSer(String aSer) {
+		this.aSer = aSer;
+	}
+	public String getUseraddressF() {
+		return useraddressF;
+	}
+	public void setUseraddressF(String useraddressF) {
+		this.useraddressF = useraddressF;
+	}
+	public String getUseraddressS() {
+		return useraddressS;
+	}
+	public void setUseraddressS(String useraddressS) {
+		this.useraddressS = useraddressS;
+	}
+	public String getUseraddressT() {
+		return useraddressT;
+	}
+	public void setUseraddressT(String useraddressT) {
+		this.useraddressT = useraddressT;
+	}
+	public String getUseraddressFo() {
+		return useraddressFo;
+	}
+	public void setUseraddressFo(String useraddressFo) {
+		this.useraddressFo = useraddressFo;
+	}
+	public String getUseraddressFit() {
+		return useraddressFit;
+	}
+	public void setUseraddressFit(String useraddressFit) {
+		this.useraddressFit = useraddressFit;
+	}
+	public String getUser_userseq() {
+		return user_userseq;
+	}
+	public void setUser_userseq(String user_userseq) {
+		this.user_userseq = user_userseq;
+	}
 	public Double getUserlatitude() {
 		return userlatitude;
 	}
