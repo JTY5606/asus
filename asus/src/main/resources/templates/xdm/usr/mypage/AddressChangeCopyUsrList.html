@@ -109,7 +109,7 @@
 											</div>
 											<!-- address -->
 											<form method="post" id="form" class="needs-validation" novalidate="">
-											<input type="hidden" name="user_userseq" id="user_userseq" th:value="${session.sessSeqXdm}">
+											<input type="hidden" name="user_userseq" id="user_userseq" th:value="${vo.userseq}">
 											<div class="mb-3">
 												<label class="form-label">이름</label>
 												<input type="text" name="usernameF" id="usernameF" maxlength="20" class="form-control" placeholder="" />
@@ -147,7 +147,6 @@
 
 											<!-- btn -->
 											<button class="btn btn-info btn-sm" type="button" id="btnSave">저장하기1</button>
-<!-- 											<a href="/xdm/usr/mypage/AddressChangeCopyInst" class="btn btn-info btn-sm">저장하기</a> -->
 											
 											</form>
 										</div>

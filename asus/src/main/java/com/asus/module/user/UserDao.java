@@ -9,6 +9,7 @@ public interface UserDao {
 	
 	
 	public List<UserDto> selectList(UserVo vo);
+	public List<UserDto> selectTwo(UserDto userDto);
 	public UserDto selectSigin(UserDto userDto);
 	public UserDto selectSigup(UserDto userDto);
 	public int selectOneCount(UserVo vo);
@@ -18,6 +19,7 @@ public interface UserDao {
 	public int insertaddress(UserDto userDto);
 	public int update(UserDto userDto);
 	public int uelete(UserDto userDto);
+	public int changeaddress(UserDto userDto);
 	
 	public int updatepassword(UserDto userDto);
 	

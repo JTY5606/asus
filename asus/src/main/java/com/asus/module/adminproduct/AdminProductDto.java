@@ -19,7 +19,14 @@ public class AdminProductDto {
 	private String ifprdate;
 	private String ifprredate;
 	
+	private String ifcdseq;
 	
+	public String getIfcdseq() {
+		return ifcdseq;
+	}
+	public void setIfcdseq(String ifcdseq) {
+		this.ifcdseq = ifcdseq;
+	}
 	public String getIfprdate() {
 		return ifprdate;
 	}

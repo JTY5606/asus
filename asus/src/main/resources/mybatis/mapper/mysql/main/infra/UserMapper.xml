@@ -94,6 +94,28 @@ WHERE 1=1
 	AND a.userseq = #{userseq}
 	order by a.userseq DESC
 </select>
+<select id="selectTwo" resultMap="resultMapObj">
+SELECT
+	b.aSeq,
+	b.usernameF,
+	b.useraddressF,
+	b.useraddressS,
+	b.useraddressT,
+	b.useraddressFo,
+	b.useraddressFit,
+	b.useraddressHar,
+	b.useraddressLa,
+	b.user_userseq,
+	b.userdelNyF,
+	b.useruseNyF,
+	b.userdbF,
+	b.userrdbF
+FROM address b
+WHERE 1=1
+	AND b.user_userseq = #{user_userseq}
+	AND userdelNyF = 0
+        AND useruseNyF = 1
+</select>
 
 <insert id="insert" >
 INSERT INTO user(
@@ -137,6 +159,7 @@ INSERT INTO user(
 
 <insert id="insertaddress" >
 INSERT INTO address(
+	user_userseq,
 	usernameF,
   	useraddressF,
   	useraddressS,
@@ -148,6 +171,7 @@ INSERT INTO address(
   	useruseNyF,
   	userdbF
 )values(
+	#{user_userseq},
 	#{usernameF},
   	#{useraddressF},
   	#{useraddressS},
@@ -160,6 +184,19 @@ INSERT INTO address(
   	now()
 )
 </insert>
+
+<update id="changeaddress">
+UPDATE user set
+	username =#{username},
+	userfirstaddress = #{userfirstaddress},
+	usersecondaddress = #{usersecondaddress},
+	userthirdaddress = #{userthirdaddress},
+	userfourthaddress = #{userfourthaddress},
+	userlatitude = #{userlatitude},
+	userhardness = #{userhardness},
+	userredb = now()
+WHERE userseq = #{userseq}
+</update>
 
 <update id="update">
 UPDATE user set

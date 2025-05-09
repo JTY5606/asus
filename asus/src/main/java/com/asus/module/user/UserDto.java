@@ -23,7 +23,7 @@ public class UserDto {
 	private String userredb;
 	
 	//주소 추가 Dto
-	private String aSer;
+	private String aSeq;
 	private String usernameF;
 	private String useraddressF;
 	private String useraddressS;
@@ -35,8 +35,8 @@ public class UserDto {
 	private String user_userseq;
 	private String userdelNyF;
 	private String useruseNyF;
-	private Integer userdbF;
-	private Integer userrdbF;
+	private String userdbF;
+	private String userrdbF;
 	
 	public String getUseraddressHar() {
 		return useraddressHar;
@@ -56,16 +56,16 @@ public class UserDto {
 	public void setUsernameF(String usernameF) {
 		this.usernameF = usernameF;
 	}
-	public Integer getUserdbF() {
+	public String getUserdbF() {
 		return userdbF;
 	}
-	public void setUserdbF(Integer userdbF) {
+	public void setUserdbF(String userdbF) {
 		this.userdbF = userdbF;
 	}
-	public Integer getUserrdbF() {
+	public String getUserrdbF() {
 		return userrdbF;
 	}
-	public void setUserrdbF(Integer userrdbF) {
+	public void setUserrdbF(String userrdbF) {
 		this.userrdbF = userrdbF;
 	}
 	public String getUserdelNyF() {
@@ -80,11 +80,11 @@ public class UserDto {
 	public void setUseruseNyF(String useruseNyF) {
 		this.useruseNyF = useruseNyF;
 	}
-	public String getaSer() {
-		return aSer;
+	public String getaSeq() {
+		return aSeq;
 	}
-	public void setaSer(String aSer) {
-		this.aSer = aSer;
+	public void setaSeq(String aSeq) {
+		this.aSeq = aSeq;
 	}
 	public String getUseraddressF() {
 		return useraddressF;

@@ -25,6 +25,10 @@ public class UserService {
 		return userDtos;
 	}
 	
+	public List<UserDto> selectTwo(UserDto userDto){
+		return userDao.selectTwo(userDto);
+	}
+	
 	public UserDto selectSigin(UserDto userDto) {
 		return userDao.selectSigin(userDto);
 	}
@@ -61,6 +65,9 @@ public class UserService {
 	
 	public int updatepassword(UserDto userDto) {
 		return userDao.updatepassword(userDto);
+	}
+	public int changeaddress(UserDto userDto) {
+		return userDao.changeaddress(userDto);
 	}
 	//비밀번호 변경
 	public UserDto passwordcheck(UserDto userDto) {

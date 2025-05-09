@@ -26,8 +26,9 @@ public class AdminProductController {
 		}
 	
 	@RequestMapping(value = "/xdm/usr/productlist/ProductListUsrList")
-	public String ProuctListUsrList() {
+	public String ProuctListUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo ) {
 		
+		model.addAttribute("list", adminProductService.selectList(vo));
 		return "xdm/usr/productlist/ProductListUsrList"; 
 		}
 	

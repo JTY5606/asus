@@ -197,22 +197,34 @@ public class UserController {
 		return "xdm/usr/mypage/IdDeleteUsrList";
 	}
 	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeUsrList")
-	public String AddressChangeUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+	public String AddressChangeUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession,UserDto userDto) {
 		//로그인하고 seq를 불러오는 함수
 		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
-		
+		userDto.setUser_userseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
 		model.addAttribute("item", userService.selectOne(vo));
+		model.addAttribute("address", userService.selectTwo(userDto));
 		return "xdm/usr/mypage/AddressChangeUsrList";
 	}
 	
 	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeCopyUsrList")
-	public String AddressChangeCopyUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession) {
+	public String AddressChangeCopyUsrList(Model model,@ModelAttribute("vo")UserVo vo,HttpSession httpSession,UserDto userDto) {
 		//로그인하고 seq를 불러오는 함수
-		vo.setUserseq(String.valueOf(httpSession.getAttribute("sessSeqXdm")));
-		
+		 String userSeq = String.valueOf(httpSession.getAttribute("sessSeqXdm"));
+		    System.out.println("세션에서 불러온 userseq: " + userSeq);
+
+		    vo.setUserseq(userSeq);
+		    model.addAttribute("vo", vo);
 		return "xdm/usr/mypage/AddressChangeCopyUsrList";
 	}
 	
+	//주소 추가 저장
+	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeCopyInst")
+	public String addressChangeCopyList(UserDto userDto) {
+		
+	    userService.insertaddress(userDto);
+		return "redirect:/xdm/usr/mypage/AddressChangeUsrList";
+	}
+		
 	@RequestMapping(value = "/xdm/usr/mypage/MyPageChangeUpdt")
 	public String MyPageChangeUpdt(UserDto userDto) {
 		
@@ -220,13 +232,7 @@ public class UserController {
 		return "redirect:/xdm/usr/mypage/MyPageUsrList";
 	}
 	
-	//주소 추가 저장
-	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeCopyInst")
-	public String addressChangeCopyList(UserDto userDto) {
-		System.out.println(userDto.getUseraddressF());
-		userService.insertaddress(userDto);
-		return "redirect:/xdm/usr/mypage/MyPageUsrList";
-	}
+	
 	
 	//비밀번호 변경
 	@ResponseBody
@@ -263,5 +269,13 @@ public class UserController {
 		userService.uelete(userDto);
 		
 		return "redirect:/xdm/usr/mypage/MyPageUsrList";
+	}
+	
+	@RequestMapping(value = "/xdm/usr/mypage/AddressChangeUsrUpdt")
+	public String addressChangeUsrUpdt(UserDto userDto) {
+		
+		userService.changeaddress(userDto);
+		
+		return "redirect:/xdm/usr/mypage/AddressChangeUsrList";
 	}
 }
