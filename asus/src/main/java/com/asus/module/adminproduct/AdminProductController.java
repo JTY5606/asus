@@ -26,10 +26,16 @@ public class AdminProductController {
 		}
 	
 	@RequestMapping(value = "/xdm/usr/productlist/ProductListUsrList")
-	public String ProuctListUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo ) {
+	public String productListUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo ) {
 		
 		model.addAttribute("list", adminProductService.selectList(vo));
 		return "xdm/usr/productlist/ProductListUsrList"; 
+		}
+	
+	@RequestMapping(value = "/xdm/usr/product/ProductUsrList")
+	public String LoginUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
+		model.addAttribute("item", adminProductService.selectOne(vo));
+		return "xdm/usr/product/ProductUsrList"; 
 		}
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")

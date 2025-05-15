@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-<div th:replace="~{/xdm/include/head :: head}"></div>
+<div th:replace="~{xdm/include/head :: head}"></div>
 
 <!-- Main Content -->
 <form name="formList" id="formList" method="post" autocomplete="off">
@@ -166,7 +166,7 @@
 	</div>
 </div>
 </form>
-<div th:replace="~{/xdm/include/footer :: footer}"></div>
+<div th:replace="~{xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 let form = document.querySelector("form[name=formList]");
 let seq = document.querySelector("input[name=userseq]");

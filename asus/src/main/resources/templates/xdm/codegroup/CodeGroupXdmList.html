@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-	<div th:replace="~{/xdm/include/head :: head}"></div>
+	<div th:replace="~{xdm/include/head :: head}"></div>
 <body>
 	<form name="formList" id="formList" method="post" autocomplete="off">
 		<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
@@ -162,7 +162,7 @@
 	</form>
 </body>
 
- <div th:replace="~{/xdm/include/footer :: footer}"></div>
+ <div th:replace="~{xdm/include/footer :: footer}"></div>
 <script type="text/javascript">
 
 let form = document.querySelector("form[name=formList]");

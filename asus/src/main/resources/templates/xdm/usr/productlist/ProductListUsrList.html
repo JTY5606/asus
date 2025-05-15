@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="~{/xdm/block/UserAdminHeader :: head}"></div>
+<div th:replace="~{xdm/block/UserAdminHeader :: head}"></div>
 
    <main>
       <div class="mt-4">
@@ -497,7 +497,7 @@
                               <div class="text-small mb-1">
                                  <a href="/xdm/usr/product/ProductUsrList" class="text-decoration-none text-muted" th:text="${@codeService.selectOneCachedCode(list?.ifprcategory)}"><small>닭/오리고기</small></a>
                               </div>
-                              <h2 class="fs-6"><a href="/xdm/usr/product/ProductUsrList"
+                              <h2 class="fs-6"><a href="javascript:void(0);" th:attr="onclick=|goForm('${list?.ifprseq}')|"
                                     class="text-inherit text-decoration-none" id="ifprtitle" name="ifprtitle" th:text="${list?.ifprtitle}">영계</a></h2>
                               <div>
                                  <!-- rating -->
@@ -513,7 +513,7 @@
                               <!-- price -->
                               <div class="d-flex justify-content-between align-items-center mt-3">
                                  <div>
-                                    <span class="text-dark">10000원</span>
+                                    <span class="text-dark" th:text="${list?.ifprprice}">10000원</span>
                                     <span class="text-decoration-line-through text-muted" th:text="${list.ifprprice}">13000원</span>
                                  </div>
                                  <!-- btn -->
@@ -733,7 +733,19 @@
 
    <!-- Footer -->
    <!-- footer -->
-   <div th:replace="~{/xdm/block/UserAdminFooter :: footer}"></div>
+   <div th:replace="~{xdm/block/UserAdminFooter :: footer}"></div>
 </body>
+<script type="text/javascript">
+let seq = document.querySelector("input[name=ifprseq]");
 
+goForm = function (keyValue) {
+	    seq.value = keyValue;
+		
+	    var form = document.getElementById("form" + keyValue);
+		if(form){
+			form.action="/xdm/usr/product/ProductUsrList";
+	   	 	form.submit();
+		}
+}
+</script>
 </html>
