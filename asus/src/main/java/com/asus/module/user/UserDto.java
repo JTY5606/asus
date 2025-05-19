@@ -38,6 +38,57 @@ public class UserDto {
 	private String userdbF;
 	private String userrdbF;
 	
+	//유저 리뷰
+	private String ifrvseq;
+	private String ifrvdate;
+	private String ifrvtitle;
+	private String ifrvmemo;
+	private String ifrvdelNy; 
+	private String user_seq;
+	private String produce_seq;
+	
+	public String getIfrvseq() {
+		return ifrvseq;
+	}
+	public void setIfrvseq(String ifrvseq) {
+		this.ifrvseq = ifrvseq;
+	}
+	public String getIfrvdate() {
+		return ifrvdate;
+	}
+	public void setIfrvdate(String ifrvdate) {
+		this.ifrvdate = ifrvdate;
+	}
+	public String getIfrvtitle() {
+		return ifrvtitle;
+	}
+	public void setIfrvtitle(String ifrvtitle) {
+		this.ifrvtitle = ifrvtitle;
+	}
+	public String getIfrvmemo() {
+		return ifrvmemo;
+	}
+	public void setIfrvmemo(String ifrvmemo) {
+		this.ifrvmemo = ifrvmemo;
+	}
+	public String getIfrvdelNy() {
+		return ifrvdelNy;
+	}
+	public void setIfrvdelNy(String ifrvdelNy) {
+		this.ifrvdelNy = ifrvdelNy;
+	}
+	public String getUser_seq() {
+		return user_seq;
+	}
+	public void setUser_seq(String user_seq) {
+		this.user_seq = user_seq;
+	}
+	public String getProduce_seq() {
+		return produce_seq;
+	}
+	public void setProduce_seq(String produce_seq) {
+		this.produce_seq = produce_seq;
+	}
 	public String getUseraddressHar() {
 		return useraddressHar;
 	}

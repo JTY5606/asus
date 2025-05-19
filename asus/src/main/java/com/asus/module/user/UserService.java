@@ -6,10 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.asus.module.code.CodeDto;
-import com.asus.module.code.CodeVo;
-import com.asus.module.codegroup.CodeGroupDto;
-import com.asus.module.codegroup.CodeGroupVo;
+import com.asus.module.adminproduct.AdminProductVo;
 
 @Service
 public class UserService {
@@ -45,6 +42,13 @@ public class UserService {
 	}
 	public UserDto selectOne(UserVo vo) {
 		return userDao.selectOne(vo);
+	}
+	public List<UserDto> selectReview(AdminProductVo Vo) {
+		return userDao.selectReview(Vo);
+	}
+	
+	public int insertReview(UserDto userDto) {
+		return userDao.insertReview(userDto);
 	}
 	
 	public int insert(UserDto userDto) {

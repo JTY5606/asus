@@ -6,11 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.asus.module.user.UserDto;
+import com.asus.module.user.UserService;
+
 @Controller
 public class AdminProductController {
 	
 	@Autowired //인터페이스
 	AdminProductService adminProductService;
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmList")
 	public String AdminProductXdmList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
@@ -35,8 +40,11 @@ public class AdminProductController {
 	@RequestMapping(value = "/xdm/usr/product/ProductUsrList")
 	public String LoginUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
 		model.addAttribute("item", adminProductService.selectOne(vo));
+		model.addAttribute("items", userService.selectReview(vo));
+//		userService.insertReview(userDto);
 		return "xdm/usr/product/ProductUsrList"; 
 		}
+	
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")
 	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model) throws Exception{

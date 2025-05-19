@@ -117,6 +117,42 @@ WHERE 1=1
         AND useruseNyF = 1
 </select>
 
+<select id="selectReview" resultMap="resultMapObj">
+	SELECT
+		a.ifrvseq,
+	    a.ifrvdate, 
+	    a.ifrvtitle, 
+	    a.ifrvmemo, 
+	    a.ifrvdelNy, 
+	    a.user_seq, 
+	    a.produce_seq,
+	    b.username
+	FROM
+		review a
+		left join user b on b.userseq = a.user_seq
+		left join product c on c.ifprseq = a.produce_seq
+	where 1=1
+		AND produce_seq = #{ifprseq}
+</select>
+
+<insert id="insertReview" >
+INSERT INTO review(
+
+	ifrvtitle,
+	ifrvmemo,
+	ifrvdelNy,
+	ifrvdate,
+	user_seq
+)values(
+	#{ifrvtitle},
+	#{ifrvmemo},
+	0,
+	now(),
+	#{userseq}
+	)
+	
+</insert>
+
 <insert id="insert" >
 INSERT INTO user(
 	username,

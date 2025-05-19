@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.asus.module.adminproduct.AdminProductVo;
+
 @Repository
 public interface UserDao {
 	
@@ -15,8 +17,10 @@ public interface UserDao {
 	public int selectOneCount(UserVo vo);
 	public int selectTwoCount(UserDto userDto);
 	public UserDto selectOne(UserVo vo);
+	public List<UserDto> selectReview(AdminProductVo Vo);
 	public int insert(UserDto userDto);
 	public int insertaddress(UserDto userDto);
+	public int insertReview(UserDto userDto);
 	public int update(UserDto userDto);
 	public int uelete(UserDto userDto);
 	public int changeaddress(UserDto userDto);
