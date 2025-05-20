@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.asus.module.user.UserDto;
+import com.asus.module.file.FileService;
 import com.asus.module.user.UserService;
 
 @Controller
@@ -16,6 +16,8 @@ public class AdminProductController {
 	AdminProductService adminProductService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	FileService fileService;
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmList")
 	public String AdminProductXdmList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
@@ -47,27 +49,34 @@ public class AdminProductController {
 	
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")
-	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model) throws Exception{
+	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model,AdminProductDto adminProductDto) throws Exception{
 		if (vo.getIfprseq().equals("0") || vo.getIfprseq().equals("")) {
 		//			insert mode
 	} else {
 //				update mode
 	model.addAttribute("item", adminProductService.selectOne(vo));
+	adminProductDto.setRseq(adminProductDto.getIfprseq());
+	model.addAttribute("images", fileService.selectOne(adminProductDto, "images"));
 //	model.addAttribute("list", codeService.selectList(cvo));
 	}
 	return  "xdm/adminproduct/AdminProductXdmForm";
 	}
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmInst")
-	public String AdminProductXdmInst(AdminProductDto adminProductDto) {
+	public String AdminProductXdmInst(AdminProductDto adminProductDto) throws Exception {
 		
 		adminProductService.insert(adminProductDto);
+		// uaSeq로 파일이름을 만들 것이므로 먼저 insert 후 해야함 
+				fileService.uploadFilesToS3(adminProductDto, new String[]{"images"}, adminProductDto.getIfprseq());
 		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
 		}
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmUpdt")
-	public String AdminProductXdmUpdt(AdminProductDto adminProductDto) {
+	public String AdminProductXdmUpdt(AdminProductDto adminProductDto) throws Exception {
 		adminProductService.update(adminProductDto);
+		
+		// uaSeq로 파일이름을 만들 것이므로 먼저 insert 후 해야함 
+		fileService.uploadFilesToS3(adminProductDto, new String[]{"images"}, adminProductDto.getIfprseq());
 		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
 		}
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmUele")

@@ -1,6 +1,8 @@
 package com.asus.module.adminproduct;
 
-public class AdminProductDto {
+import com.asus.module.file.FileDto;
+
+public class AdminProductDto extends FileDto{
 	
 	private String ifprseq;
 	private Integer ifprcategory;

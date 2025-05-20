@@ -53,7 +53,12 @@ SELECT
 	a.ifprdelNy, 
 	a.ifpruseNy,
 	a.ifprdate,
-	a.ifprredate
+	a.ifprredate,
+	(SELECT b.imPath
+			FROM images b
+			WHERE 1=1 
+				AND a.ifprseq = b.rseq
+	    ) as imPath
 <include refid="selectCommon" />
 	ORDER BY a.ifprseq DESC
 ) aa
@@ -75,7 +80,12 @@ SELECT
 	a.ifprinvetory, 
 	a.ifprtypeNy, 
 	a.ifprdelNy, 
-	a.ifpruseNy
+	a.ifpruseNy,
+	(SELECT b.imPath
+			FROM images b
+			WHERE 1=1 
+				AND a.ifprseq = b.rseq
+	    ) as imPath
 FROM product a
 WHERE 1=1
 	AND a.ifprseq = #{ifprseq}

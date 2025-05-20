@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.asus.module.file.FileDao">
+	<resultMap id="resultMapObj" type="com.asus.module.file.FileDto"></resultMap>
+
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM 
+			${imDbTableName}
+		WHERE 1=1
+			AND rseq=#{rseq}
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			imseq,
+		    impath,
+			imfilename,
+			imext,
+			imsize,
+			rSeq
+		FROM 
+			${imDbTableName}
+		WHERE 1=1
+			AND rseq=#{rseq}
+	</select>
+	
+	<insert id="insertFile">
+		INSERT INTO ${imDbTableName} (
+			impath,
+			imfilename,
+			imext,
+			imsize,
+			rseq
+		) values (
+			#{impath},
+			#{imfilename},
+			#{imext},
+			#{imsize},
+			#{rseq}
+		)
+	</insert>
+	
+	<update id="updateFile">
+		UPDATE ${imDbTableName}
+		SET
+			imext=#{imext},
+			imsize=#{imsize}
+		WHERE
+			rseq=#{rseq}
+	</update>
+	
+	<update id="ueleteFile">
+		UPDATE ${imDbTableName}
+		SET
+			imdelNy = 1
+		WHERE
+			rseq=#{rseq}
+	</update>
+	
+</mapper>

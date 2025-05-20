@@ -29,54 +29,15 @@
 									
 			<div class="container">
 				<div class="row">
-					<div class="col-md-5 col-xl-6">
-						<!-- img slide -->
-						<div class="product" id="product">
-							<div class="zoom" onmousemove="zoom(event)"
-								style="background-image: url(../image/생닭3.jpg)">
-								<!-- img -->
-								<!-- img -->
-								<img src="/xdm/template/adminui/assets/image/생닭3.jpg" alt="" />
-							</div>
-							<div>
-								<div class="zoom" onmousemove="zoom(event)"
-									style="background-image: url(../image/생닭4_029.jpg)">
-									<!-- img -->
-									<img src="../image/생닭4_029.jpg" alt="" />
-								</div>
-							</div>
-							<div>
-								<div class="zoom" onmousemove="zoom(event)"
-									style="background-image: url(../image/생닭6.jpg)">
-									<!-- img -->
-									<img src="../image/생닭6.jpg" alt="" />
-								</div>
-							</div>
-						</div>
-						<!-- product tools -->
-						<div class="product-tools">
-							<div class="thumbnails row g-3" id="productThumbnails">
-								<div class="col-3">
-									<div class="thumbnails-img">
-										<!-- img -->
-										<img src="../image/생닭3.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-3">
-									<div class="thumbnails-img">
-										<!-- img -->
-										<img src="../image/생닭4_029.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-3">
-									<div class="thumbnails-img">
-										<!-- img -->
-										<img src="../image/생닭6.jpg" alt="" />
-									</div>
-								</div>
-							</div>	
+					<div class="col-md-5 col-xl-5">
+					<div class="product" id="product">																
+						<div th:unless="${item?.impath eq null or #strings.trim(item?.impath) eq ''}" 
+							class="zoom" onmousemove="zoom(event)"
+							th:style="@{'background-image: url(' + ${item?.impath} + ')'}">
+							<img th:src="${item?.impath}" />
 						</div>
 					</div>
+				</div>
 					<div class="col-md-7 col-xl-6">
 						<div class="ps-lg-10 mt-6 mt-md-0">
 							<!-- content -->

@@ -4,7 +4,9 @@
 <body>
 <div th:replace="~{xdm/include/head :: head}"></div>
 <div class="main-content">
-	<form method="post" id="form" class="needs-validation" novalidate="">	
+	<form enctype="multipart/form-data"
+	method="post" id="form" class="needs-validation" novalidate="">	
+	<input type="hidden" name="imfilename" id="filename" th:value="${images?.imfilename}">
 	<div th:replace="~{xdm/adminproduct/AdminProductXdmVo :: vo}"></div>
 	<section class="section">
     	<div class="section-header">
@@ -125,6 +127,34 @@
 	            			<span id="validation13" style="color : red";></span>
 	          			</div>
 	        		</div>
+										
+	        		<div class="row">
+						<div class="col-12">
+							<label  class="form-label">사진</label>
+							<div class="mb-4 d-flex">
+								<div class="position-relative">
+									<img th:if="${images?.impath eq null or #strings.trim(images?.impath) eq ''}" 
+										class="image rounded-3" width="150px" id="imfile"
+										src="/xdm/template/freshcart-14.0/image/placeholder-img.jpg" />
+									<img th:if="${images?.impath ne null and #strings.trim(images?.impath) ne ''}" 
+										class="image rounded-3" th:src="${images?.impath}" width="150px" id="imfile" />
+							
+									<div class="file-upload position-absolute end-0 top-0 mt-n2 me-n1">
+										<input type="file" class="file-input" accept=".jpeg,.jpg,.png,.gif"
+											name="imUploadFiles" id="imUploadFiles" />
+										<span class="icon-shape icon-sm rounded-circle bg-white">
+											<svg xmlns="http://www.w3.org/2000/svg" 
+												width="12" height="12" fill="currentColor" 
+												class="bi bi-pencil-fill text-muted" viewBox="0 0 16 16">
+												<path
+													d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+											</svg>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 	        	</div>
 	        	<div class="row">
         			<div class="col-11">
@@ -178,7 +208,13 @@ function validation(){
 	let ifprtypeNy = document.getElementById("ifprtypeNy");
 	let ifprdelNy = document.getElementById("ifprdelNy");
 	let ifpruseNy = document.getElementById("ifpruseNy");
-
+	let imUploadFiles = document.getElementById("imUploadFiles");
+	let imfile = document.getElementById("imfile");
+	let imfilename = document.getElementById("imfilename");
+	
+	const REGEX_IMG_FILE = /(.*?)\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
+	const IMG_MAX_SIZE = 2 * 1024 * 1024; // 2MB
+	
 	if(ifprcategory.value == null || ifprcategory.value == "" ){
 		ifprcategory.className = "form-control is-invalid";
 		document.getElementById("validation02").innerText ="카테고리를 입력해주세요";
@@ -269,9 +305,30 @@ function validation(){
 		ifprtypeNy.className = "form-control";
 		document.getElementById("validation12").innerText ="";
 	}
+	// fUploadFiles, fFileName 체크
+	var file = imUploadFiles.files[0];
 	
+	// fUploadFiles이 빈값이나 null이면 허용하므로, 아닐때만 Validation
+	if (file != null && file.name != null && file.name.trim() != ""
+			&& imfilename.value != null && imfilename.value.trim() != "") {
+		if (!imgFileValidation(file, imfilename)) {
+			imUploadFiles = null;
+			imfilename.value = "";
+			alert("파일의 형식과 크기를 확인해 주세요. (JPG, JPEG, GIF, PNG / 최대 2MB)");
+			whether = false;
+		}
+	}
 	
 	return whether ;
+}
+
+//이미지 파일 체크 - 이미지 파일 형식(jpg, jpeg, gif, png), 사이즈(2MB), null/빈값 허용
+//Object null, "" 체크는 호출전에 함
+function imgFileValidation(fileObj, fileNameInputObj) {
+	var value = fileNameInputObj.value.trim();
+	if(!value.match(REGEX_IMG_FILE) || fileObj.size >= IMG_MAX_SIZE) return false;
+	
+	return true;
 }
 
 document.getElementById("btnSubmit").onclick = function(){

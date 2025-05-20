@@ -477,8 +477,11 @@
                                  </div>
                                  <a href="shop-single.html">
                                     <!-- img -->
-                                    <img src="../image/생닭3.jpg"
-                                       alt="Grocery Ecommerce Template" class="mb-3 img-fluid" />
+                                    <img th:if="${list?.impath eq null or #strings.trim(list?.impath) eq ''}" 
+															class="mb-3 img-fluid"  
+															src="/xdm/template/freshcart-14.0/image/placeholder-img.jpg" />
+														<img th:if="${list?.impath ne null and #strings.trim(list?.impath) ne ''}" 
+															class="mb-3 img-fluid" th:src="${list?.impath}"   />
                                  </a>
                                  <!-- action btn -->
                                  <!-- <div class="card-product-action">
