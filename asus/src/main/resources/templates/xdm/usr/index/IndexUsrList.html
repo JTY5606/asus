@@ -17,7 +17,7 @@
 
 							<h2 class="text-dark display-5 fw-bold mt-4" style="color: white;"><p style="color: white;">SuperMarket For Fresh Grocery</p></h2>
 							<p class="lead" style="color: white;">온라인 식료품 쇼핑과 편리한 가정을 위한 새로운 마트를 소개합니다. 편리한 배달을 받아보세요 !</p>
-							<a href="#!" class="btn btn-dark mt-3" style="color: white;">
+							<a href="/xdm/usr/productlist/ProductListUsrList" class="btn btn-dark mt-3" style="color: white;">
 								구매하러 가기
 								<i class="feather-icon icon-arrow-right ms-1"></i>
 							</a>
@@ -34,7 +34,7 @@
 								<span class="text-primary">무료배송</span>
 							</h2>
 							<p class="lead">첫 구매 하시는 고객분들에겐<br> 무료 배송</p>
-							<a href="#!" class="btn btn-dark mt-3">
+							<a href="/xdm/usr/productlsit/ProductListUsrList" class="btn btn-dark mt-3">
 								구매하러 가기
 								<i class="feather-icon icon-arrow-right ms-1"></i>
 							</a>
@@ -68,22 +68,30 @@
 					</div>
 				</div>
 				<!-- slider -->
-				<div class="product-slider-second" id="slider-second">
+				<div class="product-slider-second" id="slider-second"  >
 					<!-- item -->
-					<div class="item">
+					<div class="item" th:each="list : ${list}">
 						<!-- item -->
+						<form 
+							novalidate
+							method="post" enctype="multipart/form-data" th:id="formList" th:name="formList">
+							<input type="hidden" name="ifprseq" id="ifprseq" th:value="${list?.ifprseq}">
 						<div class="card card-product mb-lg-4">
-							<div class="card-body" onclick="location.href='shop-single.html'">
+							<div class="card-body" >
 								<!-- badge -->
 								<div class="text-center position-relative">
 									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-danger">best</span>
+										<span class="badge bg-danger" th:value=${list?.ifprtypeNy}>best</span>
 									</div>
 									<!-- img -->
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/image/생닭4_029.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
+									<a >
+                                    <!-- img -->
+                                    <img th:if="${list?.impath eq null or #strings.trim(list?.impath) eq ''}" 
+										class="mb-3 img-fluid"  
+										src="/xdm/template/freshcart-14.0/image/placeholder-img.jpg" />
+									<img th:if="${list?.impath ne null and #strings.trim(list?.impath) ne ''}" 
+										class="mb-3 img-fluid" th:src="${list?.impath}"   />
+                                 	</a>
 									<!-- action btn -->
 									<div class="card-product-action">
 										<a href="#!" class="btn-action" data-bs-toggle="modal"
@@ -100,639 +108,21 @@
 								</div>
 								<!-- title -->
 								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>닭&오리고기</small></a>
+									<a  class="text-decoration-none text-muted" th:text="${@codeService.selectOneCachedCode(list?.ifprcategory)}" ><small>닭&오리고기</small></a>
 								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">생 닭</a>
+								<h2 class="fs-6"><a href="javascript:void(0);" th:attr="onclick=|goForm('${list?.ifprseq}')|"
+                                    class="text-inherit text-decoration-none" id="ifprtitle" name="ifprtitle" th:text="${list?.ifprtitle}">>생 닭</a>
 								</h2>
-								<div>
-									<!-- rating -->
-									<small class="text-warning">
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5(149)</span>
-								</div>
 								<!-- price -->
 								<div class="d-flex justify-content-between align-items-center mt-3">
 									<div>
-										<span class="text-dark">10000원</span>
-										<span class="text-decoration-line-through text-muted">13000원</span>
+										<span class="text-dark" th:text="${list?.ifprprice}">10000원</span>
 									</div>
 									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											추가
-										</a>
-									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- badge -->
-									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-success">14%</span>
-									</div>
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-16.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<!-- title -->
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Golden
-										Pineapple</a></h2>
-								<!-- rating -->
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5 (25)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div><span class="text-dark">$24</span></div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-17.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Fresh Kiwi</a>
-								</h2>
-								<!-- rating -->
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-									</small>
-									<span class="text-muted small">5 (469)</span>
-								</div>
-								<!-- rating -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div>
-										<span class="text-dark">$32</span>
-										<span class="text-decoration-line-through text-muted">$35</span>
-									</div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- badge -->
-									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-danger">Hot</span>
-									</div>
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-18.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- action btn -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Fresh Banana</a>
-								</h2>
-								<!-- rating -->
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-										<i class="bi bi-star"></i>
-									</small>
-									<span class="text-muted small">3.5 (456)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div>
-										<span class="text-dark">$3</span>
-										<span class="text-decoration-line-through text-muted">$5</span>
-									</div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-19.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Beatroot</a>
-								</h2>
-								<!-- rating -->
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5 (39)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between mt-4">
-									<div>
-										<span class="text-dark">$13</span>
-										<span class="text-decoration-line-through text-muted">$18</span>
-									</div>
-									<!--  btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- badge -->
-									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-danger">Sale</span>
-									</div>
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-15.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Wishlist"><i class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Fresh Apple</a>
-								</h2>
-								<div>
-									<!-- rating -->
-									<small class="text-warning">
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5(149)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div>
-										<span class="text-dark">$18</span>
-										<span class="text-decoration-line-through text-muted">$24</span>
-									</div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- badge -->
-									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-success">14%</span>
-									</div>
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-16.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Golden
-										Pineapple</a></h2>
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5 (25)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div><span class="text-dark">$24</span></div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-17.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Fresh Kiwi</a>
-								</h2>
-								<!-- rating-->
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-									</small>
-									<span class="text-muted small">5 (469)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div>
-										<span class="text-dark">$32</span>
-										<span class="text-decoration-line-through text-muted">$35</span>
-									</div>
-									<!--  btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- badge -->
-									<div class="position-absolute top-0 start-0">
-										<span class="badge bg-danger">Hot</span>
-									</div>
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-18.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Fresh Banana</a>
-								</h2>
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-										<i class="bi bi-star"></i>
-									</small>
-									<span class="text-muted small">3.5 (456)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between align-items-center mt-3">
-									<div>
-										<span class="text-dark">$3</span>
-										<span class="text-decoration-line-through text-muted">$5</span>
-									</div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<!-- item -->
-						<div class="card card-product mb-lg-4">
-							<div class="card-body">
-								<div class="text-center position-relative">
-									<!-- img -->
-									<a href="#!"><img src="/xdm/template/freshcart-14.0/assets/images/products/product-img-19.jpg"
-											alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									<!-- action btn -->
-									<div class="card-product-action">
-										<a href="#!" class="btn-action" data-bs-toggle="modal"
-											data-bs-target="#quickViewModal">
-											<i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
-												title="Quick View"></i>
-										</a>
-										<a href="../pages/shop-wishlist.html" class="btn-action"
-											data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i
-												class="bi bi-heart"></i></a>
-										<a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
-											title="Compare"><i class="bi bi-arrow-left-right"></i></a>
-									</div>
-								</div>
-								<!-- title -->
-								<div class="text-small mb-1">
-									<a href="#!" class="text-decoration-none text-muted"><small>Fruits &
-											Vegetables</small></a>
-								</div>
-								<h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Beatroot</a>
-								</h2>
-								<div class="text-warning">
-									<!-- rating -->
-									<small>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-half"></i>
-									</small>
-									<span class="text-muted small">4.5 (39)</span>
-								</div>
-								<!-- price -->
-								<div class="d-flex justify-content-between mt-4">
-									<div>
-										<span class="text-dark">$13</span>
-										<span class="text-decoration-line-through text-muted">$18</span>
-									</div>
-									<!-- btn -->
-									<div>
-										<a href="#!" class="btn btn-primary btn-sm">
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-plus">
-												<line x1="12" y1="5" x2="12" y2="19"></line>
-												<line x1="5" y1="12" x2="19" y2="12"></line>
-											</svg>
-											Add
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -1192,3 +582,16 @@
 </div>
 
 <div th:replace="~{xdm/block/UserAdminFooter :: footer}"></div>
+<script type="text/javascript">
+let seq = document.querySelector("input[name=ifprseq]");
+
+goForm = function (keyValue) {
+	    seq.value = keyValue;
+	    var form = document.querySelector("form[name=formList]");
+		if(form){
+			form.action="/xdm/usr/product/ProductUsrList";
+	   	 	form.submit();
+		}
+}
+
+</script>
