@@ -1,13 +1,18 @@
 package com.asus.module.adminproduct;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.asus.module.file.FileService;
+import com.asus.module.user.UserDto;
 import com.asus.module.user.UserService;
+
 
 @Controller
 public class AdminProductController {
@@ -35,12 +40,13 @@ public class AdminProductController {
 	@RequestMapping(value = "/xdm/usr/productlist/ProductListUsrList")
 	public String productListUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo ) {
 		
+		vo.setParamsPaging(adminProductService.selectOneCount(vo));
 		model.addAttribute("list", adminProductService.selectList(vo));
 		return "xdm/usr/productlist/ProductListUsrList"; 
 		}
 	
 	@RequestMapping(value = "/xdm/usr/product/ProductUsrList")
-	public String LoginUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
+	public String productUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
 		model.addAttribute("item", adminProductService.selectOne(vo));
 		model.addAttribute("items", userService.selectReview(vo));
 //		userService.insertReview(userDto);
@@ -84,4 +90,21 @@ public class AdminProductController {
 		adminProductService.uelete(adminProductDto);
 		return "redirect:/xdm/adminproduct/AdminProductXdmList"; 
 		}
+	//리뷰 저장
+	@RequestMapping(value = "/xdm/usr/product/ProductUsrListInst", method = RequestMethod.POST)
+	public String productUsrListInst(Model model, UserDto userDto,@ModelAttribute("vo") AdminProductVo vo, AdminProductDto adminProductDto) {
+
+		int successCnt = userService.insertReview(userDto);
+			
+		if (successCnt > 0) {
+			// 리뷰 리스트
+			vo.setIfprseq(userDto.getProduce_seq());
+		    model.addAttribute("items", userService.selectReview(vo));
+		
+		    // Thymeleaf fragment만 리턴
+	        return "xdm/usr/product/ProductUsrList :: #reviewList";
+		} else {
+		    return "";
+		}
+	}
 }

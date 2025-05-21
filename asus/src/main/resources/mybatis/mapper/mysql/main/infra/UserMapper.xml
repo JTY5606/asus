@@ -133,6 +133,7 @@ WHERE 1=1
 		left join product c on c.ifprseq = a.produce_seq
 	where 1=1
 		AND produce_seq = #{ifprseq}
+		order by a.ifrvseq DESC
 </select>
 
 <insert id="insertReview" >
@@ -142,13 +143,15 @@ INSERT INTO review(
 	ifrvmemo,
 	ifrvdelNy,
 	ifrvdate,
-	user_seq
+	user_seq,
+	produce_seq
 )values(
 	#{ifrvtitle},
 	#{ifrvmemo},
 	0,
 	now(),
-	#{userseq}
+	#{userseq},
+	#{produce_seq}
 	)
 	
 </insert>

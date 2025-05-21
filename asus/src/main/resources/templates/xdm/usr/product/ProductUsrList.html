@@ -24,7 +24,7 @@
 		</div>
 		<section class="mt-8">
 		 <form
-							method="post" enctype="multipart/form-data" th:id="|form${list?.ifprseq}|" name="|form${list?.ifprseq}|">
+							method="post" enctype="multipart/form-data" id="form" name="form">
 						<input type="hidden" th:name="ifprseq" th:value="${list?.ifprseq}">
 									
 			<div class="container">
@@ -146,41 +146,33 @@
 									<div class="row">
 										<!-- col -->
 										<div class="col-md-8">
-											<div class="mb-10" th:each="list : ${items}">
+											<div class="mb-10" >
 										<form 
-											method="post" enctype="multipart/form-data" th:id="|form${list?.ifrvseq}|" name="|form${list?.ifrvseq}|">
-											<input type="hidden" th:name="ifrvseq" th:value="${list?.ifrvseq}">
-											<input type="hidden" th:name="produce_seq" th:value="${list?.produce_seq}">
-											<input type="hidden" th:name="userseq" th:value="${session.sessSeqXdm}">
+											method="post" enctype="multipart/form-data" th:id="reviewform" name="reviewform">
+											<input type="hidden" name="ifrvseq" id="ifrvseq" th:value="${list?.ifrvseq}">
+											<input type="hidden" name="produce_seq" id="produce_seq" th:value="${item?.ifprseq}">
+											<input type="hidden" name="userseq" id="userseq" th:value="${session.sessSeqXdm}">
 												<div class="d-flex justify-content-between align-items-center mb-8" >
 													<div>
 														<!-- heading -->
 														<h4>리뷰</h4>
 													</div>
-													<div>
-														<select class="form-select">
-															<option selected>인기 리뷰</option>
-															<option value="Most Recent">가장 최근리뷰</option>
-														</select>
-													</div>
 												</div>
-												<div class="d-flex border-bottom pb-6 mb-6">
-													<!-- img -->
-													<!-- img -->
-													<img src="../assets/images/avatar/avatar-10.jpg" alt=""
-														class="rounded-circle avatar-lg" />
+												<div id="reviewList" th:fragment="reviewList">
+												<div class="d-flex border-bottom pb-6 mb-6" th:each="list : ${items}">
 													<div class="ms-5">
 														<h6 class="mb-1" th:text="${list.username}">장동건</h6>
 														<!-- select option -->
 														<!-- content -->
+														<div class="mb-2">
+															<span class="ms-3 text-dark fw-bold" th:text="${list.ifrvtitle}" >배송이 너무 빨라서 좋아요</span>
+														</div>
 														<p class="small">
 															<span class="text-muted" th:text="${list.ifrvdate}">2025년 2월 27일</span>
 															<span class="text-primary ms-3 fw-bold">검증된 구매</span>
 														</p>
 														<!-- rating -->
-														<div class="mb-2">
-															<span class="ms-3 text-dark fw-bold" th:text="${list.ifrvtitle}" >배송이 너무 빨라서 좋아요</span>
-														</div>
+														
 														<!-- text-->
 														<p th:text="${list.ifrvmemo}">
 															제품 품질이 너무 좋습니다. 백숙을 해먹었는데 살코기도 많아 너무 좋았습니다 !
@@ -188,30 +180,25 @@
 														<!-- icon -->
 													</div>
 												</div>
+												</div>
 												</form>
 											</div>
 											<div>
 												<div class="border-bottom py-4 mb-4">
 													<h5>제목</h5>
 													<input type="text" class="form-control"
-														placeholder="" />
+														id="ifrvtitle" name="ifrvtitle" placeholder="" />
 												</div>
-<!-- 												<div class="border-bottom py-4 mb-4"> -->
-<!-- 													<h5>Add a photo or video</h5> -->
-<!-- 													<p>Shoppers find images and videos more helpful than text alone.</p> -->
-
-<!-- 													<div id="my-dropzone" -->
-<!-- 														class="dropzone mt-4 border-dashed rounded-2 min-h-0"></div> -->
-<!-- 												</div> -->
 												<div class="py-4 mb-4">
 													<!-- heading -->
+													
 													<h5>리뷰</h5>
 													<textarea class="form-control" rows="3"
-														placeholder=""></textarea>
+													 id="ifrvmemo" name="ifrvmemo" placeholder=""></textarea>
 												</div>
 												<!-- button -->
 												<div class="d-flex justify-content-end">
-													<a href="#" class="btn btn-primary">Submit Review</a>
+													<button type="button" id="review" name="review" class="btn btn-primary">리뷰 작성</button>
 												</div>
 											</div>
 										</div>
@@ -556,5 +543,45 @@
 	<!-- footer -->
 	<div th:replace="~{xdm/block/UserAdminFooter :: footer}"></div>
 </body>
+<script type="text/javascript">
+document.getElementById("review").onclick = function(){
+	setReview();
+};
 
+function setReview() {
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/xdm/usr/product/ProductUsrListInst"
+		,data : {
+			"userseq" : $("#userseq").val(),
+			"produce_seq" : $("#produce_seq").val(),
+			"ifrvtitle" : $("#ifrvtitle").val(), 
+			"ifrvmemo" : $("#ifrvmemo").val(),
+			"ifrvseq" : $("#ifrvseq").val()
+		}
+			,success: function(fragmentHtml) {
+				document.getElementById("ifrvtitle").value = "";
+				document.getElementById("ifrvmemo").value = "";
+				if (fragmentHtml != null && fragmentHtml != "") {
+					// fragmentHtml은 렌더링된 HTML fragment
+					$('#reviewList').replaceWith(fragmentHtml);
+			
+				
+					$('#reviews-tab')[0].scrollIntoView({
+						behavior: 'smooth',  // 부드럽게 스크롤
+						block: 'start'       // 해당 요소의 상단으로 이동
+					});
+				}
+				
+				
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+
+	});
+}
+</script>
 </html>

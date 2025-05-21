@@ -40,4 +40,5 @@ public class AdminProductService {
 	public int uelete(AdminProductDto adminProductDto) {
 		return adminProductDao.uelete(adminProductDto);
 	}
+	
 }

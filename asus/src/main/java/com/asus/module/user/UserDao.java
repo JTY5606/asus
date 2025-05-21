@@ -18,7 +18,6 @@ public interface UserDao {
 	public int selectTwoCount(UserDto userDto);
 	public UserDto selectOne(UserVo vo);
 	public List<UserDto> selectReview(AdminProductVo Vo);
-	public int insert(UserDto userDto);
 	public int insertaddress(UserDto userDto);
 	public int insertReview(UserDto userDto);
 	public int update(UserDto userDto);
@@ -28,4 +27,6 @@ public interface UserDao {
 	public int updatepassword(UserDto userDto);
 	
 	public UserDto passwordcheck(UserDto userDto);
+	
+	public int insert(UserDto userDto);
 }
