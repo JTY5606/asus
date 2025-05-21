@@ -18,4 +18,8 @@ public interface AdminProductDao {
 	public int insert(AdminProductDto adminProductDto);
 	public int update(AdminProductDto adminProductDto);
 	public int uelete(AdminProductDto adminProductDto);
+	
+	public List<AdminProductDto> selectCateList(AdminProductVo vo);
+	
+	public int selectCateCount(AdminProductVo vo); 
 }

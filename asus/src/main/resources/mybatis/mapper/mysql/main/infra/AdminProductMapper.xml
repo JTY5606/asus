@@ -96,6 +96,44 @@ WHERE 1=1
 FROM product 
 </select>
 
+<select id="selectCateCount" resultType="Integer">
+	SELECT COUNT(*)
+FROM product a
+WHERE 1=1
+		AND a.ifprcategory = #{ifprcategory}
+		AND a.ifprdelNy=0
+</select>
+
+<select id="selectCateList" resultMap="resultMapObj">
+SELECT
+	a.ifprseq,
+ 	a.ifprcategory, 
+ 	a.ifprtitle, 
+ 	a.ifprprice,
+  	a.ifprdiscout, 
+	a.ifprimfo, 
+ 	a.ifprorigin,
+ 	a.ifprdeliveryimfo, 
+	a.ifprcomposition, 
+	a.ifprproductNumber, 
+	a.ifprinvetory, 
+	a.ifprtypeNy, 
+	a.ifprdelNy, 
+	a.ifpruseNy,
+	a.ifprdate,
+	a.ifprredate,
+	(SELECT b.imPath
+			FROM images b
+			WHERE 1=1 
+				AND a.ifprseq = b.rseq
+	    ) as imPath
+	FROM product a
+	WHERE 1=1
+		AND a.ifprcategory = #{ifprcategory}
+		AND a.ifprdelNy=0
+	ORDER BY a.ifprseq DESC
+</select>
+
 <insert id="insert">
 INSERT INTO product(
     ifprcategory, 

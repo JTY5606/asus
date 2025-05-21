@@ -41,4 +41,15 @@ public class AdminProductService {
 		return adminProductDao.uelete(adminProductDto);
 	}
 	
+	public List<AdminProductDto> selectCateList(AdminProductVo vo) {
+		List<AdminProductDto> adminProductDtos = new ArrayList<>();
+		
+		adminProductDtos = adminProductDao.selectCateList(vo);
+		
+		return adminProductDtos; 	
+	}
+	public int selectCateCount(AdminProductVo vo) {
+		return adminProductDao.selectCateCount(vo);
+	}
+	
 }

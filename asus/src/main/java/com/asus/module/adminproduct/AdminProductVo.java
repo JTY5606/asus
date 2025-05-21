@@ -15,6 +15,7 @@ public class AdminProductVo {
 
 	
 	private String ifprseq;
+	private Integer ifprcategory;
 
 //	search
 	private Integer shUseNy = 1; 									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
@@ -25,6 +26,15 @@ public class AdminProductVo {
 	private Integer shOption;									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
 	private String shValue;
 	
+	
+	public Integer getIfprcategory() {
+		return ifprcategory;
+	}
+
+	public void setIfprcategory(Integer ifprcategory) {
+		this.ifprcategory = ifprcategory;
+	}
+
 	public String getIfprseq() {
 		return ifprseq;
 	}

@@ -45,6 +45,14 @@ public class AdminProductController {
 		return "xdm/usr/productlist/ProductListUsrList"; 
 		}
 	
+	@RequestMapping(value = "/xdm/usr/productlist/ProductCateListUsrList")
+	public String productCateListUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo ) {
+		
+		vo.setParamsPaging(adminProductService.selectCateCount(vo));
+		model.addAttribute("list", adminProductService.selectCateList(vo));
+		return "xdm/usr/productlist/ProductListUsrList"; 
+		}
+	
 	@RequestMapping(value = "/xdm/usr/product/ProductUsrList")
 	public String productUsrList(Model model,@ModelAttribute("vo") AdminProductVo vo) {
 		model.addAttribute("item", adminProductService.selectOne(vo));
