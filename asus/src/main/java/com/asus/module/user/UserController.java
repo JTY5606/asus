@@ -52,6 +52,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "/signinXdmProc")
 	public Map<String, Object> signinXdmProc(UserDto userDto,HttpSession httpSession) throws Exception {
+		    //key , value
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		UserDto che = userService.selectSigin(userDto);
 		
