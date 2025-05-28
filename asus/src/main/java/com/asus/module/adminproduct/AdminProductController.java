@@ -61,6 +61,12 @@ public class AdminProductController {
 		return "xdm/usr/product/ProductUsrList"; 
 		}
 	
+	@RequestMapping(value = "/xdm/usr/payment/PaymentList")
+	public String paymentList(Model model,AdminProductDto adminProductDto) {
+//		model.addAttribute("item", adminProductDto);
+		
+		return "xdm/usr/payment/PaymentList"; 
+		}
 	
 	@RequestMapping(value = "/xdm/adminproduct/AdminProductXdmForm")
 	public String AdminProductXdmForm(@ModelAttribute("vo") AdminProductVo vo, Model model,AdminProductDto adminProductDto) throws Exception{
